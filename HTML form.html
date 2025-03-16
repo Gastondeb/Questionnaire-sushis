@@ -28,8 +28,8 @@
             box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
             font-family: 'Fjalla One', sans-serif;
             text-align: center;
-            width: 90%;
-            max-width: 500px;
+            width: 80vmin; /* Utilisation de vmin pour maintenir un carré */
+            height: 80vmin; /* Même valeur que la largeur pour un carré */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -49,17 +49,16 @@
         }
 
         .question label {
-            font-size: 5vw;
+            font-size: 5vmin; /* Taille proportionnelle */
             margin-bottom: 5%;
         }
 
         .question input {
             padding: 3%;
-            font-size: 4vw;
+            font-size: 4vmin; /* Taille proportionnelle */
             border: 2px solid black;
             box-shadow: 3px 3px 1px black;
-            width: 100%;
-            max-width: 300px;
+            width: 80%; /* Largeur relative */
             margin-bottom: 5%;
         }
 
@@ -70,7 +69,7 @@
         .btn-group {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 5%;
             margin-top: 5%;
         }
 
@@ -83,7 +82,7 @@
             cursor: pointer;
             transition: 0.2s all ease-in-out;
             box-shadow: 3px 3px 1px black;
-            font-size: 4vw;
+            font-size: 4vmin; /* Taille proportionnelle */
         }
 
         .select-btn.selected {
@@ -103,7 +102,7 @@
 
         .nav-btn {
             padding: 3% 6%;
-            font-size: 4vw;
+            font-size: 4vmin; /* Taille proportionnelle */
             background: #ffa580;
             border: 1px solid black;
             cursor: pointer;
@@ -118,7 +117,7 @@
 
         .submit-btn {
             padding: 3% 6%;
-            font-size: 4vw;
+            font-size: 4vmin; /* Taille proportionnelle */
             background: #ffa580;
             border: 1px solid black;
             cursor: pointer;
@@ -133,7 +132,7 @@
 
         .error-message {
             color: red;
-            font-size: 3.5vw;
+            font-size: 3.5vmin; /* Taille proportionnelle */
             margin-top: 3%;
             display: none;
         }
@@ -141,12 +140,12 @@
         /* Styles spécifiques pour les deux premières questions */
         .question:nth-child(1) label,
         .question:nth-child(2) label {
-            font-size: 6vw; /* Texte plus gros */
+            font-size: 6vmin; /* Texte plus gros */
         }
 
         .question:nth-child(1) input,
         .question:nth-child(2) input {
-            font-size: 5vw; /* Texte dans la boîte plus gros */
+            font-size: 5vmin; /* Texte dans la boîte plus gros */
             padding: 4%; /* Boîte plus grande */
             border-radius: 10px; /* Coins arrondis */
             border: 3px solid black; /* Bordure plus épaisse */
@@ -154,6 +153,11 @@
 
         /* Media queries pour les grands écrans */
         @media (min-width: 600px) {
+            .contact-us {
+                width: 500px; /* Largeur fixe pour les grands écrans */
+                height: 500px; /* Hauteur fixe pour les grands écrans */
+            }
+
             .question label {
                 font-size: 24px;
             }
