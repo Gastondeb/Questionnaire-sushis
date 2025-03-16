@@ -3,59 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form sushis</title>
+    <title>Form Sushis</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap">
+    <style>
+        /* Style de base */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg') center center no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Style du formulaire */
+        .contact-us {
+            background: #f8f4e5;
+            padding: 50px 100px;
+            border: 2px solid black;
+            box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
+            font-family: 'Fjalla One', sans-serif;
+            text-align: center;
+            width: 400px;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .question {
+            display: none;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .question.active {
+            display: flex;
+        }
+
+        .question label {
+            font-size: 20pt;
+            margin-bottom: 20px;
+        }
+
+        .question input {
+            padding: 15px;
+            font-size: 16pt;
+            border: 2px solid black;
+            box-shadow: 3px 3px 1px black;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .btn-group, .question input {
+            align-self: center;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .select-btn {
+            padding: 15px 25px;
+            background: #ff6f61;
+            color: white;
+            font-weight: bold;
+            border: 2px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 3px 3px 1px black;
+        }
+
+        .select-btn.selected {
+            background: black;
+            color: white;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+        }
+
+        .nav-btn {
+            padding: 20px 40px;
+            font-size: 18pt;
+            background: #ffa580;
+            border: 1px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 3px 3px 1px black;
+        }
+
+        .nav-btn:hover {
+            background: black;
+            color: white;
+        }
+
+        .submit-btn {
+            padding: 20px 40px;
+            font-size: 18pt;
+            background: #ffa580;
+            border: 1px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 3px 3px 1px black;
+            display: none; /* Caché par défaut */
+        }
+
+        .submit-btn.visible {
+            display: block; /* Visible uniquement sur la dernière question */
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14pt;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Styles spécifiques pour les deux premières questions */
+        .question:nth-child(1) label,
+        .question:nth-child(2) label {
+            font-size: 24pt; /* Texte plus gros */
+        }
+
+        .question:nth-child(1) input,
+        .question:nth-child(2) input {
+            font-size: 18pt; /* Texte dans la boîte plus gros */
+            padding: 20px; /* Boîte plus grande */
+            border-radius: 10px; /* Coins arrondis */
+            border: 3px solid black; /* Bordure plus épaisse */
+        }
+    </style>
 </head>
 <body>
-
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSec7_Wp_tyjnlGvlaTr4Ri172SPFX117Etf8mK6v7iTr1vp0Q/formResponse" method="POST">
-
-        <label for="entry.524815907">Comment tu t'appelles</label><br>
-        <input type="text" name="entry.524815907" placeholder="Jean paul"><br>
-
-        <label for="entry.1985104958">Tu habites dans quelle colloc ?</label><br>
-        <input type="text" name="entry.1985104958" placeholder="b43"><br>
-
-        <label>Quel légume ?</label><br>
-        <input type="radio" name="entry.1292076072" value="avocats" id="avocats">
-        <label for="avocats">Avocat</label><br>
-        <input type="radio" name="entry.1292076072" value="concombres" id="concombres">
-        <label for="concombres">Concombre</label><br>
-
-
-        <label>Quel poisson ?</label><br>
-        <input type="radio" name="entry.1726767774" value="Saumon" id="Saumon">
-        <label for="Saumon">Saumon</label><br>
-        <input type="radio" name="entry.1726767774" value="Crevettes" id="Crevettes">
-        <label for="Crevettes">Crevette</label><br>
-
-
-        <label>Fromage frais ?</label><br>
-        <input type="radio" name="entry.887168393" value="Oui" id="Oui">
-        <label for="Oui">Oui</label><br>
-        <input type="radio" name="entry.887168393" value="Non" id="Non">
-        <label for="Non">Non</label><br>
-
-
-        <label>Soja ?</label><br>
-        <input type="radio" name="entry.41252950" value="Sucrée" id="Sucrée">
-        <label for="Sucrée">Sucrée</label><br>
-        <input type="radio" name="entry.41252950" value="Salée" id="Salée">
-        <label for="Salée">Salée</label><br>
-
-
-        <label> Livré ?</label><br>
-        <input type="radio" name="entry.554098723" value="Oui" id="Oui">
-        <label for="Oui">Oui</label><br>
-        <input type="radio" name="entry.554098723" value="Non" id="Non">
-        <label for="Non">Non</label><br>
-
-
-
-        
-
-
-        <button type="submit">Submit form</button>
+    <!-- Formulaire -->
+    <form class="contact-us" action="https://docs.google.com/forms/d/e/1FAIpQLSec7_Wp_tyjnlGvlaTr4Ri172SPFX117Etf8mK6v7iTr1vp0Q/formResponse" method="POST">
+        <div class="question active">
+            <label for="entry.524815907">Comment tu t'appelles ?</label>
+            <input type="text" name="entry.524815907" placeholder="Jean Paul" required>
+            <div class="error-message">Veuillez répondre à cette question.</div>
+        </div>
+        <div class="question">
+            <label for="entry.1985104958">Tu habites dans quelle colloc ?</label>
+            <input type="text" name="entry.1985104958" placeholder="b43" required>
+            <div class="error-message">Veuillez répondre à cette question.</div>
+        </div>
+        <div class="question">
+            <label>Quel légume ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1292076072', 'avocats')">Avocat</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1292076072', 'concombres')">Concombre</button>
+            </div>
+            <input type="hidden" name="entry.1292076072" id="entry.1292076072" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+        <div class="question">
+            <label>Quel poisson ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1726767774', 'Saumon')">Saumon</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1726767774', 'Crevettes')">Crevette</button>
+            </div>
+            <input type="hidden" name="entry.1726767774" id="entry.1726767774" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+        <div class="question">
+            <label>Fromage frais ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
+            </div>
+            <input type="hidden" name="entry.887168393" id="entry.887168393" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+        <div class="question">
+            <label>Soja ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Salée')">Salée</button>
+            </div>
+            <input type="hidden" name="entry.41252950" id="entry.41252950" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+        <div class="question">
+            <label>Livré ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Oui')">Oui</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Non')">Non</button>
+            </div>
+            <input type="hidden" name="entry.554098723" id="entry.554098723" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+        <div class="nav-container">
+            <button type="button" class="nav-btn" onclick="prevQuestion()">Précédent</button>
+            <button type="button" class="nav-btn next-btn" onclick="nextQuestion()">Suivant</button>
+            <button type="submit" class="nav-btn submit-btn">Envoyer</button>
+        </div>
     </form>
 
+    <script>
+        // Gestion du formulaire
+        let currentQuestion = 0;
+        const questions = document.querySelectorAll(".question");
+        const submitBtn = document.querySelector(".submit-btn");
+        const nextBtn = document.querySelector(".next-btn");
+
+        function updateButtons() {
+            const prevBtn = document.querySelector(".nav-btn:first-child");
+
+            // Masquer "Précédent" sur la première question
+            prevBtn.style.visibility = currentQuestion === 0 ? "hidden" : "visible";
+
+            // Remplacer "Suivant" par "Envoyer" sur la dernière question
+            if (currentQuestion === questions.length - 1) {
+                nextBtn.style.display = "none"; // Masquer "Suivant"
+                submitBtn.style.display = "block"; // Afficher "Envoyer"
+            } else {
+                nextBtn.style.display = "block"; // Afficher "Suivant"
+                submitBtn.style.display = "none"; // Masquer "Envoyer"
+            }
+        }
+
+        function validateQuestion(question) {
+            const input = question.querySelector("input, [type=hidden]");
+            const errorMessage = question.querySelector(".error-message");
+
+            if (!input.value) {
+                errorMessage.style.display = "block"; // Afficher le message d'erreur
+                return false;
+            } else {
+                errorMessage.style.display = "none"; // Masquer le message d'erreur
+                return true;
+            }
+        }
+
+        function nextQuestion() {
+            const currentQuestionElement = questions[currentQuestion];
+
+            // Valider la question actuelle
+            if (!validateQuestion(currentQuestionElement)) {
+                return; // Ne pas passer à la question suivante si la validation échoue
+            }
+
+            questions[currentQuestion].classList.remove("active");
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                questions[currentQuestion].classList.add("active");
+            }
+            updateButtons();
+        }
+        
+        function prevQuestion() {
+            questions[currentQuestion].classList.remove("active");
+            currentQuestion--;
+            if (currentQuestion >= 0) {
+                questions[currentQuestion].classList.add("active");
+            }
+            updateButtons();
+        }
+
+        function selectOption(button, inputName, value) {
+            document.getElementById(inputName).value = value;
+            let buttons = button.parentElement.querySelectorAll(".select-btn");
+            buttons.forEach(btn => btn.classList.remove("selected"));
+            button.classList.add("selected");
+
+            // Masquer le message d'erreur après avoir sélectionné une option
+            const errorMessage = button.closest(".question").querySelector(".error-message");
+            errorMessage.style.display = "none";
+        }
+        
+        updateButtons();
+    </script>
 </body>
 </html>
