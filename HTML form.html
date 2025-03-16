@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Sushis</title>
+    <title>Sushi Form</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap">
     <style>
         /* Style de base */
@@ -18,19 +18,63 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: 'Fjalla One', sans-serif;
         }
 
-        /* Style du formulaire */
+        /* Page d'accueil (style carré) */
+        .home-page {
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+            padding: 5%;
+            border: 2px solid black;
+            box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
+            border-radius: 15px;
+            width: 80vmin; /* Même style carré que le formulaire */
+            height: 80vmin;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .home-page h1 {
+            font-size: 8vmin;
+            margin-bottom: 5%;
+        }
+
+        .home-page p {
+            font-size: 4vmin;
+            margin-bottom: 10%;
+        }
+
+        .home-page .order-btn {
+            padding: 5% 10%;
+            font-size: 5vmin;
+            background: #ff6f61;
+            color: white;
+            border: 2px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 3px 3px 1px black;
+            border-radius: 10px;
+        }
+
+        .home-page .order-btn:hover {
+            background: black;
+            color: white;
+        }
+
+        /* Style du formulaire (masqué par défaut) */
         .contact-us {
+            display: none;
             background: #f8f4e5;
             padding: 5%;
             border: 2px solid black;
             box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
-            font-family: 'Fjalla One', sans-serif;
             text-align: center;
-            width: 80vmin; /* Utilisation de vmin pour maintenir un carré */
-            height: 80vmin; /* Même valeur que la largeur pour un carré */
-            display: flex;
+            width: 80vmin;
+            height: 80vmin;
             flex-direction: column;
             justify-content: center;
             position: relative;
@@ -50,19 +94,19 @@
 
         /* Style des labels (toutes les questions) */
         .question label {
-            font-size: 8vmin; /* Taille encore plus grande */
+            font-size: 6vmin;
             margin-bottom: 5%;
         }
 
         /* Style des champs de texte (toutes les questions) */
         .question input {
-            padding: 5%;
-            font-size: 6vmin; /* Taille encore plus grande */
-            border: 3px solid black; /* Bordure plus épaisse */
+            padding: 4%;
+            font-size: 5vmin;
+            border: 3px solid black;
             box-shadow: 3px 3px 1px black;
-            width: 80%; /* Largeur relative */
+            width: 80%;
             margin-bottom: 5%;
-            border-radius: 15px; /* Coins arrondis */
+            border-radius: 15px;
         }
 
         .btn-group, .question input {
@@ -78,7 +122,7 @@
         }
 
         .select-btn {
-            padding: 5% 8%; /* Ajustement du padding */
+            padding: 4% 6%;
             background: #ff6f61;
             color: white;
             font-weight: bold;
@@ -86,8 +130,8 @@
             cursor: pointer;
             transition: 0.2s all ease-in-out;
             box-shadow: 3px 3px 1px black;
-            font-size: 5vmin; /* Taille légèrement réduite pour les petits écrans */
-            border-radius: 20px; /* Coins arrondis */
+            font-size: 4vmin; /* Taille réduite pour les petits écrans */
+            border-radius: 15px;
             min-width: 120px; /* Largeur minimale pour éviter un écrasement */
         }
 
@@ -107,14 +151,14 @@
         }
 
         .nav-btn {
-            padding: 4% 8%;
-            font-size: 5vmin; /* Taille proportionnelle */
+            padding: 3% 6%;
+            font-size: 4vmin;
             background: #ffa580;
             border: 1px solid black;
             cursor: pointer;
             transition: 0.2s all ease-in-out;
             box-shadow: 3px 3px 1px black;
-            border-radius: 15px; /* Coins arrondis */
+            border-radius: 10px;
         }
 
         .nav-btn:hover {
@@ -123,62 +167,89 @@
         }
 
         .submit-btn {
-            padding: 4% 8%;
-            font-size: 5vmin; /* Taille proportionnelle */
+            padding: 3% 6%;
+            font-size: 4vmin;
             background: #ffa580;
             border: 1px solid black;
             cursor: pointer;
             transition: 0.2s all ease-in-out;
             box-shadow: 3px 3px 1px black;
-            display: none; /* Caché par défaut */
-            border-radius: 15px; /* Coins arrondis */
+            display: none;
+            border-radius: 10px;
         }
 
         .submit-btn.visible {
-            display: block; /* Visible uniquement sur la dernière question */
+            display: block;
         }
 
         .error-message {
             color: red;
-            font-size: 4vmin; /* Taille proportionnelle */
+            font-size: 3.5vmin;
             margin-top: 3%;
             display: none;
         }
 
         /* Media queries pour les grands écrans */
         @media (min-width: 600px) {
+            .home-page {
+                width: 500px;
+                height: 500px;
+            }
+
+            .home-page h1 {
+                font-size: 48px;
+            }
+
+            .home-page p {
+                font-size: 24px;
+            }
+
+            .home-page .order-btn {
+                font-size: 24px;
+            }
+
             .contact-us {
-                width: 500px; /* Largeur fixe pour les grands écrans */
-                height: 500px; /* Hauteur fixe pour les grands écrans */
+                width: 500px;
+                height: 500px;
             }
 
             .question label {
-                font-size: 32px; /* Taille encore plus grande */
+                font-size: 24px;
             }
 
             .question input {
-                font-size: 24px; /* Taille encore plus grande */
-                padding: 20px;
+                font-size: 18px;
+                padding: 15px;
             }
 
             .select-btn {
-                font-size: 20px; /* Taille légèrement réduite pour les petits écrans */
-                padding: 15px 25px;
+                font-size: 18px;
+                padding: 10px 20px;
             }
 
             .nav-btn, .submit-btn {
-                font-size: 20px; /* Taille encore plus grande */
-                padding: 15px 25px;
+                font-size: 18px;
+                padding: 10px 20px;
             }
 
             .error-message {
-                font-size: 18px; /* Taille encore plus grande */
+                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Formulaire -->
+    <!-- Page d'accueil -->
+    <div class="home-page">
+        <h1>Bienvenue chez Sushi Delight</h1>
+        <p>
+            Découvrez nos délicieux sushis préparés avec des ingrédients frais et de qualité.
+            Commandez maintenant et savourez une expérience culinaire unique !
+        </p>
+        <button class="order-btn" onclick="showForm()">Commander</button>
+    </div>
+
+    <!-- Formulaire (masqué par défaut) -->
     <form class="contact-us" action="https://docs.google.com/forms/d/e/1FAIpQLSec7_Wp_tyjnlGvlaTr4Ri172SPFX117Etf8mK6v7iTr1vp0Q/formResponse" method="POST">
         <div class="question active">
             <label for="entry.524815907">Comment tu t'appelles ?</label>
@@ -243,6 +314,12 @@
     </form>
 
     <script>
+        // Afficher le formulaire et masquer la page d'accueil
+        function showForm() {
+            document.querySelector('.home-page').style.display = 'none';
+            document.querySelector('.contact-us').style.display = 'flex';
+        }
+
         // Gestion du formulaire
         let currentQuestion = 0;
         const questions = document.querySelectorAll(".question");
@@ -257,11 +334,11 @@
 
             // Remplacer "Suivant" par "Envoyer" sur la dernière question
             if (currentQuestion === questions.length - 1) {
-                nextBtn.style.display = "none"; // Masquer "Suivant"
-                submitBtn.style.display = "block"; // Afficher "Envoyer"
+                nextBtn.style.display = "none";
+                submitBtn.style.display = "block";
             } else {
-                nextBtn.style.display = "block"; // Afficher "Suivant"
-                submitBtn.style.display = "none"; // Masquer "Envoyer"
+                nextBtn.style.display = "block";
+                submitBtn.style.display = "none";
             }
         }
 
@@ -270,10 +347,10 @@
             const errorMessage = question.querySelector(".error-message");
 
             if (!input.value) {
-                errorMessage.style.display = "block"; // Afficher le message d'erreur
+                errorMessage.style.display = "block";
                 return false;
             } else {
-                errorMessage.style.display = "none"; // Masquer le message d'erreur
+                errorMessage.style.display = "none";
                 return true;
             }
         }
@@ -283,7 +360,7 @@
 
             // Valider la question actuelle
             if (!validateQuestion(currentQuestionElement)) {
-                return; // Ne pas passer à la question suivante si la validation échoue
+                return;
             }
 
             questions[currentQuestion].classList.remove("active");
