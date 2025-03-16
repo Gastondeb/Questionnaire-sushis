@@ -48,24 +48,28 @@
             display: flex;
         }
 
+        /* Style des labels (toutes les questions) */
         .question label {
-            font-size: 5vmin; /* Taille proportionnelle */
+            font-size: 8vmin; /* Taille encore plus grande */
             margin-bottom: 5%;
         }
 
+        /* Style des champs de texte (toutes les questions) */
         .question input {
-            padding: 3%;
-            font-size: 4vmin; /* Taille proportionnelle */
-            border: 2px solid black;
+            padding: 5%;
+            font-size: 6vmin; /* Taille encore plus grande */
+            border: 3px solid black; /* Bordure plus épaisse */
             box-shadow: 3px 3px 1px black;
             width: 80%; /* Largeur relative */
             margin-bottom: 5%;
+            border-radius: 15px; /* Coins arrondis */
         }
 
         .btn-group, .question input {
             align-self: center;
         }
 
+        /* Style des boutons de sélection (avocat, concombre, etc.) */
         .btn-group {
             display: flex;
             justify-content: center;
@@ -74,7 +78,7 @@
         }
 
         .select-btn {
-            padding: 3% 6%;
+            padding: 6% 12%; /* Boutons encore plus grands */
             background: #ff6f61;
             color: white;
             font-weight: bold;
@@ -82,7 +86,9 @@
             cursor: pointer;
             transition: 0.2s all ease-in-out;
             box-shadow: 3px 3px 1px black;
-            font-size: 4vmin; /* Taille proportionnelle */
+            font-size: 6vmin; /* Taille encore plus grande */
+            border-radius: 20px; /* Coins arrondis */
+            min-width: 150px; /* Largeur minimale pour éviter un écrasement */
         }
 
         .select-btn.selected {
@@ -101,13 +107,14 @@
         }
 
         .nav-btn {
-            padding: 3% 6%;
-            font-size: 4vmin; /* Taille proportionnelle */
+            padding: 4% 8%;
+            font-size: 5vmin; /* Taille proportionnelle */
             background: #ffa580;
             border: 1px solid black;
             cursor: pointer;
             transition: 0.2s all ease-in-out;
             box-shadow: 3px 3px 1px black;
+            border-radius: 15px; /* Coins arrondis */
         }
 
         .nav-btn:hover {
@@ -116,14 +123,15 @@
         }
 
         .submit-btn {
-            padding: 3% 6%;
-            font-size: 4vmin; /* Taille proportionnelle */
+            padding: 4% 8%;
+            font-size: 5vmin; /* Taille proportionnelle */
             background: #ffa580;
             border: 1px solid black;
             cursor: pointer;
             transition: 0.2s all ease-in-out;
             box-shadow: 3px 3px 1px black;
             display: none; /* Caché par défaut */
+            border-radius: 15px; /* Coins arrondis */
         }
 
         .submit-btn.visible {
@@ -132,23 +140,9 @@
 
         .error-message {
             color: red;
-            font-size: 3.5vmin; /* Taille proportionnelle */
+            font-size: 4vmin; /* Taille proportionnelle */
             margin-top: 3%;
             display: none;
-        }
-
-        /* Styles spécifiques pour les deux premières questions */
-        .question:nth-child(1) label,
-        .question:nth-child(2) label {
-            font-size: 6vmin; /* Texte plus gros */
-        }
-
-        .question:nth-child(1) input,
-        .question:nth-child(2) input {
-            font-size: 5vmin; /* Texte dans la boîte plus gros */
-            padding: 4%; /* Boîte plus grande */
-            border-radius: 10px; /* Coins arrondis */
-            border: 3px solid black; /* Bordure plus épaisse */
         }
 
         /* Media queries pour les grands écrans */
@@ -159,37 +153,26 @@
             }
 
             .question label {
-                font-size: 24px;
+                font-size: 32px; /* Taille encore plus grande */
             }
 
             .question input {
-                font-size: 18px;
-                padding: 15px;
+                font-size: 24px; /* Taille encore plus grande */
+                padding: 20px;
             }
 
             .select-btn {
-                font-size: 18px;
-                padding: 15px 25px;
+                font-size: 24px; /* Taille encore plus grande */
+                padding: 15px 30px;
             }
 
             .nav-btn, .submit-btn {
-                font-size: 18px;
-                padding: 15px 25px;
+                font-size: 20px; /* Taille encore plus grande */
+                padding: 15px 30px;
             }
 
             .error-message {
-                font-size: 16px;
-            }
-
-            .question:nth-child(1) label,
-            .question:nth-child(2) label {
-                font-size: 24px;
-            }
-
-            .question:nth-child(1) input,
-            .question:nth-child(2) input {
-                font-size: 18px;
-                padding: 20px;
+                font-size: 18px; /* Taille encore plus grande */
             }
         }
     </style>
