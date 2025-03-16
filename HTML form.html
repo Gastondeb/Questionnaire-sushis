@@ -23,13 +23,13 @@
         /* Style du formulaire */
         .contact-us {
             background: #f8f4e5;
-            padding: 50px 100px;
+            padding: 20px;
             border: 2px solid black;
             box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
             font-family: 'Fjalla One', sans-serif;
             text-align: center;
-            width: 400px;
-            height: 350px;
+            width: 90%;
+            max-width: 400px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -97,12 +97,12 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80%;
+            width: 90%;
         }
 
         .nav-btn {
-            padding: 20px 40px;
-            font-size: 18pt;
+            padding: 15px 30px;
+            font-size: 16pt;
             background: #ffa580;
             border: 1px solid black;
             cursor: pointer;
@@ -116,8 +116,8 @@
         }
 
         .submit-btn {
-            padding: 20px 40px;
-            font-size: 18pt;
+            padding: 15px 30px;
+            font-size: 16pt;
             background: #ffa580;
             border: 1px solid black;
             cursor: pointer;
@@ -149,6 +149,44 @@
             padding: 20px; /* Boîte plus grande */
             border-radius: 10px; /* Coins arrondis */
             border: 3px solid black; /* Bordure plus épaisse */
+        }
+
+        /* Media queries pour les écrans de petite taille */
+        @media (max-width: 600px) {
+            .contact-us {
+                padding: 15px;
+                width: 95%;
+            }
+
+            .question label {
+                font-size: 18pt;
+            }
+
+            .question input {
+                font-size: 14pt;
+                padding: 10px;
+            }
+
+            .select-btn {
+                padding: 10px 20px;
+                font-size: 14pt;
+            }
+
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 14pt;
+            }
+
+            .question:nth-child(1) label,
+            .question:nth-child(2) label {
+                font-size: 20pt;
+            }
+
+            .question:nth-child(1) input,
+            .question:nth-child(2) input {
+                font-size: 16pt;
+                padding: 15px;
+            }
         }
     </style>
 </head>
