@@ -13,7 +13,7 @@
             height: 100vh;
             overflow: hidden;
             position: relative;
-            background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg') center center no-repeat;
+            background: url('fondsushis.png') center center no-repeat; /* Nouvelle image de fond */
             background-size: cover;
             display: flex;
             align-items: center;
@@ -192,28 +192,42 @@
 
         /* Adapter la page récapitulative pour les petits écrans */
         .recap-page h2 {
-            font-size: 5vmin; /* Taille de police réduite pour le titre */
-            margin-bottom: 3vmin; /* Espacement réduit */
+            font-size: 4.5vmin; /* Taille de police réduite pour le titre */
+            margin-bottom: 2vmin; /* Espacement réduit */
         }
 
         .recap-page p {
-            font-size: 3.5vmin; /* Taille de police réduite pour le texte */
-            margin: 2vmin 0; /* Espacement réduit */
+            font-size: 3vmin; /* Taille de police réduite pour le texte */
+            margin: 1.5vmin 0; /* Espacement réduit */
         }
 
         .recap-page .select-btn {
-            font-size: 4vmin; /* Taille de police réduite pour le bouton de confirmation */
-            padding: 2vmin 4vmin; /* Padding réduit */
-            margin-top: 3vmin; /* Espacement réduit */
+            font-size: 3.5vmin; /* Taille de police réduite pour le bouton de confirmation */
+            padding: 1.5vmin 3vmin; /* Padding réduit */
+            margin-top: 2vmin; /* Espacement réduit */
         }
 
         #recap-content {
-            margin: 2vmin 0; /* Espacement réduit */
+            margin: 1.5vmin 0; /* Espacement réduit */
         }
 
         #recap-price h3 {
-            font-size: 4vmin; /* Taille de police réduite pour le prix */
-            margin-top: 3vmin; /* Espacement réduit */
+            font-size: 3.5vmin; /* Taille de police réduite pour le prix */
+            margin-top: 2vmin; /* Espacement réduit */
+        }
+
+        /* Adapter les boutons de la sauce soja pour les petits écrans */
+        @media (max-width: 600px) {
+            .select-btn {
+                font-size: 3vmin; /* Taille de police réduite */
+                padding: 2vmin 3vmin; /* Padding réduit */
+                min-width: 80px; /* Largeur minimale réduite */
+            }
+
+            .btn-group {
+                flex-wrap: wrap; /* Permettre aux boutons de passer à la ligne */
+                gap: 10px; /* Espacement entre les boutons */
+            }
         }
     </style>
 </head>
