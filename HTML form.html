@@ -21,16 +21,16 @@
             font-family: 'Fjalla One', sans-serif;
         }
 
-        /* Page d'accueil (style carré) */
+        /* Page d'accueil */
         .home-page {
             text-align: center;
-            color: white;
-            background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+            color: black;
+            background: #f8f4e5;
             padding: 5%;
             border: 2px solid black;
             box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
             border-radius: 15px;
-            width: 80vmin; /* Même style carré que le formulaire */
+            width: 80vmin;
             height: 80vmin;
             display: flex;
             flex-direction: column;
@@ -65,7 +65,7 @@
             color: white;
         }
 
-        /* Style du formulaire (masqué par défaut) */
+        /* Style du formulaire */
         .contact-us {
             display: none;
             background: #f8f4e5;
@@ -92,13 +92,11 @@
             display: flex;
         }
 
-        /* Style des labels (toutes les questions) */
         .question label {
             font-size: 6vmin;
             margin-bottom: 5%;
         }
 
-        /* Style des champs de texte (toutes les questions) */
         .question input {
             padding: 4%;
             font-size: 5vmin;
@@ -113,7 +111,6 @@
             align-self: center;
         }
 
-        /* Style des boutons de sélection (avocat, concombre, etc.) */
         .btn-group {
             display: flex;
             justify-content: center;
@@ -130,9 +127,9 @@
             cursor: pointer;
             transition: 0.2s all ease-in-out;
             box-shadow: 3px 3px 1px black;
-            font-size: 4vmin; /* Taille réduite pour les petits écrans */
+            font-size: 4vmin;
             border-radius: 15px;
-            min-width: 120px; /* Largeur minimale pour éviter un écrasement */
+            min-width: 120px;
         }
 
         .select-btn.selected {
@@ -142,7 +139,7 @@
 
         .nav-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             position: absolute;
             bottom: 5%;
             left: 50%;
@@ -159,6 +156,8 @@
             transition: 0.2s all ease-in-out;
             box-shadow: 3px 3px 1px black;
             border-radius: 10px;
+            width: 100%;
+            max-width: 200px;
         }
 
         .nav-btn:hover {
@@ -176,6 +175,8 @@
             box-shadow: 3px 3px 1px black;
             display: none;
             border-radius: 10px;
+            width: 100%;
+            max-width: 200px;
         }
 
         .submit-btn.visible {
@@ -241,16 +242,16 @@
 <body>
     <!-- Page d'accueil -->
     <div class="home-page">
-        <h1>Bienvenue chez Sushi Delight</h1>
+        <h1>Sushicam</h1>
         <p>
-            Découvrez nos délicieux sushis préparés avec des ingrédients frais et de qualité.
-            Commandez maintenant et savourez une expérience culinaire unique !
+            Le samedi, c'est sushis Day ! Découvrez mes makis frais, préparés avec soin et des ingrédients de qualité, à des prix étudiants imbattables. Commandez vite, les places sont limitées !
         </p>
         <button class="order-btn" onclick="showForm()">Commander</button>
     </div>
 
     <!-- Formulaire (masqué par défaut) -->
     <form class="contact-us" action="https://docs.google.com/forms/d/e/1FAIpQLSec7_Wp_tyjnlGvlaTr4Ri172SPFX117Etf8mK6v7iTr1vp0Q/formResponse" method="POST">
+        <!-- Questions existantes -->
         <div class="question active">
             <label for="entry.524815907">Comment tu t'appelles ?</label>
             <input type="text" name="entry.524815907" placeholder="Jean Paul" required>
@@ -293,6 +294,7 @@
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Salée')">Salée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Pas de sauce')">Pas de sauce</button>
             </div>
             <input type="hidden" name="entry.41252950" id="entry.41252950" required>
             <div class="error-message">Veuillez choisir une option.</div>
@@ -306,8 +308,68 @@
             <input type="hidden" name="entry.554098723" id="entry.554098723" required>
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
+        <div class="question">
+            <label>Une deuxième boîte ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectSecondBox(this, 'Oui')">Oui</button>
+                <button type="button" class="select-btn" onclick="selectSecondBox(this, 'Non')">Non</button>
+            </div>
+            <input type="hidden" name="entry.557485338" id="entry.557485338" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+        <!-- Questions pour la deuxième boîte (masquées par défaut) -->
+        <div class="question second-box">
+            <label>Quel légume (2ème boîte) ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.2021454936', 'avocats')">Avocat</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.2021454936', 'concombres')">Concombre</button>
+            </div>
+            <input type="hidden" name="entry.2021454936" id="entry.2021454936">
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+        <div class="question second-box">
+            <label>Quel poisson (2ème boîte) ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.819843500', 'Saumon')">Saumon</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.819843500', 'Crevettes')">Crevette</button>
+            </div>
+            <input type="hidden" name="entry.819843500" id="entry.819843500">
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+        <div class="question second-box">
+            <label>Fromage frais (2ème boîte) ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Oui')">Oui</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Non')">Non</button>
+            </div>
+            <input type="hidden" name="entry.516077606" id="entry.516077606">
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+        <div class="question second-box">
+            <label>Soja (2ème boîte) ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Sucrée')">Sucrée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Salée')">Salée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Pas de sauce')">Pas de sauce</button>
+            </div>
+            <input type="hidden" name="entry.1450345325" id="entry.1450345325">
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+        <!-- Page de récapitulatif (masquée par défaut) -->
+        <div class="question recap-page">
+            <h2>Récapitulatif de votre commande</h2>
+            <div id="recap-content">
+                <!-- Les ingrédients seront affichés ici dynamiquement -->
+            </div>
+            <div id="recap-price">
+                <!-- Le prix total sera affiché ici -->
+            </div>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="confirmOrder()">Oui, tout est ok</button>
+            </div>
+            <div class="error-message">Veuillez confirmer votre commande.</div>
+        </div>
         <div class="nav-container">
-            <button type="button" class="nav-btn" onclick="prevQuestion()">Précédent</button>
             <button type="button" class="nav-btn next-btn" onclick="nextQuestion()">Suivant</button>
             <button type="submit" class="nav-btn submit-btn">Envoyer</button>
         </div>
@@ -322,18 +384,37 @@
 
         // Gestion du formulaire
         let currentQuestion = 0;
-        const questions = document.querySelectorAll(".question");
+        const questions = document.querySelectorAll(".question:not(.second-box):not(.recap-page)");
+        const secondBoxQuestions = document.querySelectorAll(".question.second-box");
         const submitBtn = document.querySelector(".submit-btn");
         const nextBtn = document.querySelector(".next-btn");
+        let isSecondBox = false;
+
+        // Stocker les réponses
+        let responses = {
+            box1: {
+                legume: "",
+                poisson: "",
+                fromageFrais: "",
+                soja: "",
+                livre: ""
+            },
+            box2: {
+                legume: "",
+                poisson: "",
+                fromageFrais: "",
+                soja: ""
+            }
+        };
+
+        // Prix de base et suppléments
+        const basePrice = 6.5; // Prix de la boîte
+        const sojaSupplement = 0.4; // Supplément pour la sauce soja
+        const deliverySupplement = 0.4; // Supplément pour la livraison
 
         function updateButtons() {
-            const prevBtn = document.querySelector(".nav-btn:first-child");
-
-            // Masquer "Précédent" sur la première question
-            prevBtn.style.visibility = currentQuestion === 0 ? "hidden" : "visible";
-
-            // Remplacer "Suivant" par "Envoyer" sur la dernière question
-            if (currentQuestion === questions.length - 1) {
+            // Remplacer "Suivant" par "Envoyer" uniquement sur la page récapitulative
+            if (document.querySelector(".recap-page").classList.contains("active")) {
                 nextBtn.style.display = "none";
                 submitBtn.style.display = "block";
             } else {
@@ -356,32 +437,55 @@
         }
 
         function nextQuestion() {
-            const currentQuestionElement = questions[currentQuestion];
+            const currentQuestionElement = isSecondBox ? secondBoxQuestions[currentQuestion] : questions[currentQuestion];
 
             // Valider la question actuelle
             if (!validateQuestion(currentQuestionElement)) {
                 return;
             }
 
-            questions[currentQuestion].classList.remove("active");
+            currentQuestionElement.classList.remove("active");
             currentQuestion++;
-            if (currentQuestion < questions.length) {
+
+            // Si l'utilisateur a choisi une deuxième boîte, afficher les questions supplémentaires
+            if (isSecondBox && currentQuestion < secondBoxQuestions.length) {
+                secondBoxQuestions[currentQuestion].classList.add("active");
+            } else if (!isSecondBox && currentQuestion < questions.length) {
                 questions[currentQuestion].classList.add("active");
             }
-            updateButtons();
-        }
-        
-        function prevQuestion() {
-            questions[currentQuestion].classList.remove("active");
-            currentQuestion--;
-            if (currentQuestion >= 0) {
-                questions[currentQuestion].classList.add("active");
+
+            // Si on arrive à la fin des questions, afficher la page récapitulative
+            if ((!isSecondBox && currentQuestion === questions.length) || (isSecondBox && currentQuestion === secondBoxQuestions.length)) {
+                showRecap();
+            } else {
+                updateButtons();
             }
-            updateButtons();
         }
 
         function selectOption(button, inputName, value) {
             document.getElementById(inputName).value = value;
+
+            // Stocker les réponses dans l'objet `responses`
+            if (inputName.includes("entry.1292076072")) {
+                responses.box1.legume = value;
+            } else if (inputName.includes("entry.1726767774")) {
+                responses.box1.poisson = value;
+            } else if (inputName.includes("entry.887168393")) {
+                responses.box1.fromageFrais = value;
+            } else if (inputName.includes("entry.41252950")) {
+                responses.box1.soja = value;
+            } else if (inputName.includes("entry.554098723")) {
+                responses.box1.livre = value;
+            } else if (inputName.includes("entry.2021454936")) {
+                responses.box2.legume = value;
+            } else if (inputName.includes("entry.819843500")) {
+                responses.box2.poisson = value;
+            } else if (inputName.includes("entry.516077606")) {
+                responses.box2.fromageFrais = value;
+            } else if (inputName.includes("entry.1450345325")) {
+                responses.box2.soja = value;
+            }
+
             let buttons = button.parentElement.querySelectorAll(".select-btn");
             buttons.forEach(btn => btn.classList.remove("selected"));
             button.classList.add("selected");
@@ -390,7 +494,84 @@
             const errorMessage = button.closest(".question").querySelector(".error-message");
             errorMessage.style.display = "none";
         }
-        
+
+        function selectSecondBox(button, value) {
+            document.getElementById('entry.557485338').value = value;
+            let buttons = button.parentElement.querySelectorAll(".select-btn");
+            buttons.forEach(btn => btn.classList.remove("selected"));
+            button.classList.add("selected");
+
+            // Si l'utilisateur choisit "Oui", activer la deuxième boîte
+            if (value === 'Oui') {
+                isSecondBox = true;
+                currentQuestion = 0; // Réinitialiser l'index de la question
+                // Masquer toutes les questions et afficher la première question de la deuxième boîte
+                questions.forEach(q => q.classList.remove("active"));
+                secondBoxQuestions[0].classList.add("active");
+            } else {
+                isSecondBox = false;
+                // Passer à la question suivante
+                nextQuestion();
+            }
+
+            // Masquer le message d'erreur
+            const errorMessage = button.closest(".question").querySelector(".error-message");
+            errorMessage.style.display = "none";
+        }
+
+        // Afficher la page récapitulative
+        function showRecap() {
+            const recapContent = document.getElementById("recap-content");
+            const recapPrice = document.getElementById("recap-price");
+            recapContent.innerHTML = ""; // Vider le contenu précédent
+
+            // Afficher les ingrédients de la première boîte
+            recapContent.innerHTML += `<h3>Première boîte :</h3>
+                                      <p>Légume : ${responses.box1.legume}</p>
+                                      <p>Poisson : ${responses.box1.poisson}</p>
+                                      <p>Fromage frais : ${responses.box1.fromageFrais}</p>
+                                      <p>Soja : ${responses.box1.soja}</p>
+                                      <p>Livré : ${responses.box1.livre}</p>`;
+
+            // Afficher les ingrédients de la deuxième boîte (si elle existe)
+            if (isSecondBox) {
+                recapContent.innerHTML += `<h3>Deuxième boîte :</h3>
+                                          <p>Légume : ${responses.box2.legume}</p>
+                                          <p>Poisson : ${responses.box2.poisson}</p>
+                                          <p>Fromage frais : ${responses.box2.fromageFrais}</p>
+                                          <p>Soja : ${responses.box2.soja}</p>`;
+            }
+
+            // Calculer le prix total
+            let totalPrice = basePrice; // Prix de base pour une boîte
+            if (isSecondBox) {
+                totalPrice += basePrice; // Ajouter le prix de la deuxième boîte
+            }
+            if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") {
+                totalPrice += sojaSupplement; // Ajouter le supplément soja
+            }
+            if (responses.box1.livre === "Oui") {
+                totalPrice += deliverySupplement; // Ajouter le supplément livraison
+            }
+
+            // Afficher le prix total
+            recapPrice.innerHTML = `<h3>Prix total : ${totalPrice.toFixed(2)}€</h3>`;
+
+            // Masquer toutes les questions et afficher la page récapitulative
+            questions.forEach(q => q.classList.remove("active"));
+            secondBoxQuestions.forEach(q => q.classList.remove("active"));
+            document.querySelector(".recap-page").classList.add("active");
+
+            // Masquer les boutons "Précédent" et "Suivant"
+            document.querySelector(".nav-container").style.display = "none";
+        }
+
+        // Confirmer la commande et envoyer le formulaire
+        function confirmOrder() {
+            const form = document.querySelector(".contact-us");
+            form.submit(); // Envoyer le formulaire
+        }
+
         updateButtons();
     </script>
 </body>
