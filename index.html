@@ -190,51 +190,38 @@
             display: none;
         }
 
-        /* Media queries pour les grands écrans */
-        @media (min-width: 600px) {
-            .home-page {
-                width: 500px;
-                height: 500px;
-            }
-
-            .home-page h1 {
-                font-size: 48px;
-            }
-
-            .home-page p {
-                font-size: 24px;
-            }
-
-            .home-page .order-btn {
-                font-size: 24px;
-            }
-
-            .contact-us {
-                width: 500px;
-                height: 500px;
-            }
-
-            .question label {
-                font-size: 24px;
-            }
-
-            .question input {
-                font-size: 18px;
-                padding: 15px;
-            }
-
+        /* Media queries pour les petits écrans */
+        @media (max-width: 600px) {
             .select-btn {
-                font-size: 18px;
-                padding: 10px 20px;
+                font-size: 3.5vmin;
+                padding: 3% 4%;
+                min-width: 80px;
             }
 
-            .nav-btn, .submit-btn {
-                font-size: 18px;
-                padding: 10px 20px;
+            .btn-group {
+                flex-wrap: wrap;
+                gap: 10px;
             }
 
-            .error-message {
-                font-size: 16px;
+            .recap-page h2 {
+                font-size: 6vmin;
+            }
+
+            .recap-page p {
+                font-size: 4vmin;
+            }
+
+            .recap-page .select-btn {
+                font-size: 4vmin;
+                padding: 3% 5%;
+            }
+
+            #recap-content {
+                margin: 10px 0;
+            }
+
+            #recap-price h3 {
+                font-size: 5vmin;
             }
         }
     </style>
