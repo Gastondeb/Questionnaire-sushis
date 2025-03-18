@@ -179,14 +179,6 @@
             max-width: 200px;
         }
 
-        body {
-    background-image: url('Fondsushis.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-
         .submit-btn.visible {
             display: block;
         }
@@ -198,19 +190,19 @@
             display: none;
         }
 
-        /* Adapter la page récapitulative pour les petits écrans */
+        /* Adapter la page récapitulative pour tous les écrans */
         .recap-page h2 {
-            font-size: 4.5vmin; /* Taille de police réduite pour le titre */
+            font-size: 5vmin; /* Taille de police relative */
             margin-bottom: 2vmin; /* Espacement réduit */
         }
 
         .recap-page p {
-            font-size: 3vmin; /* Taille de police réduite pour le texte */
+            font-size: 3.5vmin; /* Taille de police relative */
             margin: 1.5vmin 0; /* Espacement réduit */
         }
 
         .recap-page .select-btn {
-            font-size: 3.5vmin; /* Taille de police réduite pour le bouton de confirmation */
+            font-size: 4vmin; /* Taille de police relative */
             padding: 1.5vmin 3vmin; /* Padding réduit */
             margin-top: 2vmin; /* Espacement réduit */
         }
@@ -220,22 +212,8 @@
         }
 
         #recap-price h3 {
-            font-size: 3.5vmin; /* Taille de police réduite pour le prix */
+            font-size: 4vmin; /* Taille de police relative */
             margin-top: 2vmin; /* Espacement réduit */
-        }
-
-        /* Adapter les boutons de la sauce soja pour les petits écrans */
-        @media (max-width: 600px) {
-            .select-btn {
-                font-size: 3vmin; /* Taille de police réduite */
-                padding: 2vmin 3vmin; /* Padding réduit */
-                min-width: 80px; /* Largeur minimale réduite */
-            }
-
-            .btn-group {
-                flex-wrap: wrap; /* Permettre aux boutons de passer à la ligne */
-                gap: 10px; /* Espacement entre les boutons */
-            }
         }
     </style>
 </head>
