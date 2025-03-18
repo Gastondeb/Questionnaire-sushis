@@ -190,39 +190,30 @@
             display: none;
         }
 
-        /* Media queries pour les petits écrans */
-        @media (max-width: 600px) {
-            .select-btn {
-                font-size: 3.5vmin;
-                padding: 3% 4%;
-                min-width: 80px;
-            }
+        /* Adapter la page récapitulative pour les petits écrans */
+        .recap-page h2 {
+            font-size: 5vmin; /* Taille de police réduite pour le titre */
+            margin-bottom: 3vmin; /* Espacement réduit */
+        }
 
-            .btn-group {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
+        .recap-page p {
+            font-size: 3.5vmin; /* Taille de police réduite pour le texte */
+            margin: 2vmin 0; /* Espacement réduit */
+        }
 
-            .recap-page h2 {
-                font-size: 6vmin;
-            }
+        .recap-page .select-btn {
+            font-size: 4vmin; /* Taille de police réduite pour le bouton de confirmation */
+            padding: 2vmin 4vmin; /* Padding réduit */
+            margin-top: 3vmin; /* Espacement réduit */
+        }
 
-            .recap-page p {
-                font-size: 4vmin;
-            }
+        #recap-content {
+            margin: 2vmin 0; /* Espacement réduit */
+        }
 
-            .recap-page .select-btn {
-                font-size: 4vmin;
-                padding: 3% 5%;
-            }
-
-            #recap-content {
-                margin: 10px 0;
-            }
-
-            #recap-price h3 {
-                font-size: 5vmin;
-            }
+        #recap-price h3 {
+            font-size: 4vmin; /* Taille de police réduite pour le prix */
+            margin-top: 3vmin; /* Espacement réduit */
         }
     </style>
 </head>
