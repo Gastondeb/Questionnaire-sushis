@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sushi Form</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Style de base */
         body {
@@ -19,7 +19,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Roboto', sans-serif; /* Nouvelle police */
+            font-family: 'Fjalla One', sans-serif;
         }
 
         /* Page d'accueil */
@@ -35,19 +35,22 @@
             height: 80vmin;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centrer le contenu */
+            justify-content: center;
             align-items: center;
         }
 
         .home-page h1 {
-            font-size: 8vmin;
+            font-family: 'Pacifico', cursive;
+            font-size: 10vmin;
             margin-bottom: 5%;
-            font-weight: 700; /* Gras pour le titre */
+            animation: slideIn 1s ease-out;
         }
 
         .home-page p {
-            font-size: 4vmin;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 5vmin;
             margin-bottom: 10%;
+            animation: slideIn 1.5s ease-out;
         }
 
         .home-page .order-btn {
@@ -57,14 +60,19 @@
             color: white;
             border: 2px solid black;
             cursor: pointer;
-            transition: 0.2s all ease-in-out;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             box-shadow: 3px 3px 1px black;
             border-radius: 10px;
         }
 
         .home-page .order-btn:hover {
-            background: black;
-            color: white;
+            transform: scale(1.05);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         /* Style du formulaire */
@@ -80,8 +88,7 @@
             margin-top: 5vmin;
             margin-bottom: 5vmin;
             flex-direction: column;
-            justify-content: flex-start; /* Déplacer le contenu vers le haut */
-            align-items: center;
+            justify-content: center;
             position: relative;
         }
 
@@ -89,7 +96,7 @@
             display: none;
             text-align: center;
             flex-direction: column;
-            justify-content: flex-start; /* Déplacer le contenu vers le haut */
+            justify-content: center;
             align-items: center;
         }
 
@@ -121,11 +128,10 @@
             justify-content: center;
             gap: 5%;
             margin-top: 5%;
-            flex-wrap: wrap; /* Permettre aux boutons de passer à la ligne */
         }
 
         .select-btn {
-            padding: 2vmin 3vmin; /* Taille réduite */
+            padding: 4% 6%;
             background: #ff6f61;
             color: white;
             font-weight: bold;
@@ -133,10 +139,9 @@
             cursor: pointer;
             transition: 0.2s all ease-in-out;
             box-shadow: 3px 3px 1px black;
-            font-size: 3vmin; /* Taille de police réduite */
+            font-size: 4vmin;
             border-radius: 15px;
-            min-width: 80px; /* Largeur minimale réduite */
-            margin: 1vmin; /* Espacement entre les boutons */
+            min-width: 120px;
         }
 
         .select-btn.selected {
@@ -199,14 +204,15 @@
 
         /* Style pour la question du légume */
         .question.legume-question h2 {
+            font-family: 'Pacifico', cursive;
             font-size: 6vmin;
             margin-bottom: 3vmin;
             color: #ff6f61;
             text-shadow: 2px 2px 0 #ffa580;
-            margin-top: -5vmin; /* Déplacer le texte plus haut */
         }
 
         .question.legume-question p {
+            font-family: 'Quicksand', sans-serif;
             font-size: 4vmin;
             margin-bottom: 5vmin;
             color: black;
