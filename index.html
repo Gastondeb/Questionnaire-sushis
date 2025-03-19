@@ -94,6 +94,15 @@
             display: flex;
         }
 
+        .question h2 {
+            font-size: 6vmin;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 5%;
+            color: #333;
+            font-family: 'Fjalla One', sans-serif;
+        }
+
         .question label {
             font-size: 6vmin;
             margin-bottom: 5%;
@@ -241,6 +250,32 @@
             font-size: 3.5vmin; /* Taille de police réduite */
             margin-top: 2vmin; /* Espacement réduit */
         }
+        /* Style pour le titre de la question */
+.question-title {
+    font-size: 7vmin; /* Taille de police plus grande */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 3%; /* Réduire la marge pour monter le titre */
+    color: #333;
+    font-family: 'Fjalla One', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Ombre portée */
+    position: relative;
+    top: -20px; /* Monter le titre encore plus haut */
+}
+
+/* Style pour l'information du prix */
+.price-info {
+    font-size: 4vmin; /* Taille de police adaptée */
+    text-align: center;
+    margin-top: -10px; /* Réduire l'espace entre le titre et le prix */
+    margin-bottom: 5%;
+    color: #555;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.price-info strong {
+    color: #ff6f61; /* Couleur accentuée pour le prix */
+}
     </style>
 </head>
 <body>
@@ -266,7 +301,10 @@
             <input type="text" name="entry.1985104958" placeholder="b43" required>
             <div class="error-message">Veuillez répondre à cette question.</div>
         </div>
+        
         <div class="question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="price-info">Prix pour 8 makis : <strong>6,5 €</strong></p>
             <label>Quel légume ?</label>
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1292076072', 'avocats')">Avocat</button>
