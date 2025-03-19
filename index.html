@@ -250,81 +250,63 @@
             font-size: 3.5vmin; /* Taille de police réduite */
             margin-top: 2vmin; /* Espacement réduit */
         }
-        /* Style pour le titre de la question */
-
 
         /* Style pour le titre de la question */
+        .question-title {
+            font-size: 8vmin; /* Taille de police plus grande */
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 3%; /* Réduire la marge pour monter le titre */
+            color: #fff; /* Texte en blanc pour contraster avec le fond */
+            font-family: 'Arial', sans-serif; /* Police plus sobre */
+            font-weight: bold; /* Texte en gras */
+            text-transform: uppercase; /* Texte en majuscules */
+            letter-spacing: 2px; /* Espacement des lettres */
+            position: relative;
+            top: -40px; /* Monter le titre encore plus haut */
+            transform: rotate(-1deg); /* Légère rotation vers le bas */
+            display: inline-block; /* Permet d'appliquer la transformation */
+            padding: 10px 20px; /* Espacement interne */
+            background: linear-gradient(45deg, #ff6f61, #ffa580); /* Dégradé de couleur */
+            border: 2px solid #ff6f61; /* Bordure colorée */
+            border-radius: 15px; /* Coins arrondis */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+        }
 
-.question-title {
-    font-size: 8vmin; /* Taille de police plus grande */
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 3%; /* Réduire la marge pour monter le titre */
-    color: #fff; /* Texte en blanc pour contraster avec le fond */
-    font-family: 'Arial', sans-serif; /* Police plus sobre */
-    font-weight: bold; /* Texte en gras */
-    text-transform: uppercase; /* Texte en majuscules */
-    letter-spacing: 2px; /* Espacement des lettres */
-    position: relative;
-    top: -40px; /* Monter le titre encore plus haut */
-    transform: rotate(-1deg); /* Légère rotation vers le bas */
-    display: inline-block; /* Permet d'appliquer la transformation */
-    padding: 10px 20px; /* Espacement interne */
-    background: linear-gradient(45deg, #ff6f61, #ffa580); /* Dégradé de couleur */
-    border: 2px solid #ff6f61; /* Bordure colorée */
-    border-radius: 15px; /* Coins arrondis */
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-}
-@media (max-width: 600px) {
-    .question-title {
-        top: -30px; /* Ajustement pour les petits écrans */
-        font-size: 6vmin; /* Taille de police réduite */
-        padding: 8px 16px; /* Espacement interne réduit */
-    }
-}
-/* Animation pour le titre */
-@keyframes float {
-    0%, 100% {
-        transform: rotate(-2deg) translateY(0);
-    }
-    50% {
-        transform: rotate(-2deg) translateY(-10px); /* Effet de flottement */
-    }
-}
+        @media (max-width: 600px) {
+            .question-title {
+                top: -30px; /* Ajustement pour les petits écrans */
+                font-size: 6vmin; /* Taille de police réduite */
+                padding: 8px 16px; /* Espacement interne réduit */
+            }
+        }
 
-/* Style pour l'information du prix */
-.price-info {
-    font-size: 4vmin; /* Taille de police adaptée */
-    text-align: center;
-    margin-top: -10px; /* Réduire l'espace entre le titre et le prix */
-    margin-bottom: 5%;
-    color: #555;
-    font-family: 'Fjalla One', sans-serif;
-}
+        /* Conteneur pour les légumes */
+        .vegetable-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Espace entre les images et le texte */
+            margin-bottom: 5%;
+            margin-top: -20px; /* Remonter le conteneur pour aligner avec la question */
+        }
 
-.price-info strong {
-    color: #ff6f61; /* Couleur accentuée pour le prix */
-}
+        /* Style des images */
+        .vegetable-image {
+            width: 80px; /* Taille des images */
+            height: auto; /* Conserver les proportions */
+            border-radius: 10px; /* Coins arrondis */
+            opacity: 0.8; /* Légère transparence pour un effet discret */
+        }
 
-/* Conteneur pour les légumes */
-.vegetable-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* Espace entre les images et le texte */
-    margin-bottom: 5%;
-}
+        /* Rotation des images */
+        .vegetable-image:first-child {
+            transform: rotate(-5deg); /* Légère rotation vers la gauche */
+        }
 
-/* Style des images */
-
-.vegetable-image {
-    width: 80px; /* Taille des images */
-    height: auto; /* Conserver les proportions */
-    border-radius: 10px; /* Coins arrondis */
-    opacity: 0.8; /* Légère transparence pour un effet discret */
-}
-
-
+        .vegetable-image:last-child {
+            transform: rotate(5deg); /* Légère rotation vers la droite */
+        }
     </style>
 </head>
 <body>
@@ -513,7 +495,13 @@
                 nextBtn.style.display = "none";
                 submitBtn.style.display = "block";
             } else {
-                nextBtn.style.display = "block";
+                // Masquer le bouton "Suivant" sur la question des légumes
+                const currentQuestion = document.querySelector(".question.active");
+                if (currentQuestion && currentQuestion.querySelector(".vegetable-container")) {
+                    nextBtn.style.display = "none";
+                } else {
+                    nextBtn.style.display = "block";
+                }
                 submitBtn.style.display = "none";
             }
         }
@@ -588,6 +576,9 @@
             // Masquer le message d'erreur après avoir sélectionné une option
             const errorMessage = button.closest(".question").querySelector(".error-message");
             errorMessage.style.display = "none";
+
+            // Passer à la question suivante automatiquement
+            nextQuestion();
         }
 
         function selectSecondBox(button, value) {
