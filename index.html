@@ -251,6 +251,9 @@
             margin-top: 2vmin; /* Espacement réduit */
         }
         /* Style pour le titre de la question */
+
+
+        /* Style pour le titre de la question */
 .question-title {
     font-size: 7vmin; /* Taille de police plus grande */
     text-align: center;
@@ -258,9 +261,25 @@
     margin-bottom: 3%; /* Réduire la marge pour monter le titre */
     color: #333;
     font-family: 'Fjalla One', sans-serif;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Ombre portée */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre portée plus prononcée */
     position: relative;
     top: -20px; /* Monter le titre encore plus haut */
+    background: linear-gradient(45deg, #ff6f61, #ffa580); /* Dégradé de couleur */
+    -webkit-background-clip: text; /* Appliquer le dégradé au texte */
+    background-clip: text;
+    color: transparent; /* Rendre le texte transparent pour voir le dégradé */
+    transform: rotate(-2deg); /* Incurvation légère */
+    animation: float 3s ease-in-out infinite; /* Animation subtile */
+}
+
+/* Animation pour le titre */
+@keyframes float {
+    0%, 100% {
+        transform: rotate(-2deg) translateY(0);
+    }
+    50% {
+        transform: rotate(-2deg) translateY(-10px); /* Effet de flottement */
+    }
 }
 
 /* Style pour l'information du prix */
@@ -276,6 +295,7 @@
 .price-info strong {
     color: #ff6f61; /* Couleur accentuée pour le prix */
 }
+
     </style>
 </head>
 <body>
