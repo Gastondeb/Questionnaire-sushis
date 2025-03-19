@@ -254,28 +254,34 @@
 
 
         /* Style pour le titre de la question */
-/* Style pour le titre de la question */
+
 .question-title {
     font-size: 8vmin; /* Taille de police plus grande */
     text-align: center;
     margin-top: 0;
     margin-bottom: 3%; /* Réduire la marge pour monter le titre */
-    color: #333; /* Couleur sobre */
+    color: #fff; /* Texte en blanc pour contraster avec le fond */
     font-family: 'Arial', sans-serif; /* Police plus sobre */
     font-weight: bold; /* Texte en gras */
     text-transform: uppercase; /* Texte en majuscules */
     letter-spacing: 2px; /* Espacement des lettres */
     position: relative;
-    top: -20px; /* Monter le titre encore plus haut */
+    top: -40px; /* Monter le titre encore plus haut */
     transform: rotate(-1deg); /* Légère rotation vers le bas */
     display: inline-block; /* Permet d'appliquer la transformation */
     padding: 10px 20px; /* Espacement interne */
-    background: #f8f4e5; /* Fond blanc pour s'intégrer au cadre */
-    border: 2px solid #333; /* Bordure sobre */
+    background: linear-gradient(45deg, #ff6f61, #ffa580); /* Dégradé de couleur */
+    border: 2px solid #ff6f61; /* Bordure colorée */
     border-radius: 15px; /* Coins arrondis */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
-
+@media (max-width: 600px) {
+    .question-title {
+        top: -30px; /* Ajustement pour les petits écrans */
+        font-size: 6vmin; /* Taille de police réduite */
+        padding: 8px 16px; /* Espacement interne réduit */
+    }
+}
 /* Animation pour le titre */
 @keyframes float {
     0%, 100% {
