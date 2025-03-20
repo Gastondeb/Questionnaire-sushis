@@ -307,6 +307,13 @@
         .ingredient-image:last-child {
             transform: rotate(5deg); /* Légère rotation vers la droite */
         }
+
+        /* Style pour les suppléments */
+        .supplement-info {
+            font-size: 3.5vmin;
+            color: #555;
+            margin-top: 1vmin;
+        }
     </style>
 </head>
 <body>
@@ -323,13 +330,11 @@
     <form class="contact-us" action="https://docs.google.com/forms/d/e/1FAIpQLSec7_Wp_tyjnlGvlaTr4Ri172SPFX117Etf8mK6v7iTr1vp0Q/formResponse" method="POST">
         <!-- Questions existantes -->
         <div class="question active">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <label for="entry.524815907">Comment tu t'appelles ?</label>
             <input type="text" name="entry.524815907" placeholder="Jean Paul" required>
             <div class="error-message">Veuillez répondre à cette question.</div>
         </div>
         <div class="question">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <label for="entry.1985104958">Tu habites dans quelle colloc ?</label>
             <input type="text" name="entry.1985104958" placeholder="b43" required>
             <div class="error-message">Veuillez répondre à cette question.</div>
@@ -383,6 +388,7 @@
         <!-- Question de la sauce soja -->
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
             <label>Soja ?</label>
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
@@ -396,6 +402,7 @@
         <!-- Question de la livraison -->
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">Supplément livraison : <strong>+0,40 €</strong></p>
             <label>Livré ?</label>
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Oui')">Oui</button>
@@ -411,6 +418,7 @@
             <label>Une deuxième boîte ?</label>
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectSecondBox(this, 'Oui')">Oui</button>
+                <button type="button" class
                 <button type="button" class="select-btn" onclick="selectSecondBox(this, 'Non')">Non</button>
             </div>
             <input type="hidden" name="entry.557485338" id="entry.557485338" required>
@@ -450,6 +458,7 @@
         </div>
         <div class="question second-box">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
             <label>Soja (2ème boîte) ?</label>
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Sucrée')">Sucrée</button>
@@ -646,8 +655,8 @@
                                       <p>Légume : ${responses.box1.legume}</p>
                                       <p>Poisson : ${responses.box1.poisson}</p>
                                       <p>Fromage frais : ${responses.box1.fromageFrais}</p>
-                                      <p>Soja : ${responses.box1.soja}</p>
-                                      <p>Livré : ${responses.box1.livre}</p>`;
+                                      <p>Soja : ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
+                                      <p>Livré : ${responses.box1.livre} ${responses.box1.livre === 'Oui' ? '(+0,40 €)' : ''}</p>`;
 
             // Afficher les ingrédients de la deuxième boîte (si elle existe)
             if (isSecondBox) {
@@ -655,7 +664,7 @@
                                           <p>Légume : ${responses.box2.legume}</p>
                                           <p>Poisson : ${responses.box2.poisson}</p>
                                           <p>Fromage frais : ${responses.box2.fromageFrais}</p>
-                                          <p>Soja : ${responses.box2.soja}</p>`;
+                                          <p>Soja : ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>`;
             }
 
             // Calculer le prix total
