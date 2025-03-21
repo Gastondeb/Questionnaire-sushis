@@ -36,11 +36,34 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: fixed; /* Ajouté pour fixer la position */
+            top: 50%; /* Centrer verticalement */
+            left: 50%; /* Centrer horizontalement */
+            transform: translate(-50%, -50%); /* Ajuster le centrage */
         }
 
         .home-page h1 {
             font-size: 8vmin;
             margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; /* Espace entre le titre et les images */
+        }
+
+        .home-page h1 img {
+            width: 80px; /* Taille des images */
+            height: auto; /* Conserver les proportions */
+            border-radius: 10px; /* Coins arrondis */
+            opacity: 0.8; /* Légère transparence pour un effet discret */
+        }
+
+        .home-page h1 img:first-child {
+            transform: rotate(-5deg); /* Légère rotation vers la gauche */
+        }
+
+        .home-page h1 img:last-child {
+            transform: rotate(5deg); /* Légère rotation vers la droite */
         }
 
         .home-page p {
@@ -79,7 +102,10 @@
             margin-bottom: 5vmin; /* Marge en bas */
             flex-direction: column;
             justify-content: center;
-            position: relative;
+            position: fixed; /* Ajouté pour fixer la position */
+            top: 50%; /* Centrer verticalement */
+            left: 50%; /* Centrer horizontalement */
+            transform: translate(-50%, -50%); /* Ajuster le centrage */
         }
 
         .question {
@@ -132,7 +158,7 @@
         .select-btn {
             padding: 4% 6%;
             background: #ff6f61;
-            color: white;
+            color: white; /* Texte en blanc */
             font-weight: bold;
             border: 2px solid black;
             cursor: pointer;
@@ -169,6 +195,7 @@
             border-radius: 10px;
             width: 100%;
             max-width: 200px;
+            color: white; /* Texte en blanc */
         }
 
         .nav-btn:hover {
@@ -188,6 +215,7 @@
             border-radius: 10px;
             width: 100%;
             max-width: 200px;
+            color: white; /* Texte en blanc */
         }
 
         .submit-btn.visible {
@@ -314,12 +342,24 @@
             color: #555;
             margin-top: 1vmin;
         }
+
+        /* Style pour l'image du fromage frais */
+        .fromage-image {
+            width: 100px; /* Taille de l'image */
+            height: auto; /* Conserver les proportions */
+            border-radius: 10px; /* Coins arrondis */
+            margin-top: 20px; /* Espacement par rapport au texte */
+        }
     </style>
 </head>
 <body>
     <!-- Page d'accueil -->
     <div class="home-page">
-        <h1>Sushicam</h1>
+        <h1>
+            <img src="pagegarde1.png" alt="Image gauche">
+            Sushicam
+            <img src="pagegarde2.png" alt="Image droite">
+        </h1>
         <p>
             Le samedi, c'est sushis Day ! Découvrez mes makis frais, préparés avec soin et des ingrédients de qualité, à des prix étudiants imbattables. Commandez vite, les places sont limitées !
         </p>
@@ -377,6 +417,7 @@
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <label>Fromage frais ?</label>
+            <img src="fromage.png" alt="Fromage frais" class="fromage-image">
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
@@ -418,7 +459,6 @@
             <label>Une deuxième boîte ?</label>
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectSecondBox(this, 'Oui')">Oui</button>
-                <button type="button" class
                 <button type="button" class="select-btn" onclick="selectSecondBox(this, 'Non')">Non</button>
             </div>
             <input type="hidden" name="entry.557485338" id="entry.557485338" required>
