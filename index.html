@@ -21,6 +21,37 @@
             font-family: 'Fjalla One', sans-serif;
         }
 
+        /* Style pour les icônes */
+        .icon {
+            font-size: 6vmin; /* Taille des icônes */
+            margin-right: 10px; /* Espace entre l'icône et le texte */
+        }
+
+        /* Style pour le texte d'accueil */
+        .welcome-text {
+            font-size: 4vmin;
+            margin-bottom: 10%;
+            color: #333;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Interaction visuelle pour les champs de saisie */
+        .question input {
+            padding: 4%;
+            font-size: 5vmin;
+            border: 3px solid black;
+            box-shadow: 3px 3px 1px black;
+            width: 80%;
+            margin-bottom: 5%;
+            border-radius: 15px;
+            transition: border-color 0.3s ease; /* Animation pour l'interaction */
+        }
+
+        .question input:focus {
+            border-color: #ff6f61; /* Changement de couleur au focus */
+        }
+
         /* Page d'accueil */
         .home-page {
             text-align: center;
@@ -369,17 +400,28 @@
     <!-- Formulaire (masqué par défaut) -->
     <form class="contact-us" action="https://docs.google.com/forms/d/e/1FAIpQLSec7_Wp_tyjnlGvlaTr4Ri172SPFX117Etf8mK6v7iTr1vp0Q/formResponse" method="POST">
         <!-- Questions existantes -->
+        <!-- Texte d'accueil -->
         <div class="question active">
-            <label for="entry.524815907">Comment tu t'appelles ?</label>
+            <div class="welcome-text">
+                Avant de te préparer tes sushis sur mesure, on a besoin de quelques infos !
+            </div>
+            <label for="entry.524815907">
+                <span class="icon">👤</span> Comment tu t'appelles ?
+            </label>
             <input type="text" name="entry.524815907" placeholder="Jean Paul" required>
             <div class="error-message">Veuillez répondre à cette question.</div>
         </div>
         <div class="question">
-            <label for="entry.1985104958">Tu habites dans quelle colloc ?</label>
+            <div class="welcome-text">
+                Avant de te préparer tes sushis sur mesure, on a besoin de quelques infos !
+            </div>
+            <label for="entry.1985104958">
+                <span class="icon">🏠</span> Tu habites dans quelle colloc ?
+            </label>
             <input type="text" name="entry.1985104958" placeholder="b43" required>
             <div class="error-message">Veuillez répondre à cette question.</div>
         </div>
-        
+
         <!-- Question des légumes -->
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
@@ -390,354 +432,7 @@
                 <img src="concombre.png" alt="Concombre" class="ingredient-image">
             </div>
             <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1292076072', 'avocats')">Avocat</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1292076072', 'concombres')">Concombre</button>
+                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.1292076072', 'avocats')">Avocat</button>
+                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.1292076072', 'concombres')">Concombre</button>
             </div>
-            <input type="hidden" name="entry.1292076072" id="entry.1292076072" required>
-            <div class="error-message">Veuillez choisir une option.</div>
-        </div>
-
-        <!-- Question du poisson -->
-        <div class="question">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <div class="ingredient-container">
-                <img src="saumon.png" alt="Saumon" class="ingredient-image">
-                <label>Quel poisson ?</label>
-                <img src="crevette.png" alt="Crevette" class="ingredient-image">
-            </div>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1726767774', 'Saumon')">Saumon</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1726767774', 'Crevettes')">Crevette</button>
-            </div>
-            <input type="hidden" name="entry.1726767774" id="entry.1726767774" required>
-            <div class="error-message">Veuillez choisir une option.</div>
-        </div>
-
-        <!-- Question du fromage frais -->
-        <div class="question">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <label>Fromage frais ?</label>
-            <img src="fromage.png" alt="Fromage frais" class="fromage-image">
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
-            </div>
-            <input type="hidden" name="entry.887168393" id="entry.887168393" required>
-            <div class="error-message">Veuillez choisir une option.</div>
-        </div>
-
-        <!-- Question de la sauce soja -->
-        <div class="question">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
-            <label>Soja ?</label>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Salée')">Salée</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Pas de sauce')">Pas de sauce</button>
-            </div>
-            <input type="hidden" name="entry.41252950" id="entry.41252950" required>
-            <div class="error-message">Veuillez choisir une option.</div>
-        </div>
-
-        <!-- Question de la livraison -->
-        <div class="question">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <p class="supplement-info">Supplément livraison : <strong>+0,40 €</strong></p>
-            <label>Livré ?</label>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Oui')">Oui</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Non')">Non</button>
-            </div>
-            <input type="hidden" name="entry.554098723" id="entry.554098723" required>
-            <div class="error-message">Veuillez choisir une option.</div>
-        </div>
-
-        <!-- Question de la deuxième boîte -->
-        <div class="question">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <label>Une deuxième boîte ?</label>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectSecondBox(this, 'Oui')">Oui</button>
-                <button type="button" class="select-btn" onclick="selectSecondBox(this, 'Non')">Non</button>
-            </div>
-            <input type="hidden" name="entry.557485338" id="entry.557485338" required>
-            <div class="error-message">Veuillez choisir une option.</div>
-        </div>
-
-        <!-- Questions pour la deuxième boîte (masquées par défaut) -->
-        <div class="question second-box">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <label>Quel légume (2ème boîte) ?</label>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.2021454936', 'avocats')">Avocat</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.2021454936', 'concombres')">Concombre</button>
-            </div>
-            <input type="hidden" name="entry.2021454936" id="entry.2021454936">
-            <div class="error-message">Veuillez choisir une option.</div>
-        </div>
-        <div class="question second-box">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <label>Quel poisson (2ème boîte) ?</label>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.819843500', 'Saumon')">Saumon</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.819843500', 'Crevettes')">Crevette</button>
-            </div>
-            <input type="hidden" name="entry.819843500" id="entry.819843500">
-            <div class="error-message">Veuillez choisir une option.</div>
-        </div>
-        <div class="question second-box">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <label>Fromage frais (2ème boîte) ?</label>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Oui')">Oui</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Non')">Non</button>
-            </div>
-            <input type="hidden" name="entry.516077606" id="entry.516077606">
-            <div class="error-message">Veuillez choisir une option.</div>
-        </div>
-        <div class="question second-box">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
-            <label>Soja (2ème boîte) ?</label>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Sucrée')">Sucrée</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Salée')">Salée</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Pas de sauce')">Pas de sauce</button>
-            </div>
-            <input type="hidden" name="entry.1450345325" id="entry.1450345325">
-            <div class="error-message">Veuillez choisir une option.</div>
-        </div>
-
-        <!-- Page de récapitulatif (masquée par défaut) -->
-        <div class="question recap-page">
-            <h2>Récapitulatif de votre commande</h2>
-            <div id="recap-content">
-                <!-- Les ingrédients seront affichés ici dynamiquement -->
-            </div>
-            <div id="recap-price">
-                <!-- Le prix total sera affiché ici -->
-            </div>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="confirmOrder()">Oui, tout est ok</button>
-            </div>
-            <div class="error-message">Veuillez confirmer votre commande.</div>
-        </div>
-
-        <!-- Boutons de navigation -->
-        <div class="nav-container">
-            <button type="button" class="nav-btn next-btn" onclick="nextQuestion()">Suivant</button>
-            <button type="submit" class="nav-btn submit-btn">Envoyer</button>
-        </div>
-    </form>
-
-    <script>
-        // Afficher le formulaire et masquer la page d'accueil
-        function showForm() {
-            document.querySelector('.home-page').style.display = 'none';
-            document.querySelector('.contact-us').style.display = 'flex';
-        }
-
-        // Gestion du formulaire
-        let currentQuestion = 0;
-        const questions = document.querySelectorAll(".question:not(.second-box):not(.recap-page)");
-        const secondBoxQuestions = document.querySelectorAll(".question.second-box");
-        const submitBtn = document.querySelector(".submit-btn");
-        const nextBtn = document.querySelector(".next-btn");
-        let isSecondBox = false;
-
-        // Stocker les réponses
-        let responses = {
-            box1: {
-                legume: "",
-                poisson: "",
-                fromageFrais: "",
-                soja: "",
-                livre: ""
-            },
-            box2: {
-                legume: "",
-                poisson: "",
-                fromageFrais: "",
-                soja: ""
-            }
-        };
-
-        // Prix de base et suppléments
-        const basePrice = 6.5; // Prix de la boîte
-        const sojaSupplement = 0.4; // Supplément pour la sauce soja
-        const deliverySupplement = 0.4; // Supplément pour la livraison
-
-        function updateButtons() {
-            // Remplacer "Suivant" par "Envoyer" uniquement sur la page récapitulative
-            if (document.querySelector(".recap-page").classList.contains("active")) {
-                nextBtn.style.display = "none";
-                submitBtn.style.display = "block";
-            } else {
-                // Masquer le bouton "Suivant" sur les questions d'ingrédients
-                const currentQuestion = document.querySelector(".question.active");
-                if (currentQuestion && (currentQuestion.querySelector(".ingredient-container") || currentQuestion.querySelector(".btn-group"))) {
-                    nextBtn.style.display = "none";
-                } else {
-                    nextBtn.style.display = "block";
-                }
-                submitBtn.style.display = "none";
-            }
-        }
-
-        function validateQuestion(question) {
-            const input = question.querySelector("input, [type=hidden]");
-            const errorMessage = question.querySelector(".error-message");
-
-            if (!input.value) {
-                errorMessage.style.display = "block";
-                return false;
-            } else {
-                errorMessage.style.display = "none";
-                return true;
-            }
-        }
-
-        function nextQuestion() {
-            const currentQuestionElement = isSecondBox ? secondBoxQuestions[currentQuestion] : questions[currentQuestion];
-
-            // Valider la question actuelle
-            if (!validateQuestion(currentQuestionElement)) {
-                return;
-            }
-
-            currentQuestionElement.classList.remove("active");
-            currentQuestion++;
-
-            // Si l'utilisateur a choisi une deuxième boîte, afficher les questions supplémentaires
-            if (isSecondBox && currentQuestion < secondBoxQuestions.length) {
-                secondBoxQuestions[currentQuestion].classList.add("active");
-            } else if (!isSecondBox && currentQuestion < questions.length) {
-                questions[currentQuestion].classList.add("active");
-            }
-
-            // Si on arrive à la fin des questions, afficher la page récapitulative
-            if ((!isSecondBox && currentQuestion === questions.length) || (isSecondBox && currentQuestion === secondBoxQuestions.length)) {
-                showRecap();
-            } else {
-                updateButtons();
-            }
-        }
-
-        function selectOption(button, inputName, value) {
-            document.getElementById(inputName).value = value;
-
-            // Stocker les réponses dans l'objet `responses`
-            if (inputName.includes("entry.1292076072")) {
-                responses.box1.legume = value;
-            } else if (inputName.includes("entry.1726767774")) {
-                responses.box1.poisson = value;
-            } else if (inputName.includes("entry.887168393")) {
-                responses.box1.fromageFrais = value;
-            } else if (inputName.includes("entry.41252950")) {
-                responses.box1.soja = value;
-            } else if (inputName.includes("entry.554098723")) {
-                responses.box1.livre = value;
-            } else if (inputName.includes("entry.2021454936")) {
-                responses.box2.legume = value;
-            } else if (inputName.includes("entry.819843500")) {
-                responses.box2.poisson = value;
-            } else if (inputName.includes("entry.516077606")) {
-                responses.box2.fromageFrais = value;
-            } else if (inputName.includes("entry.1450345325")) {
-                responses.box2.soja = value;
-            }
-
-            let buttons = button.parentElement.querySelectorAll(".select-btn");
-            buttons.forEach(btn => btn.classList.remove("selected"));
-            button.classList.add("selected");
-
-            // Masquer le message d'erreur après avoir sélectionné une option
-            const errorMessage = button.closest(".question").querySelector(".error-message");
-            errorMessage.style.display = "none";
-
-            // Passer à la question suivante automatiquement
-            nextQuestion();
-        }
-
-        function selectSecondBox(button, value) {
-            document.getElementById('entry.557485338').value = value;
-            let buttons = button.parentElement.querySelectorAll(".select-btn");
-            buttons.forEach(btn => btn.classList.remove("selected"));
-            button.classList.add("selected");
-
-            // Si l'utilisateur choisit "Oui", activer la deuxième boîte
-            if (value === 'Oui') {
-                isSecondBox = true;
-                currentQuestion = 0; // Réinitialiser l'index de la question
-                // Masquer toutes les questions et afficher la première question de la deuxième boîte
-                questions.forEach(q => q.classList.remove("active"));
-                secondBoxQuestions[0].classList.add("active");
-            } else {
-                isSecondBox = false;
-                // Passer à la question suivante
-                nextQuestion();
-            }
-
-            // Masquer le message d'erreur
-            const errorMessage = button.closest(".question").querySelector(".error-message");
-            errorMessage.style.display = "none";
-        }
-
-        // Afficher la page récapitulative
-        function showRecap() {
-            const recapContent = document.getElementById("recap-content");
-            const recapPrice = document.getElementById("recap-price");
-            recapContent.innerHTML = ""; // Vider le contenu précédent
-
-            // Afficher les ingrédients de la première boîte
-            recapContent.innerHTML += `<h3>Première boîte :</h3>
-                                      <p>Légume : ${responses.box1.legume}</p>
-                                      <p>Poisson : ${responses.box1.poisson}</p>
-                                      <p>Fromage frais : ${responses.box1.fromageFrais}</p>
-                                      <p>Soja : ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
-                                      <p>Livré : ${responses.box1.livre} ${responses.box1.livre === 'Oui' ? '(+0,40 €)' : ''}</p>`;
-
-            // Afficher les ingrédients de la deuxième boîte (si elle existe)
-            if (isSecondBox) {
-                recapContent.innerHTML += `<h3>Deuxième boîte :</h3>
-                                          <p>Légume : ${responses.box2.legume}</p>
-                                          <p>Poisson : ${responses.box2.poisson}</p>
-                                          <p>Fromage frais : ${responses.box2.fromageFrais}</p>
-                                          <p>Soja : ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>`;
-            }
-
-            // Calculer le prix total
-            let totalPrice = basePrice; // Prix de base pour une boîte
-            if (isSecondBox) {
-                totalPrice += basePrice; // Ajouter le prix de la deuxième boîte
-            }
-            if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") {
-                totalPrice += sojaSupplement; // Ajouter le supplément soja
-            }
-            if (responses.box1.livre === "Oui") {
-                totalPrice += deliverySupplement; // Ajouter le supplément livraison
-            }
-
-            // Afficher le prix total
-            recapPrice.innerHTML = `<h3>Prix total : ${totalPrice.toFixed(2)}€</h3>`;
-
-            // Masquer toutes les questions et afficher la page récapitulative
-            questions.forEach(q => q.classList.remove("active"));
-            secondBoxQuestions.forEach(q => q.classList.remove("active"));
-            document.querySelector(".recap-page").classList.add("active");
-
-            // Masquer les boutons "Précédent" et "Suivant"
-            document.querySelector(".nav-container").style.display = "none";
-        }
-
-        // Confirmer la commande et envoyer le formulaire
-        function confirmOrder() {
-            const form = document.querySelector(".contact-us");
-            form.submit(); // Envoyer le formulaire
-        }
-
-        updateButtons();
-    </script>
-</body>
-</html>
+           
