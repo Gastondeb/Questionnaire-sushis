@@ -737,41 +737,37 @@ function selectSecondBox(button, value) {
 
 // Revenir aux questions de la Boîte 1
 function goToBox1() {
-    // Masquer la page récapitulative
-    document.querySelector(".recap-page").classList.remove("active");
-
-    // Réinitialiser l'état de la navigation
-    currentQuestion = 2; // Commencer à la question des légumes (index 2)
+    // Réafficher la navigation
+    document.querySelector(".nav-container").style.display = "flex";
+    
+    // Réinitialiser à la première question des ingrédients
+    currentQuestion = 2; // Index de la question des légumes
     isSecondBox = false;
-
-    // Masquer toutes les questions
-    questions.forEach(q => q.classList.remove("active"));
-    secondBoxQuestions.forEach(q => q.classList.remove("active"));
-
-    // Afficher la question des légumes de la Boîte 1
+    
+    // Masquer le récap et afficher la bonne question
+    document.querySelector(".recap-page").classList.remove("active");
+    document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
     questions[currentQuestion].classList.add("active");
-
-    // Mettre à jour les boutons de navigation
+    
+    // Mettre à jour les boutons
     updateButtons();
 }
 
 // Revenir aux questions de la Boîte 2
 function goToBox2() {
-    // Masquer la page récapitulative
-    document.querySelector(".recap-page").classList.remove("active");
-
-    // Réinitialiser l'état de la navigation
+    // Réafficher la navigation
+    document.querySelector(".nav-container").style.display = "flex";
+    
+    // Réinitialiser à la première question de la boîte 2
     currentQuestion = 0;
     isSecondBox = true;
-
-    // Masquer toutes les questions
-    questions.forEach(q => q.classList.remove("active"));
-    secondBoxQuestions.forEach(q => q.classList.remove("active"));
-
-    // Afficher la première question de la Boîte 2
-    secondBoxQuestions[0].classList.add("active");
-
-    // Mettre à jour les boutons de navigation
+    
+    // Masquer le récap et afficher la bonne question
+    document.querySelector(".recap-page").classList.remove("active");
+    document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+    secondBoxQuestions[currentQuestion].classList.add("active");
+    
+    // Mettre à jour les boutons
     updateButtons();
 }
 
@@ -799,7 +795,7 @@ updateButtons();
             <p><strong>Fromage:</strong> ${responses.box1.fromageFrais}</p>
             <p><strong>Soja:</strong> ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
             <p><strong>Livraison:</strong> ${responses.box1.livre} ${responses.box1.livre === 'Oui' ? '(+0,40 €)' : ''}</p>
-            <button onclick="goToBox1()">Modifier</button>
+            <button type="button" onclick="goToBox1()">Modifier</button>
         </div>`;
 
         if (isSecondBox) {
@@ -810,7 +806,7 @@ updateButtons();
                 <p><strong>Poisson:</strong> ${responses.box2.poisson}</p>
                 <p><strong>Fromage:</strong> ${responses.box2.fromageFrais}</p>
                 <p><strong>Soja:</strong> ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
-                <button onclick="goToBox2()">Modifier</button>
+                <button type="button" onclick="goToBox2()">Modifier</button>
             </div>`;
         }
 
