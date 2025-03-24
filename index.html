@@ -6,6 +6,7 @@
     <title>Sushi Form</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap">
     <style>
+        
         /* Style de base */
         body {
             margin: 0;
@@ -381,8 +382,29 @@
             border-radius: 10px;
             margin-top: 20px;
         }
+
+
+        .recap-page button {
+    padding: 1vmin 2vmin;
+    font-size: 2.5vmin;
+    background: #ff6f61;
+    color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    box-shadow: 2px 2px 1px black;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+
+.recap-page button:hover {
+    background: black;
+    color: white;
+}
     </style>
 </head>
+
 <body>
     <!-- Page d'accueil -->
     <div class="home-page">
@@ -425,7 +447,7 @@
         <!-- Question des légumes -->
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <p class="price-info">Prix pour 8 makis : <strong>6,5 €</strong></p>
+            <p class="price-info">8 makis: <strong>6,5 €</strong></p>
             <div class="ingredient-container">
                 <img src="avocat.png" alt="Avocat" class="ingredient-image">
                 <label>Quel légume ?</label>
@@ -585,214 +607,266 @@
             <button type="submit" class="nav-btn submit-btn">Envoyer</button>
         </div>
     </form>
-
     <script>
-        // Afficher le formulaire et masquer la page d'accueil
-        function showForm() {
-            document.querySelector('.home-page').style.display = 'none';
-            document.querySelector('.contact-us').style.display = 'flex';
+    // Afficher le formulaire et masquer la page d'accueil
+function showForm() {
+    document.querySelector('.home-page').style.display = 'none';
+    document.querySelector('.contact-us').style.display = 'flex';
+}
+
+// Gestion du formulaire
+let currentQuestion = 0;
+const questions = document.querySelectorAll(".question:not(.second-box):not(.recap-page)");
+const secondBoxQuestions = document.querySelectorAll(".question.second-box");
+const submitBtn = document.querySelector(".submit-btn");
+const nextBtn = document.querySelector(".next-btn");
+let isSecondBox = false;
+
+// Stocker les réponses
+let responses = {
+    box1: {
+        legume: "",
+        poisson: "",
+        fromageFrais: "",
+        soja: "",
+        livre: ""
+    },
+    box2: {
+        legume: "",
+        poisson: "",
+        fromageFrais: "",
+        soja: ""
+    }
+};
+
+// Prix de base et suppléments
+const basePrice = 6.5; // Prix de la boîte
+const sojaSupplement = 0.4; // Supplément pour la sauce soja
+const deliverySupplement = 0.4; // Supplément pour la livraison
+
+// Mettre à jour les boutons de navigation
+function updateButtons() {
+    // Remplacer "Suivant" par "Envoyer" uniquement sur la page récapitulative
+    if (document.querySelector(".recap-page").classList.contains("active")) {
+        nextBtn.style.display = "none";
+        submitBtn.style.display = "block";
+    } else {
+        // Masquer le bouton "Suivant" sur les questions d'ingrédients
+        const currentQuestion = document.querySelector(".question.active");
+        if (currentQuestion && (currentQuestion.querySelector(".ingredient-container") || currentQuestion.querySelector(".btn-group"))) {
+            nextBtn.style.display = "none";
+        } else {
+            nextBtn.style.display = "block";
         }
+        submitBtn.style.display = "none";
+    }
+}
 
-        // Gestion du formulaire
-        let currentQuestion = 0;
-        const questions = document.querySelectorAll(".question:not(.second-box):not(.recap-page)");
-        const secondBoxQuestions = document.querySelectorAll(".question.second-box");
-        const submitBtn = document.querySelector(".submit-btn");
-        const nextBtn = document.querySelector(".next-btn");
-        let isSecondBox = false;
+// Valider la question actuelle
+function validateQuestion(question) {
+    const input = question.querySelector("input, [type=hidden]");
+    const errorMessage = question.querySelector(".error-message");
 
-        // Stocker les réponses
-        let responses = {
-            box1: {
-                legume: "",
-                poisson: "",
-                fromageFrais: "",
-                soja: "",
-                livre: ""
-            },
-            box2: {
-                legume: "",
-                poisson: "",
-                fromageFrais: "",
-                soja: ""
-            }
-        };
+    if (!input.value) {
+        errorMessage.style.display = "block";
+        return false;
+    } else {
+        errorMessage.style.display = "none";
+        return true;
+    }
+}
 
-        // Prix de base et suppléments
-        const basePrice = 6.5; // Prix de la boîte
-        const sojaSupplement = 0.4; // Supplément pour la sauce soja
-        const deliverySupplement = 0.4; // Supplément pour la livraison
+// Passer à la question suivante
+function nextQuestion() {
+    const currentQuestionElement = isSecondBox ? secondBoxQuestions[currentQuestion] : questions[currentQuestion];
 
-        function updateButtons() {
-            // Remplacer "Suivant" par "Envoyer" uniquement sur la page récapitulative
-            if (document.querySelector(".recap-page").classList.contains("active")) {
-                nextBtn.style.display = "none";
-                submitBtn.style.display = "block";
-            } else {
-                // Masquer le bouton "Suivant" sur les questions d'ingrédients
-                const currentQuestion = document.querySelector(".question.active");
-                if (currentQuestion && (currentQuestion.querySelector(".ingredient-container") || currentQuestion.querySelector(".btn-group"))) {
-                    nextBtn.style.display = "none";
-                } else {
-                    nextBtn.style.display = "block";
-                }
-                submitBtn.style.display = "none";
-            }
-        }
+    // Valider la question actuelle
+    if (!validateQuestion(currentQuestionElement)) {
+        return;
+    }
 
-        function validateQuestion(question) {
-            const input = question.querySelector("input, [type=hidden]");
-            const errorMessage = question.querySelector(".error-message");
+    currentQuestionElement.classList.remove("active");
+    currentQuestion++;
 
-            if (!input.value) {
-                errorMessage.style.display = "block";
-                return false;
-            } else {
-                errorMessage.style.display = "none";
-                return true;
-            }
-        }
+    // Si l'utilisateur a choisi une deuxième boîte, afficher les questions supplémentaires
+    if (isSecondBox && currentQuestion < secondBoxQuestions.length) {
+        secondBoxQuestions[currentQuestion].classList.add("active");
+    } else if (!isSecondBox && currentQuestion < questions.length) {
+        questions[currentQuestion].classList.add("active");
+    }
 
-        function nextQuestion() {
-            const currentQuestionElement = isSecondBox ? secondBoxQuestions[currentQuestion] : questions[currentQuestion];
-
-            // Valider la question actuelle
-            if (!validateQuestion(currentQuestionElement)) {
-                return;
-            }
-
-            currentQuestionElement.classList.remove("active");
-            currentQuestion++;
-
-            // Si l'utilisateur a choisi une deuxième boîte, afficher les questions supplémentaires
-            if (isSecondBox && currentQuestion < secondBoxQuestions.length) {
-                secondBoxQuestions[currentQuestion].classList.add("active");
-            } else if (!isSecondBox && currentQuestion < questions.length) {
-                questions[currentQuestion].classList.add("active");
-            }
-
-            // Si on arrive à la fin des questions, afficher la page récapitulative
-            if ((!isSecondBox && currentQuestion === questions.length) || (isSecondBox && currentQuestion === secondBoxQuestions.length)) {
-                showRecap();
-            } else {
-                updateButtons();
-            }
-        }
-
-        function selectOption(button, inputName, value) {
-            document.getElementById(inputName).value = value;
-
-            // Stocker les réponses dans l'objet `responses`
-            if (inputName.includes("entry.1292076072")) {
-                responses.box1.legume = value;
-            } else if (inputName.includes("entry.1726767774")) {
-                responses.box1.poisson = value;
-            } else if (inputName.includes("entry.887168393")) {
-                responses.box1.fromageFrais = value;
-            } else if (inputName.includes("entry.41252950")) {
-                responses.box1.soja = value;
-            } else if (inputName.includes("entry.554098723")) {
-                responses.box1.livre = value;
-            } else if (inputName.includes("entry.2021454936")) {
-                responses.box2.legume = value;
-            } else if (inputName.includes("entry.819843500")) {
-                responses.box2.poisson = value;
-            } else if (inputName.includes("entry.516077606")) {
-                responses.box2.fromageFrais = value;
-            } else if (inputName.includes("entry.1450345325")) {
-                responses.box2.soja = value;
-            }
-
-            let buttons = button.parentElement.querySelectorAll(".select-btn");
-            buttons.forEach(btn => btn.classList.remove("selected"));
-            button.classList.add("selected");
-
-            // Masquer le message d'erreur après avoir sélectionné une option
-            const errorMessage = button.closest(".question").querySelector(".error-message");
-            errorMessage.style.display = "none";
-
-            // Passer à la question suivante automatiquement
-            nextQuestion();
-        }
-
-        function selectSecondBox(button, value) {
-            document.getElementById('entry.557485338').value = value;
-            let buttons = button.parentElement.querySelectorAll(".select-btn");
-            buttons.forEach(btn => btn.classList.remove("selected"));
-            button.classList.add("selected");
-
-            // Si l'utilisateur choisit "Oui", activer la deuxième boîte
-            if (value === 'Oui') {
-                isSecondBox = true;
-                currentQuestion = 0; // Réinitialiser l'index de la question
-                // Masquer toutes les questions et afficher la première question de la deuxième boîte
-                questions.forEach(q => q.classList.remove("active"));
-                secondBoxQuestions[0].classList.add("active");
-            } else {
-                isSecondBox = false;
-                // Passer à la question suivante
-                nextQuestion();
-            }
-
-            // Masquer le message d'erreur
-            const errorMessage = button.closest(".question").querySelector(".error-message");
-            errorMessage.style.display = "none";
-        }
-
-        // Afficher la page récapitulative
-        function showRecap() {
-            const recapContent = document.getElementById("recap-content");
-            const recapPrice = document.getElementById("recap-price");
-            recapContent.innerHTML = ""; // Vider le contenu précédent
-
-            // Afficher les ingrédients de la première boîte
-            recapContent.innerHTML += `<h3>Première boîte : 6,50 €</h3>
-                                      <p>Légume : ${responses.box1.legume} (inclus)</p>
-                                      <p>Poisson : ${responses.box1.poisson} (inclus)</p>
-                                      <p>Fromage frais : ${responses.box1.fromageFrais} (inclus)</p>
-                                      <p>Soja : ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : '(inclus)'}</p>
-                                      <p>Livré : ${responses.box1.livre} ${responses.box1.livre === 'Oui' ? '(+0,40 €)' : '(inclus)'}</p>`;
-
-            // Afficher les ingrédients de la deuxième boîte (si elle existe)
-            if (isSecondBox) {
-                recapContent.innerHTML += `<h3>Deuxième boîte : 6,50 €</h3>
-                                          <p>Légume : ${responses.box2.legume} (inclus)</p>
-                                          <p>Poisson : ${responses.box2.poisson} (inclus)</p>
-                                          <p>Fromage frais : ${responses.box2.fromageFrais} (inclus)</p>
-                                          <p>Soja : ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : '(inclus)'}</p>`;
-            }
-
-            // Calculer le prix total
-            let totalPrice = basePrice; // Prix de base pour une boîte
-            if (isSecondBox) {
-                totalPrice += basePrice; // Ajouter le prix de la deuxième boîte
-            }
-            if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") {
-                totalPrice += sojaSupplement; // Ajouter le supplément soja
-            }
-            if (responses.box1.livre === "Oui") {
-                totalPrice += deliverySupplement; // Ajouter le supplément livraison
-            }
-
-            // Afficher le prix total
-            recapPrice.innerHTML = `<h3>Prix total : ${totalPrice.toFixed(2)}€</h3>`;
-
-            // Masquer toutes les questions et afficher la page récapitulative
-            questions.forEach(q => q.classList.remove("active"));
-            secondBoxQuestions.forEach(q => q.classList.remove("active"));
-            document.querySelector(".recap-page").classList.add("active");
-
-            // Masquer les boutons "Précédent" et "Suivant"
-            document.querySelector(".nav-container").style.display = "none";
-        }
-
-        // Confirmer la commande et envoyer le formulaire
-        function confirmOrder() {
-            const form = document.querySelector(".contact-us");
-            form.submit(); // Envoyer le formulaire
-        }
-
+    // Si on arrive à la fin des questions, afficher la page récapitulative
+    if ((!isSecondBox && currentQuestion === questions.length) || (isSecondBox && currentQuestion === secondBoxQuestions.length)) {
+        showRecap(); // Appeler showRecap() uniquement à la fin
+    } else {
         updateButtons();
-    </script>
+    }
+}
+
+// Sélectionner une option
+function selectOption(button, inputName, value) {
+    document.getElementById(inputName).value = value;
+
+    // Stocker les réponses dans l'objet `responses`
+    if (inputName.includes("entry.1292076072")) {
+        responses.box1.legume = value;
+    } else if (inputName.includes("entry.1726767774")) {
+        responses.box1.poisson = value;
+    } else if (inputName.includes("entry.887168393")) {
+        responses.box1.fromageFrais = value;
+    } else if (inputName.includes("entry.41252950")) {
+        responses.box1.soja = value;
+    } else if (inputName.includes("entry.554098723")) {
+        responses.box1.livre = value;
+    } else if (inputName.includes("entry.2021454936")) {
+        responses.box2.legume = value;
+    } else if (inputName.includes("entry.819843500")) {
+        responses.box2.poisson = value;
+    } else if (inputName.includes("entry.516077606")) {
+        responses.box2.fromageFrais = value;
+    } else if (inputName.includes("entry.1450345325")) {
+        responses.box2.soja = value;
+    }
+
+    let buttons = button.parentElement.querySelectorAll(".select-btn");
+    buttons.forEach(btn => btn.classList.remove("selected"));
+    button.classList.add("selected");
+
+    // Masquer le message d'erreur après avoir sélectionné une option
+    const errorMessage = button.closest(".question").querySelector(".error-message");
+    errorMessage.style.display = "none";
+
+    // Passer à la question suivante
+    nextQuestion();
+}
+
+// Sélectionner une deuxième boîte
+function selectSecondBox(button, value) {
+    document.getElementById('entry.557485338').value = value;
+    let buttons = button.parentElement.querySelectorAll(".select-btn");
+    buttons.forEach(btn => btn.classList.remove("selected"));
+    button.classList.add("selected");
+
+    // Si l'utilisateur choisit "Oui", activer la deuxième boîte
+    if (value === 'Oui') {
+        isSecondBox = true;
+        currentQuestion = 0; // Réinitialiser l'index de la question
+        // Masquer toutes les questions et afficher la première question de la deuxième boîte
+        questions.forEach(q => q.classList.remove("active"));
+        secondBoxQuestions[0].classList.add("active");
+    } else {
+        isSecondBox = false;
+        // Passer à la question suivante
+        nextQuestion();
+    }
+
+    // Masquer le message d'erreur
+    const errorMessage = button.closest(".question").querySelector(".error-message");
+    errorMessage.style.display = "none";
+}
+
+// Afficher la page récapitulative
+function showRecap() {
+    const recapContent = document.getElementById("recap-content");
+    const recapPrice = document.getElementById("recap-price");
+    recapContent.innerHTML = ""; // Vider le contenu précédent
+
+    // Afficher les ingrédients de la première boîte
+    recapContent.innerHTML += `<h3>Première boîte : 6,50 €</h3>
+                              <p>Légume : ${responses.box1.legume} (inclus)</p>
+                              <p>Poisson : ${responses.box1.poisson} (inclus)</p>
+                              <p>Fromage frais : ${responses.box1.fromageFrais} (inclus)</p>
+                              <p>Soja : ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : '(inclus)'}</p>
+                              <p>Livré : ${responses.box1.livre} ${responses.box1.livre === 'Oui' ? '(+0,40 €)' : '(inclus)'}</p>
+                              <button type="button" onclick="goToBox1()">Modifier Boîte 1</button>`;
+
+    // Afficher les ingrédients de la deuxième boîte (si elle existe)
+    if (isSecondBox) {
+        recapContent.innerHTML += `<h3>Deuxième boîte : 6,50 €</h3>
+                                  <p>Légume : ${responses.box2.legume} (inclus)</p>
+                                  <p>Poisson : ${responses.box2.poisson} (inclus)</p>
+                                  <p>Fromage frais : ${responses.box2.fromageFrais} (inclus)</p>
+                                  <p>Soja : ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : '(inclus)'}</p>
+                                  <button type="button" onclick="goToBox2()">Modifier Boîte 2</button>`;
+    }
+
+    // Calculer le prix total
+    let totalPrice = basePrice; // Prix de base pour une boîte
+    if (isSecondBox) {
+        totalPrice += basePrice; // Ajouter le prix de la deuxième boîte
+    }
+    if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") {
+        totalPrice += sojaSupplement; // Ajouter le supplément soja
+    }
+    if (responses.box1.livre === "Oui") {
+        totalPrice += deliverySupplement; // Ajouter le supplément livraison
+    }
+
+    // Afficher le prix total
+    recapPrice.innerHTML = `<h3>Prix total : ${totalPrice.toFixed(2)}€</h3>`;
+
+    // Masquer toutes les questions et afficher la page récapitulative
+    questions.forEach(q => q.classList.remove("active"));
+    secondBoxQuestions.forEach(q => q.classList.remove("active"));
+    const recapPage = document.querySelector(".recap-page");
+    recapPage.classList.add("active");
+
+    // Masquer les boutons "Précédent" et "Suivant"
+    document.querySelector(".nav-container").style.display = "none";
+}
+
+// Revenir aux questions de la Boîte 1
+function goToBox1() {
+    // Masquer la page récapitulative
+    document.querySelector(".recap-page").classList.remove("active");
+
+    // Réinitialiser l'état de la navigation
+    currentQuestion = 2; // Commencer à la question des légumes (index 2)
+    isSecondBox = false;
+
+    // Masquer toutes les questions
+    questions.forEach(q => q.classList.remove("active"));
+    secondBoxQuestions.forEach(q => q.classList.remove("active"));
+
+    // Afficher la question des légumes de la Boîte 1
+    questions[currentQuestion].classList.add("active");
+
+    // Mettre à jour les boutons de navigation
+    updateButtons();
+}
+
+// Revenir aux questions de la Boîte 2
+function goToBox2() {
+    // Masquer la page récapitulative
+    document.querySelector(".recap-page").classList.remove("active");
+
+    // Réinitialiser l'état de la navigation
+    currentQuestion = 0;
+    isSecondBox = true;
+
+    // Masquer toutes les questions
+    questions.forEach(q => q.classList.remove("active"));
+    secondBoxQuestions.forEach(q => q.classList.remove("active"));
+
+    // Afficher la première question de la Boîte 2
+    secondBoxQuestions[0].classList.add("active");
+
+    // Mettre à jour les boutons de navigation
+    updateButtons();
+}
+
+// Confirmer la commande et envoyer le formulaire
+function confirmOrder() {
+    const form = document.querySelector(".contact-us");
+    form.submit(); // Envoyer le formulaire
+}
+
+// Initialiser les boutons
+updateButtons();
+</script>
+
+
+
+
 </body>
 </html>
