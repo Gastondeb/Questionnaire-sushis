@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sushi Form</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap">
     <style>
-        
-        /* Style de base */
+        /* Style de base inchangé */
         body {
             margin: 0;
             padding: 0;
@@ -22,13 +21,11 @@
             font-family: 'Fjalla One', sans-serif;
         }
 
-        /* Style pour les icônes */
         .icon {
             font-size: 6vmin;
             margin-right: 10px;
         }
 
-        /* Style pour le texte d'accueil */
         .welcome-text {
             font-size: 4vmin;
             margin-bottom: 10%;
@@ -37,7 +34,6 @@
             text-align: center;
         }
 
-        /* Interaction visuelle pour les champs de saisie */
         .question input {
             padding: 4%;
             font-size: 5vmin;
@@ -53,7 +49,7 @@
             border-color: #ff6f61;
         }
 
-        /* Page d'accueil */
+        /* Page d'accueil inchangée */
         .home-page {
             text-align: center;
             color: black;
@@ -120,7 +116,7 @@
             color: white;
         }
 
-        /* Style du formulaire */
+        /* Formulaire inchangé */
         .contact-us {
             display: none;
             background: #f8f4e5;
@@ -129,9 +125,10 @@
             box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
             text-align: center;
             width: 80vmin;
-            height: 90vmin;
-            margin-top: 5vmin;
-            margin-bottom: 5vmin;
+            height: auto;
+            min-height: 90vmin;
+            max-height: 95vh;
+            overflow-y: auto;
             flex-direction: column;
             justify-content: center;
             position: fixed;
@@ -164,16 +161,6 @@
         .question label {
             font-size: 6vmin;
             margin-bottom: 5%;
-        }
-
-        .question input {
-            padding: 4%;
-            font-size: 5vmin;
-            border: 3px solid black;
-            box-shadow: 3px 3px 1px black;
-            width: 80%;
-            margin-bottom: 5%;
-            border-radius: 15px;
         }
 
         .btn-group, .question input {
@@ -261,57 +248,7 @@
             display: none;
         }
 
-        /* Adapter les boutons de la sauce soja pour les petits écrans */
-        @media (max-width: 600px) {
-            .select-btn {
-                font-size: 3vmin;
-                padding: 2vmin 3vmin;
-                min-width: 80px;
-            }
-
-            .btn-group {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-        }
-
-        /* Adapter la page récapitulative pour tous les écrans */
-        .recap-page {
-            padding: 2vmin;
-            font-size: 3vmin;
-        }
-
-        .recap-page h2 {
-            font-size: 4vmin;
-            margin-bottom: 2vmin;
-        }
-
-        .recap-page h3 {
-            font-size: 3.5vmin;
-            margin-bottom: 1.5vmin;
-        }
-
-        .recap-page p {
-            font-size: 3vmin;
-            margin: 1.5vmin 0;
-        }
-
-        .recap-page .select-btn {
-            font-size: 3vmin;
-            padding: 1.5vmin 3vmin;
-            margin-top: 2vmin;
-        }
-
-        #recap-content {
-            margin: 2vmin 0;
-        }
-
-        #recap-price h3 {
-            font-size: 3.5vmin;
-            margin-top: 2vmin;
-        }
-
-        /* Style pour le titre de la question */
+        /* Styles spécifiques inchangés */
         .question-title {
             font-size: 8vmin;
             text-align: center;
@@ -333,15 +270,6 @@
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
         }
 
-        @media (max-width: 600px) {
-            .question-title {
-                top: -30px;
-                font-size: 6vmin;
-                padding: 8px 16px;
-            }
-        }
-
-        /* Conteneur pour les légumes et le poisson */
         .ingredient-container {
             display: flex;
             align-items: center;
@@ -351,7 +279,6 @@
             margin-top: -20px;
         }
 
-        /* Style des images */
         .ingredient-image {
             width: 80px;
             height: auto;
@@ -359,7 +286,6 @@
             opacity: 0.8;
         }
 
-        /* Rotation des images */
         .ingredient-image:first-child {
             transform: rotate(-5deg);
         }
@@ -368,14 +294,12 @@
             transform: rotate(5deg);
         }
 
-        /* Style pour les suppléments */
         .supplement-info {
             font-size: 3.5vmin;
             color: #555;
             margin-top: 1vmin;
         }
 
-        /* Style pour l'image du fromage frais */
         .fromage-image {
             width: 100px;
             height: auto;
@@ -383,35 +307,82 @@
             margin-top: 20px;
         }
 
+        /* Page récap - uniquement les modifications nécessaires */
+        .recap-page {
+            padding: 2vmin;
+            font-size: 2.7vmin; /* Taille réduite */
+        }
+
+        .recap-page h2 {
+            font-size: 4vmin;
+            margin-bottom: 2vmin;
+        }
+
+        .recap-page h3 {
+            font-size: 3.2vmin;
+            margin-bottom: 1.5vmin;
+        }
+
+        .recap-page p {
+            font-size: 2.7vmin; /* Taille réduite */
+            margin: 1.2vmin 0; /* Espacement réduit */
+            line-height: 1.2;
+        }
 
         .recap-page button {
-    padding: 1vmin 2vmin;
-    font-size: 2.5vmin;
-    background: #ff6f61;
-    color: white;
-    border: 1px solid black;
-    cursor: pointer;
-    transition: 0.2s all ease-in-out;
-    box-shadow: 2px 2px 1px black;
-    border-radius: 5px;
-    margin-left: 10px;
-}
+            padding: 1vmin 2vmin;
+            font-size: 2.5vmin;
+            background: #ff6f61;
+            color: white;
+            border: 1px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 2px 2px 1px black;
+            border-radius: 5px;
+            margin: 1vmin 0;
+        }
 
+        .recap-page button:hover {
+            background: black;
+            color: white;
+        }
 
-.recap-page button:hover {
-    background: black;
-    color: white;
-}
+        #recap-content {
+            margin: 2vmin 0;
+        }
+
+        #recap-price h3 {
+            font-size: 3.5vmin;
+            margin-top: 2vmin;
+        }
+
+        /* Responsive inchangé */
+        @media (max-width: 600px) {
+            .select-btn {
+                font-size: 3vmin;
+                padding: 2vmin 3vmin;
+                min-width: 80px;
+            }
+
+            .btn-group {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .question-title {
+                top: -30px;
+                font-size: 6vmin;
+                padding: 8px 16px;
+            }
+        }
     </style>
 </head>
-
 <body>
-    <!-- Page d'accueil -->
     <div class="home-page">
         <h1>
-            <img src="pagegarde1.png" alt="Image gauche">
+            <img src="pagegarde1.png" alt="Sushi">
             Sushicam
-            <img src="pagegarde2.png" alt="Image droite">
+            <img src="pagegarde2.png" alt="Sushi">
         </h1>
         <p>
             Le samedi, c'est sushis Day ! Découvrez mes makis frais, préparés avec soin et des ingrédients de qualité, à des prix étudiants imbattables. Commandez vite, les places sont limitées !
@@ -419,10 +390,9 @@
         <button class="order-btn" onclick="showForm()">Commander</button>
     </div>
 
-    <!-- Formulaire (masqué par défaut) -->
+    <!-- Formulaire -->
     <form class="contact-us" action="https://docs.google.com/forms/d/e/1FAIpQLSec7_Wp_tyjnlGvlaTr4Ri172SPFX117Etf8mK6v7iTr1vp0Q/formResponse" method="POST">
-        <!-- Questions existantes -->
-        <!-- Texte d'accueil -->
+        <!-- Questions -->
         <div class="question active">
             <div class="welcome-text">
                 Avant de te préparer tes sushis sur mesure, on a besoin de quelques infos !
@@ -433,6 +403,7 @@
             <input type="text" name="entry.524815907" placeholder="Jean Paul" required>
             <div class="error-message">Veuillez répondre à cette question.</div>
         </div>
+
         <div class="question">
             <div class="welcome-text">
                 Avant de te préparer tes sushis sur mesure, on a besoin de quelques infos !
@@ -444,7 +415,7 @@
             <div class="error-message">Veuillez répondre à cette question.</div>
         </div>
 
-        <!-- Question des légumes -->
+        <!-- Questions sur les ingrédients -->
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="price-info">8 makis: <strong>6,5 €</strong></p>
@@ -454,14 +425,13 @@
                 <img src="concombre.png" alt="Concombre" class="ingredient-image">
             </div>
             <div class="btn-group">
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.1292076072', 'avocats')">Avocat</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.1292076072', 'concombres')">Concombre</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1292076072', 'avocats')">Avocat</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1292076072', 'concombres')">Concombre</button>
             </div>
             <input type="hidden" name="entry.1292076072" id="entry.1292076072" required>
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <!-- Question du poisson -->
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <div class="ingredient-container">
@@ -470,66 +440,62 @@
                 <img src="crevette.png" alt="Crevette" class="ingredient-image">
             </div>
             <div class="btn-group">
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.1726767774', 'Saumon')">Saumon</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.1726767774', 'Crevettes')">Crevette</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1726767774', 'Saumon')">Saumon</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1726767774', 'Crevettes')">Crevette</button>
             </div>
             <input type="hidden" name="entry.1726767774" id="entry.1726767774" required>
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <!-- Question du fromage frais -->
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <label>Fromage frais ?</label>
             <img src="fromage.png" alt="Fromage frais" class="fromage-image">
             <div class="btn-group">
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
             </div>
             <input type="hidden" name="entry.887168393" id="entry.887168393" required>
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <!-- Question de la sauce soja -->
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
             <label>Soja ?</label>
             <div class="btn-group">
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.41252950', 'Salée')">Salée</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.41252950', 'Pas de sauce')">Pas de sauce</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Salée')">Salée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Pas de sauce')">Pas de sauce</button>
             </div>
             <input type="hidden" name="entry.41252950" id="entry.41252950" required>
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <!-- Question de la livraison -->
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">Supplément livraison : <strong>+0,40 €</strong></p>
             <label>Livré ?</label>
             <div class="btn-group">
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.554098723', 'Oui')">Oui</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.554098723', 'Non')">Non</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Oui')">Oui</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Non')">Non</button>
             </div>
             <input type="hidden" name="entry.554098723" id="entry.554098723" required>
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <!-- Question de la deuxième boîte -->
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <label>Une deuxième boîte ?</label>
             <div class="btn-group">
-                <button type="button" class="select-btn nav-btn" onclick="selectSecondBox(this, 'Oui')">Oui</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectSecondBox(this, 'Non')">Non</button>
+                <button type="button" class="select-btn" onclick="selectSecondBox(this, 'Oui')">Oui</button>
+                <button type="button" class="select-btn" onclick="selectSecondBox(this, 'Non')">Non</button>
             </div>
             <input type="hidden" name="entry.557485338" id="entry.557485338" required>
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <!-- Questions pour la deuxième boîte (masquées par défaut) -->
+        <!-- Questions pour la deuxième boîte -->
         <div class="question second-box">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">2ème boîte</p>
@@ -539,12 +505,13 @@
                 <img src="concombre.png" alt="Concombre" class="ingredient-image">
             </div>
             <div class="btn-group">
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.2021454936', 'avocats')">Avocat</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.2021454936', 'concombres')">Concombre</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.2021454936', 'avocats')">Avocat</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.2021454936', 'concombres')">Concombre</button>
             </div>
             <input type="hidden" name="entry.2021454936" id="entry.2021454936">
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
+
         <div class="question second-box">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">2ème boîte</p>
@@ -554,61 +521,59 @@
                 <img src="crevette.png" alt="Crevette" class="ingredient-image">
             </div>
             <div class="btn-group">
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.819843500', 'Saumon')">Saumon</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.819843500', 'Crevettes')">Crevette</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.819843500', 'Saumon')">Saumon</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.819843500', 'Crevettes')">Crevette</button>
             </div>
             <input type="hidden" name="entry.819843500" id="entry.819843500">
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
+
         <div class="question second-box">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">2ème boîte</p>
             <label>Fromage frais ?</label>
             <img src="fromage.png" alt="Fromage frais" class="fromage-image">
             <div class="btn-group">
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.516077606', 'Oui')">Oui</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.516077606', 'Non')">Non</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Oui')">Oui</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Non')">Non</button>
             </div>
             <input type="hidden" name="entry.516077606" id="entry.516077606">
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
+
         <div class="question second-box">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">2ème boîte</p>
             <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
             <label>Soja ?</label>
             <div class="btn-group">
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.1450345325', 'Sucrée')">Sucrée</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.1450345325', 'Salée')">Salée</button>
-                <button type="button" class="select-btn nav-btn" onclick="selectOption(this, 'entry.1450345325', 'Pas de sauce')">Pas de sauce</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Sucrée')">Sucrée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Salée')">Salée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Pas de sauce')">Pas de sauce</button>
             </div>
             <input type="hidden" name="entry.1450345325" id="entry.1450345325">
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <!-- Page de récapitulatif (masquée par défaut) -->
+        <!-- Page récapitulative -->
         <div class="question recap-page">
             <h2>Récapitulatif de votre commande</h2>
-            <div id="recap-content">
-                <!-- Les ingrédients seront affichés ici dynamiquement -->
-            </div>
-            <div id="recap-price">
-                <!-- Le prix total sera affiché ici -->
-            </div>
+            <div id="recap-content"></div>
+            <div id="recap-price"></div>
             <div class="btn-group">
-                <button type="button" class="select-btn nav-btn" onclick="confirmOrder()">Oui, tout est ok</button>
+                <button type="button" class="nav-btn" onclick="confirmOrder()">Confirmer la commande</button>
             </div>
             <div class="error-message">Veuillez confirmer votre commande.</div>
         </div>
 
-        <!-- Boutons de navigation -->
+        <!-- Navigation -->
         <div class="nav-container">
             <button type="button" class="nav-btn next-btn" onclick="nextQuestion()">Suivant</button>
             <button type="submit" class="nav-btn submit-btn">Envoyer</button>
         </div>
-    </form>
+
     <script>
-    // Afficher le formulaire et masquer la page d'accueil
+        // Afficher le formulaire et masquer la page d'accueil
 function showForm() {
     document.querySelector('.home-page').style.display = 'none';
     document.querySelector('.contact-us').style.display = 'flex';
@@ -766,54 +731,9 @@ function selectSecondBox(button, value) {
 }
 
 // Afficher la page récapitulative
-function showRecap() {
-    const recapContent = document.getElementById("recap-content");
-    const recapPrice = document.getElementById("recap-price");
-    recapContent.innerHTML = ""; // Vider le contenu précédent
 
-    // Afficher les ingrédients de la première boîte
-    recapContent.innerHTML += `<h3>Première boîte : 6,50 €</h3>
-                              <p>Légume : ${responses.box1.legume} (inclus)</p>
-                              <p>Poisson : ${responses.box1.poisson} (inclus)</p>
-                              <p>Fromage frais : ${responses.box1.fromageFrais} (inclus)</p>
-                              <p>Soja : ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : '(inclus)'}</p>
-                              <p>Livré : ${responses.box1.livre} ${responses.box1.livre === 'Oui' ? '(+0,40 €)' : '(inclus)'}</p>
-                              <button type="button" onclick="goToBox1()">Modifier Boîte 1</button>`;
 
-    // Afficher les ingrédients de la deuxième boîte (si elle existe)
-    if (isSecondBox) {
-        recapContent.innerHTML += `<h3>Deuxième boîte : 6,50 €</h3>
-                                  <p>Légume : ${responses.box2.legume} (inclus)</p>
-                                  <p>Poisson : ${responses.box2.poisson} (inclus)</p>
-                                  <p>Fromage frais : ${responses.box2.fromageFrais} (inclus)</p>
-                                  <p>Soja : ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : '(inclus)'}</p>
-                                  <button type="button" onclick="goToBox2()">Modifier Boîte 2</button>`;
-    }
 
-    // Calculer le prix total
-    let totalPrice = basePrice; // Prix de base pour une boîte
-    if (isSecondBox) {
-        totalPrice += basePrice; // Ajouter le prix de la deuxième boîte
-    }
-    if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") {
-        totalPrice += sojaSupplement; // Ajouter le supplément soja
-    }
-    if (responses.box1.livre === "Oui") {
-        totalPrice += deliverySupplement; // Ajouter le supplément livraison
-    }
-
-    // Afficher le prix total
-    recapPrice.innerHTML = `<h3>Prix total : ${totalPrice.toFixed(2)}€</h3>`;
-
-    // Masquer toutes les questions et afficher la page récapitulative
-    questions.forEach(q => q.classList.remove("active"));
-    secondBoxQuestions.forEach(q => q.classList.remove("active"));
-    const recapPage = document.querySelector(".recap-page");
-    recapPage.classList.add("active");
-
-    // Masquer les boutons "Précédent" et "Suivant"
-    document.querySelector(".nav-container").style.display = "none";
-}
 
 // Revenir aux questions de la Boîte 1
 function goToBox1() {
@@ -863,10 +783,54 @@ function confirmOrder() {
 
 // Initialiser les boutons
 updateButtons();
-</script>
 
+    
+    function showRecap() {
+        const recapPage = document.querySelector(".recap-page");
+        const recapContent = document.getElementById("recap-content");
+        const recapPrice = document.getElementById("recap-price");
 
+        // Génération du contenu plus compact
+        recapContent.innerHTML = `
+        <div class="recap-section">
+            <h3>Première boîte : 6,50 €</h3>
+            <p><strong>Légume:</strong> ${responses.box1.legume}</p>
+            <p><strong>Poisson:</strong> ${responses.box1.poisson}</p>
+            <p><strong>Fromage:</strong> ${responses.box1.fromageFrais}</p>
+            <p><strong>Soja:</strong> ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
+            <p><strong>Livraison:</strong> ${responses.box1.livre} ${responses.box1.livre === 'Oui' ? '(+0,40 €)' : ''}</p>
+            <button onclick="goToBox1()">Modifier</button>
+        </div>`;
 
+        if (isSecondBox) {
+            recapContent.innerHTML += `
+            <div class="recap-section">
+                <h3>Deuxième boîte : 6,50 €</h3>
+                <p><strong>Légume:</strong> ${responses.box2.legume}</p>
+                <p><strong>Poisson:</strong> ${responses.box2.poisson}</p>
+                <p><strong>Fromage:</strong> ${responses.box2.fromageFrais}</p>
+                <p><strong>Soja:</strong> ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
+                <button onclick="goToBox2()">Modifier</button>
+            </div>`;
+        }
 
+        // Calcul du prix
+        let totalPrice = basePrice;
+        if (isSecondBox) totalPrice += basePrice;
+        if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") totalPrice += sojaSupplement;
+        if (responses.box1.livre === "Oui") totalPrice += deliverySupplement;
+        if (isSecondBox && (responses.box2.soja === "Sucrée" || responses.box2.soja === "Salée")) totalPrice += sojaSupplement;
+
+        recapPrice.innerHTML = `<h3>Total : ${totalPrice.toFixed(2)}€</h3>`;
+
+        // Affichage
+        questions.forEach(q => q.classList.remove("active"));
+        secondBoxQuestions.forEach(q => q.classList.remove("active"));
+        recapPage.classList.add("active");
+        document.querySelector(".nav-container").style.display = "none";
+    }
+
+    // [LE RESTE DE VOTRE CODE JAVASCRIPT EXISTANT]
+    </script>
 </body>
 </html>
