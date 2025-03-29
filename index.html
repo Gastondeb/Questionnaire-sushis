@@ -430,22 +430,6 @@
             from { transform: translateY(0); }
             to { transform: translateY(-10px); }
         }
-        /* Compteur de commandes */
-.order-counter {
-    font-size: 5vmin;
-    color: #ff6f61;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-.sold-out {
-    color: red;
-    font-size: 6vmin;
-    margin: 20px 0;
-    font-weight: bold;
-    display: none;
-}
-
 
         /* Responsive */
         @media (max-width: 600px) {
@@ -481,15 +465,9 @@
             <img src="pagegarde2.png" alt="Sushi">
         </h1>
         <p>
-            Tous les samedis commandez et découvrez mes makis frais, préparés avec soin et des ingrédients de qualité, à des prix étudiants imbattables.
+            Tous les samedis commandez et decouvrez mes makis frais, préparés avec soin et des ingrédients de qualité, à des prix étudiants imbattables. Commandez vite, les places sont limitées !
         </p>
-        <div class="order-counter" id="orderCounter">
-            Commandes disponibles: <span id="availableOrders">20</span>/20
-        </div>
-        <button class="order-btn" id="orderButton" onclick="showForm()">Commander</button>
-        <div class="sold-out" id="soldOutMessage">
-            Plus de commandes pour aujourd'hui !
-        </div>
+        <button class="order-btn" onclick="showForm()">Commander</button>
     </div>
 
     <!-- Formulaire -->
@@ -691,40 +669,11 @@
     </form>
 
     <script>
-
-        // Configuration
-const MAX_ORDERS = 20;
-let availableOrders = MAX_ORDERS;
-
-// Vérifier le stock local
-const savedOrders = localStorage.getItem('sushiOrders');
-if (savedOrders) {
-    availableOrders = MAX_ORDERS - parseInt(savedOrders);
-    updateOrderCounter();
-}
-
-function updateOrderCounter() {
-    document.getElementById('availableOrders').textContent = availableOrders;
-    
-    if (availableOrders <= 0) {
-        document.getElementById('orderButton').style.display = 'none';
-        document.getElementById('soldOutMessage').style.display = 'block';
-    } else {
-        document.getElementById('orderButton').style.display = 'block';
-        document.getElementById('soldOutMessage').style.display = 'none';
-    }
-}
-   
-
-function showForm() {
-    if (availableOrders <= 0) {
-        alert("Désolé, plus de commandes disponibles aujourd'hui !");
-        return;
-    }
-    
-    document.querySelector('.home-page').style.display = 'none';
-    document.querySelector('.contact-us').style.display = 'flex';
-}
+        // Afficher le formulaire et masquer la page d'accueil
+        function showForm() {
+            document.querySelector('.home-page').style.display = 'none';
+            document.querySelector('.contact-us').style.display = 'flex';
+        }
 
         // Gestion du formulaire
         let currentQuestion = 0;
@@ -931,33 +880,31 @@ function showForm() {
             updateButtons();
         }
 
+        // Confirmer la commande
         function confirmOrder() {
-    // Décrémenter le compteur
-    availableOrders--;
-    updateOrderCounter();
-    
-    // Sauvegarder en local
-    const ordersMade = MAX_ORDERS - availableOrders;
-    localStorage.setItem('sushiOrders', ordersMade.toString());
-    
-    // 1. Masquer le récap
-    document.querySelector(".recap-page").classList.remove("active");
-    
-    // 2. Afficher la page de remerciement
-    document.querySelector(".thank-you-page").classList.add("active");
-    
-    // 3. Masquer la navigation
-    document.querySelector(".nav-container").style.display = "none";
-    
-    // 4. Envoyer le formulaire en arrière-plan
-    const form = document.querySelector(".contact-us");
-    const iframe = document.createElement("iframe");
-    iframe.name = "form-target";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
-    form.target = "form-target";
-    form.submit();
-}
+            // 1. Masquer le récap
+            document.querySelector(".recap-page").classList.remove("active");
+            
+            // 2. Afficher la page de remerciement
+            document.querySelector(".thank-you-page").classList.add("active");
+            
+            // 3. Masquer la navigation
+            document.querySelector(".nav-container").style.display = "none";
+            
+            // 4. Envoyer le formulaire en arrière-plan (sans redirection)
+            const form = document.querySelector(".contact-us");
+            
+            // Créer une iframe invisible pour soumettre le formulaire
+            const iframe = document.createElement("iframe");
+            iframe.name = "form-target";
+            iframe.style.display = "none";
+            document.body.appendChild(iframe);
+            
+            form.target = "form-target";
+            form.submit();
+            
+            // On ne fait PAS de redirection automatique
+        }
 
         // Initialiser les boutons
         updateButtons();
