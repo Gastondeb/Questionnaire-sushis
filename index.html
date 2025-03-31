@@ -455,6 +455,35 @@
                 margin-bottom: 10%;
             }
         }
+        /* Style du bouton désactivé */
+.order-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+    transform: none !important; /* Désactive l'animation au hover */
+    box-shadow: none !important;
+}
+
+/* Style pendant le chargement */
+.order-btn[disabled] {
+    background: #f8f4e5 !important;
+    color: #999 !important;
+    border-color: #ccc !important;
+    cursor: wait !important;
+}
+
+    /* Nouveau style compact */
+.compact-btn {
+    padding: 1.5% 4% !important;  /* Réduction de 25% */
+    font-size: 3.8vmin !important;  /* Taille texte réduite */
+    min-width: 120px !important;  /* Largeur minimale */
+    transition: all 0.2s ease !important;
+}
+
+/* Effet hover adapté */
+.compact-btn:hover {
+    transform: scale(1.05) !important; 
+    box-shadow: 4px 4px 2px black !important;
+}
     </style>
 </head>
 <body>
@@ -467,7 +496,13 @@
         <p>
             Tous les samedis commandez et decouvrez mes makis frais, préparés avec soin et des ingrédients de qualité, à des prix étudiants imbattables. Commandez vite, les places sont limitées !
         </p>
-        <button class="order-btn" onclick="showForm()">Commander</button>
+        <div id="stock-display" style="margin-bottom: 20px; font-size: 3.5vmin; font-weight: bold; color: #ff6f61;">
+            Chargement des stocks disponibles...
+        </div>
+        <button class="order-btn compact-btn" onclick="showForm()" disabled id="main-order-btn">
+            <span class="btn-loader" hidden></span>
+            <span class="btn-text">Chargement...</span>
+        </button>
     </div>
 
     <!-- Formulaire -->
@@ -680,6 +715,8 @@
     </form>
 
     <script>
+        // Au début de votre <script>
+document.addEventListener('DOMContentLoaded', fetchStock);
         // Afficher le formulaire et masquer la page d'accueil
         function showForm() {
             document.querySelector('.home-page').style.display = 'none';
@@ -919,6 +956,43 @@
 
         // Initialiser les boutons
         updateButtons();
+
+     
+    // Fonction pour récupérer et afficher le stock disponible
+    function fetchStock() {
+    const stockDisplay = document.getElementById('stock-display');
+    const orderBtn = document.querySelector('.order-btn');
+    
+    // Afficher un état de chargement
+    orderBtn.disabled = true;
+    orderBtn.textContent = "Chargement...";
+    stockDisplay.textContent = "Vérification du stock...";
+
+    fetch('https://script.google.com/macros/s/AKfycbzjDQXjFUOgePIL95om5Yi0zDRyVp7ecsVkPPJhC1UwyUOL3nL845a2r0QNOX58wzjlOA/exec')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                stockDisplay.textContent = `Boîtes disponibles : ${data.stock}`;
+                
+                if (data.stock <= 0) {
+                    orderBtn.disabled = true;
+                    orderBtn.textContent = "RUPTURE DE STOCK";
+                    orderBtn.style.background = "#e74c3c";
+                } else {
+                    orderBtn.disabled = false;
+                    orderBtn.textContent = "Commander";
+                    orderBtn.style.background = ""; // Réinitialise la couleur
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            stockDisplay.textContent = 'Erreur de chargement';
+            orderBtn.disabled = false;
+            orderBtn.textContent = "Commander (hors ligne)";
+        });
+}
+
     </script>
 </body>
 </html>
