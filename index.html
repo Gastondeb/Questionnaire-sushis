@@ -6,6 +6,9 @@
     <title>Sushi Form</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap">
     <style>
+
+
+
         /* Style de base */
         body {
             margin: 0;
@@ -455,35 +458,96 @@
                 margin-bottom: 10%;
             }
         }
-        /* Style du bouton désactivé */
-.order-btn:disabled {
-    cursor: not-allowed;
-    opacity: 0.8;
-    transform: none !important; /* Désactive l'animation au hover */
-    box-shadow: none !important;
-}
 
-/* Style pendant le chargement */
-.order-btn[disabled] {
-    background: #f8f4e5 !important;
-    color: #999 !important;
-    border-color: #ccc !important;
-    cursor: wait !important;
-}
 
-    /* Nouveau style compact */
-.compact-btn {
-    padding: 1.5% 4% !important;  /* Réduction de 25% */
-    font-size: 3.8vmin !important;  /* Taille texte réduite */
-    min-width: 120px !important;  /* Largeur minimale */
-    transition: all 0.2s ease !important;
-}
+                /* Style du bouton désactivé */
+        .order-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+            transform: none !important; /* Désactive l'animation au hover */
+            box-shadow: none !important;
+        }
 
-/* Effet hover adapté */
-.compact-btn:hover {
-    transform: scale(1.05) !important; 
-    box-shadow: 4px 4px 2px black !important;
-}
+        /* Style pendant le chargement */
+        .order-btn[disabled] {
+            background: #f8f4e5 !important;
+            color: #999 !important;
+            border-color: #ccc !important;
+            cursor: wait !important;
+        }
+
+            /* Nouveau style compact */
+        .compact-btn {
+            padding: 1.5% 4% !important;  /* Réduction de 25% */
+            font-size: 3.8vmin !important;  /* Taille texte réduite */
+            min-width: 120px !important;  /* Largeur minimale */
+            transition: all 0.2s ease !important;
+        }
+
+        /* Effet hover adapté */
+        .compact-btn:hover {
+            transform: scale(1.05) !important; 
+            box-shadow: 4px 4px 2px black !important;
+        }
+
+        /* Style pour l'image de choix */
+        .box-choice-image {
+            text-align: center;
+            margin: 10px 0 20px;
+        }
+
+        .box-choice-image img {
+            max-height: 120px;
+            border-radius: 10px;
+            border: 2px solid #ff6f61;
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+        }
+
+        /* Style spécifique pour les boutons de quantité */
+        .box-quantity-btns .select-btn {
+            padding: 2% 4% !important;
+            font-size: 3.5vmin !important;
+            margin: 0 5px;
+        }
+
+        /* Adaptation responsive */
+        @media (max-width: 600px) {
+            .box-quantity-btns .select-btn {
+                font-size: 4vmin !important;
+                padding: 3% 5% !important;
+            }
+            
+            .box-choice-image img {
+                max-height: 100px;
+            }
+        }
+
+
+                /* Barre de progression */
+                .progress-container {
+            width: 80%; /* Largeur réduite pour bien s'insérer */
+            height: 15px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 0 auto; /* Centrage horizontal */
+            display: none;
+            position: absolute;
+            bottom: 8%; /* Position plus basse (ajustez ce chiffre si nécessaire) */
+            left: 0;
+            right: 0; /* Ancrage gauche/droite pour centrage */
+            transform: none; /* Retirez le translateX */
+            max-width: 400px; /* Limite la largeur sur grands écrans */
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #ff6f61, #ffa580);
+            width: 0%;
+            transition: width 0.5s ease;
+        }   
+
+
     </style>
 </head>
 <body>
@@ -546,20 +610,26 @@
         </div>
 
                 <!-- Nouvelle question pour le nombre de boîtes -->
-        <div class="question">
-            <h2 class="question-title">Combien de boîtes veux-tu ?</h2>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectBoxQuantity(this, 1)">1 boîte (6,50 €)</button>
-                <button type="button" class="select-btn" onclick="selectBoxQuantity(this, 2)">2 boîtes (13,00 €)</button>
-            </div>
-            <input type="hidden" name="entry.557485338" id="entry.557485338" required>
-            <div class="error-message">Veuillez choisir une option.</div>
-        </div>
+                <div class="question">
+                    <h2 class="question-title">Combien de boîtes veux-tu ?</h2>
+                    
+                    <!-- Ajoute cette div pour l'image -->
+                    <div class="box-choice-image">
+                        <img src="imageboite.png" alt="Choix des boîtes" style="max-width: 200px; margin: 15px 0;">
+                    </div>
+                    
+                    <div class="btn-group box-quantity-btns">
+                        <button type="button" class="select-btn compact-btn" onclick="selectBoxQuantity(this, 1)">1 boîte (6,50 €)</button>
+                        <button type="button" class="select-btn compact-btn" onclick="selectBoxQuantity(this, 2)">2 boîtes (13,00 €)</button>
+                    </div>
+                    <input type="hidden" name="entry.557485338" id="entry.557485338" required>
+                    <div class="error-message">Veuillez choisir une option.</div>
+                </div>
 
         <!-- Questions sur les ingrédients -->
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <p class="price-info">8 makis: <strong>6,5 €</strong></p>
+           
             <div class="ingredient-container">
                 <img src="avocat.png" alt="Avocat" class="ingredient-image">
                 <label>Quel légume ?</label>
@@ -705,7 +775,7 @@
                 <p>Ta commande a bien été enregistrée.</p>
                 <img src="pagegarde1.png" alt="Sushi" class="thank-you-sushi">
                 <p>Si tu as un problème avec ta commande,</p>
-                <p class="contact-info">Contacte-moi au +33 6 12 34 56 78</p>
+                <p class="contact-info">Contacte-moi au 07 69 54 23 28</p>
             </div>
         </div>
 
@@ -713,6 +783,10 @@
         <div class="nav-container">
             <button type="button" class="nav-btn next-btn" onclick="nextQuestion()">Suivant</button>
             <button type="submit" class="nav-btn submit-btn">Envoyer</button>
+        </div>
+                <!-- Barre de progression -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
         </div>
     </form>
 
@@ -806,6 +880,7 @@ function nextQuestion() {
     }
     
     updateButtons();
+    updateProgressBar();
 }
 
 // Valider une question
@@ -862,7 +937,31 @@ function selectOption(button, inputName, value) {
 
     nextQuestion();
 }
+// Mettre à jour la barre de progression
+function updateProgressBar() {
+    const progressContainer = document.querySelector('.progress-container');
+    const progressBar = document.getElementById('progressBar');
+    const recapPageActive = document.querySelector('.recap-page.active');
+    const thankYouPageActive = document.querySelector('.thank-you-page.active');
 
+    // Masquer sur les pages recap/remerciement
+    if (recapPageActive || thankYouPageActive) {
+        progressContainer.style.display = 'none';
+        return;
+    }
+
+    // Afficher et mettre à jour seulement sur les questions
+    if (currentQuestion > personalInfoQuestions) {
+        progressContainer.style.display = 'block';
+        let totalQuestions = boxQuantity === 1 
+            ? personalInfoQuestions + box1Questions 
+            : personalInfoQuestions + box1Questions + box2Questions;
+        const progress = ((currentQuestion - personalInfoQuestions) / (totalQuestions - personalInfoQuestions)) * 100;
+        progressBar.style.width = `${progress}%`;
+    } else {
+        progressContainer.style.display = 'none';
+    }
+}
 // Afficher le récapitulatif
 function showRecap() {
     const recapPage = document.querySelector(".recap-page");
@@ -915,6 +1014,7 @@ function goToBox1() {
     allQuestions.forEach(q => q.classList.remove('active'));
     allQuestions[currentQuestion].classList.add("active");
     updateButtons();
+    updateProgressBar();
 }
 
 // Modifier la boîte 2
@@ -925,6 +1025,7 @@ function goToBox2() {
     allQuestions.forEach(q => q.classList.remove('active'));
     allQuestions[currentQuestion].classList.add("active");
     updateButtons();
+    updateProgressBar();
 }
 
 // Confirmer la commande
@@ -968,7 +1069,7 @@ function fetchStock() {
     orderBtn.textContent = "Chargement...";
     stockDisplay.textContent = "Vérification du stock...";
 
-    fetch('https://script.google.com/macros/s/AKfycbyxZGulODyRS2L-BDUReW398zVuE1zS6S-rtyoCpeqepl5HXF_UnmPv9we5vnZtIRM_NQ/exec')
+    fetch('https://script.google.com/macros/s/AKfycbwHGDDnZFpdeaKeH-R1x_Ws2Hm8-WFtyYma7RB-vo3dKc4f3t4cs-aBfm4U455_sckgXA/exec')
         .then(response => response.json())
         .then(data => {
             if (data.success) {
