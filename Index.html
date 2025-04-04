@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushi Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap">
+    <style>
+        /* Style de base */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background: url('fondsushis.png') center center no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        .icon {
+            font-size: 6vmin;
+            margin-right: 10px;
+        }
+
+        .person-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1em;
+            height: 1em;
+            margin-right: 10px;
+        }
+
+        .person-icon svg {
+            width: 100%;
+            height: 100%;
+            transition: fill 0.3s ease;
+        }
+
+        .person-icon:hover svg {
+            fill: #ffa580;
+        }
+
+        .welcome-text {
+            font-size: 4vmin;
+            margin: 0 0 5% 0;
+            color: #333;
+            font-style: italic;
+            text-align: center;
+            position: relative;
+            top: -15px;
+        }
+
+        .first-question .welcome-text {
+            margin-top: -10px;
+        }
+
+        .question input {
+            padding: 4%;
+            font-size: 5vmin;
+            border: 3px solid black;
+            box-shadow: 3px 3px 1px black;
+            width: 80%;
+            margin-bottom: 5%;
+            border-radius: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .question input:focus {
+            border-color: #ff6f61;
+        }
+
+        /* Page d'accueil */
+        .home-page {
+            text-align: center;
+            color: black;
+            background: #f8f4e5;
+            padding: 5%;
+            border: 2px solid black;
+            box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
+            border-radius: 15px;
+            width: 80vmin;
+            height: 80vmin;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .home-page h1 {
+            font-size: 8vmin;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .home-page h1 img {
+            width: 80px;
+            height: auto;
+            border-radius: 10px;
+            opacity: 0.8;
+        }
+
+        .home-page h1 img:first-child {
+            transform: rotate(-5deg);
+        }
+
+        .home-page h1 img:last-child {
+            transform: rotate(5deg);
+        }
+
+        .home-page p {
+            font-size: 4vmin;
+            margin-bottom: 10%;
+        }
+
+        .home-page .order-btn {
+            padding: 5% 10%;
+            font-size: 5vmin;
+            background: #ff6f61;
+            color: white;
+            border: 2px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 3px 3px 1px black;
+            border-radius: 10px;
+        }
+
+        .home-page .order-btn:hover {
+            background: black;
+            color: white;
+        }
+
+        /* Formulaire */
+        .contact-us {
+            display: none;
+            background: #f8f4e5;
+            padding: 5%;
+            border: 2px solid black;
+            box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
+            text-align: center;
+            width: 80vmin;
+            height: auto;
+            min-height: 90vmin;
+            max-height: 95vh;
+            overflow-y: auto;
+            flex-direction: column;
+            justify-content: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .question {
+            display: none;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .question.active {
+            display: flex;
+        }
+
+        .question h2 {
+            font-size: 6vmin;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 5%;
+            color: #333;
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        .question label {
+            font-size: 6vmin;
+            margin-bottom: 5%;
+        }
+
+        .btn-group, .question input {
+            align-self: center;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 5%;
+            margin-top: 5%;
+        }
+
+        .select-btn {
+            padding: 4% 6%;
+            background: #ff6f61;
+            color: white;
+            font-weight: bold;
+            border: 2px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 3px 3px 1px black;
+            font-size: 4vmin;
+            border-radius: 15px;
+            min-width: 120px;
+        }
+
+        .select-btn.selected {
+            background: black;
+            color: white;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+        }
+
+        .nav-btn {
+            padding: 3% 6%;
+            font-size: 4vmin;
+            background: #ffa580;
+            border: 1px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 3px 3px 1px black;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 200px;
+            color: white;
+        }
+
+        .nav-btn:hover {
+            background: black;
+            color: white;
+        }
+
+        .submit-btn {
+            padding: 3% 6%;
+            font-size: 4vmin;
+            background: #ffa580;
+            border: 1px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 3px 3px 1px black;
+            display: none;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 200px;
+            color: white;
+        }
+
+        .submit-btn.visible {
+            display: block;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 3.5vmin;
+            margin-top: 3%;
+            display: none;
+        }
+
+        /* Styles spécifiques */
+        .question-title {
+            font-size: 8vmin;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 3%;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            top: -40px;
+            transform: rotate(-1deg);
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ff6f61, #ffa580);
+            border: 2px solid #ff6f61;
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .ingredient-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 5%;
+            margin-top: -20px;
+        }
+
+        .ingredient-image {
+            width: 80px;
+            height: auto;
+            border-radius: 10px;
+            opacity: 0.8;
+        }
+
+        .ingredient-image:first-child {
+            transform: rotate(-5deg);
+        }
+
+        .ingredient-image:last-child {
+            transform: rotate(5deg);
+        }
+
+        .supplement-info {
+            font-size: 3.5vmin;
+            color: #555;
+            margin-top: 1vmin;
+        }
+
+        .fromage-image {
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* Page récap */
+        .recap-page {
+            padding: 2vmin;
+            font-size: 2.7vmin;
+        }
+
+        .recap-page h2 {
+            font-size: 4vmin;
+            margin-bottom: 2vmin;
+        }
+
+        .recap-page h3 {
+            font-size: 3.2vmin;
+            margin-bottom: 1.5vmin;
+        }
+
+        .recap-page p {
+            font-size: 2.7vmin;
+            margin: 1.2vmin 0;
+            line-height: 1.2;
+        }
+
+        .recap-page button {
+            padding: 1vmin 2vmin;
+            font-size: 2.5vmin;
+            background: #ff6f61;
+            color: white;
+            border: 1px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 2px 2px 1px black;
+            border-radius: 5px;
+            margin: 1vmin 0;
+        }
+
+        .recap-page button:hover {
+            background: black;
+            color: white;
+        }
+
+        #recap-content {
+            margin: 2vmin 0;
+        }
+
+        #recap-price h3 {
+            font-size: 3.5vmin;
+            margin-top: 2vmin;
+        }
+
+        /* Page de remerciement */
+           /* Ajout pour la page de confirmation */
+           .thank-you-page {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #f8f4e5;
+            border-radius: 15px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .thank-you-page h2 {
+            color: #ff6f61;
+            font-size: 6vmin;
+            margin-bottom: 20px;
+        }
+        
+        .thank-you-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .thank-you-content p {
+            font-size: 4vmin;
+            margin: 15px 0;
+            color: #333;
+        }
+        
+        .thank-you-sushi {
+            width: 100px;
+            margin: 20px auto;
+            animation: bounce 0.5s infinite alternate;
+        }
+        
+        .contact-info {
+            font-size: 3.5vmin;
+            color: #ff6f61;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .select-btn {
+                font-size: 3vmin;
+                padding: 2vmin 3vmin;
+                min-width: 80px;
+            }
+
+            .btn-group {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .question-title {
+                top: -30px;
+                font-size: 6vmin;
+                padding: 8px 16px;
+            }
+
+            .welcome-text {
+                top: -10px;
+                margin-bottom: 10%;
+            }
+        }
+        /* Style du bouton désactivé */
+.order-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+    transform: none !important; /* Désactive l'animation au hover */
+    box-shadow: none !important;
+}
+
+/* Style pendant le chargement */
+.order-btn[disabled] {
+    background: #f8f4e5 !important;
+    color: #999 !important;
+    border-color: #ccc !important;
+    cursor: wait !important;
+}
+
+    /* Nouveau style compact */
+.compact-btn {
+    padding: 1.5% 4% !important;  /* Réduction de 25% */
+    font-size: 3.8vmin !important;  /* Taille texte réduite */
+    min-width: 120px !important;  /* Largeur minimale */
+    transition: all 0.2s ease !important;
+}
+
+/* Effet hover adapté */
+.compact-btn:hover {
+    transform: scale(1.05) !important; 
+    box-shadow: 4px 4px 2px black !important;
+}
+    </style>
+</head>
+<body>
+    <div class="home-page">
+        <h1>
+            <img src="pagegarde1.png" alt="Sushi">
+            Sushicam
+            <img src="pagegarde2.png" alt="Sushi">
+        </h1>
+        <p>
+            Tous les samedis commandez et decouvrez mes makis frais, préparés avec soin et des ingrédients de qualité, à des prix étudiants imbattables. Commandez vite, les places sont limitées !
+        </p>
+        <div id="stock-display" style="margin-bottom: 20px; font-size: 3.5vmin; font-weight: bold; color: #ff6f61;">
+            Chargement des stocks disponibles...
+        </div>
+        <button class="order-btn compact-btn" onclick="showForm()" disabled id="main-order-btn">
+            <span class="btn-loader" hidden></span>
+            <span class="btn-text">Chargement...</span>
+        </button>
+    </div>
+
+    <!-- Formulaire -->
+    <form class="contact-us" action="https://docs.google.com/forms/d/e/1FAIpQLSec7_Wp_tyjnlGvlaTr4Ri172SPFX117Etf8mK6v7iTr1vp0Q/formResponse" method="POST">
+        <!-- Questions -->
+        <div class="question active first-question">
+            <div class="welcome-text">
+                Avant de te préparer tes sushis sur mesure, on a besoin de quelques infos !
+            </div>
+            <label for="entry.524815907">
+                <span class="icon person-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="#ff6f61" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </span> Comment tu t'appelles ?
+            </label>
+            <input type="text" name="entry.524815907" placeholder="Jean Paul" required>
+            <div class="error-message">Veuillez répondre à cette question.</div>
+        </div>
+
+        <div class="question">
+            <div class="welcome-text">
+                Avant de te préparer tes sushis sur mesure, on a besoin de quelques infos !
+            </div>
+            <label for="entry.1876625947">
+                <span class="icon">📱</span> Quel est ton numéro de téléphone ?
+            </label>
+            <input type="tel" name="entry.1876625947" placeholder="06 12 34 56 78" required>
+            <div class="error-message">Veuillez répondre à cette question.</div>
+        </div>
+
+        <div class="question">
+            <div class="welcome-text">
+                Avant de te préparer tes sushis sur mesure, on a besoin de quelques infos !
+            </div>
+            <label for="entry.1985104958">
+                <span class="icon">🏠</span> Tu habites dans quelle colloc ?
+            </label>
+            <input type="text" name="entry.1985104958" placeholder="b43" required>
+            <div class="error-message">Veuillez répondre à cette question.</div>
+        </div>
+
+                <!-- Nouvelle question pour le nombre de boîtes -->
+        <div class="question">
+            <h2 class="question-title">Combien de boîtes veux-tu ?</h2>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectBoxQuantity(this, 1)">1 boîte (6,50 €)</button>
+                <button type="button" class="select-btn" onclick="selectBoxQuantity(this, 2)">2 boîtes (13,00 €)</button>
+            </div>
+            <input type="hidden" name="entry.557485338" id="entry.557485338" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+        <!-- Questions sur les ingrédients -->
+        <div class="question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="price-info">8 makis: <strong>6,5 €</strong></p>
+            <div class="ingredient-container">
+                <img src="avocat.png" alt="Avocat" class="ingredient-image">
+                <label>Quel légume ?</label>
+                <img src="concombre.png" alt="Concombre" class="ingredient-image">
+            </div>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1292076072', 'avocats')">Avocat</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1292076072', 'concombres')">Concombre</button>
+            </div>
+            <input type="hidden" name="entry.1292076072" id="entry.1292076072" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+        <div class="question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <div class="ingredient-container">
+                <img src="saumon.png" alt="Saumon" class="ingredient-image">
+                <label>Quel poisson ?</label>
+                <img src="crevette.png" alt="Crevette" class="ingredient-image">
+            </div>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1726767774', 'Saumon')">Saumon</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1726767774', 'Crevettes')">Crevette</button>
+            </div>
+            <input type="hidden" name="entry.1726767774" id="entry.1726767774" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+        <div class="question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <label>Fromage frais ?</label>
+            <img src="fromage.png" alt="Fromage frais" class="fromage-image">
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
+            </div>
+            <input type="hidden" name="entry.887168393" id="entry.887168393" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+        <div class="question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
+            <label>Soja ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Salée')">Salée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Pas de sauce')">Pas de sauce</button>
+            </div>
+            <input type="hidden" name="entry.41252950" id="entry.41252950" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+        <div class="question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">Supplément livraison : <strong>+0,40 €</strong></p>
+            <label>Livré ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Oui')">Oui</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Non')">Non</button>
+            </div>
+            <input type="hidden" name="entry.554098723" id="entry.554098723" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+
+
+        <!-- Questions pour la deuxième boîte -->
+        <div class="question second-box">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">2ème boîte</p>
+            <div class="ingredient-container">
+                <img src="avocat.png" alt="Avocat" class="ingredient-image">
+                <label>Quel légume ?</label>
+                <img src="concombre.png" alt="Concombre" class="ingredient-image">
+            </div>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.2021454936', 'avocats')">Avocat</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.2021454936', 'concombres')">Concombre</button>
+            </div>
+            <input type="hidden" name="entry.2021454936" id="entry.2021454936">
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+        <div class="question second-box">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">2ème boîte</p>
+            <div class="ingredient-container">
+                <img src="saumon.png" alt="Saumon" class="ingredient-image">
+                <label>Quel poisson ?</label>
+                <img src="crevette.png" alt="Crevette" class="ingredient-image">
+            </div>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.819843500', 'Saumon')">Saumon</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.819843500', 'Crevettes')">Crevette</button>
+            </div>
+            <input type="hidden" name="entry.819843500" id="entry.819843500">
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+        <div class="question second-box">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">2ème boîte</p>
+            <label>Fromage frais ?</label>
+            <img src="fromage.png" alt="Fromage frais" class="fromage-image">
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Oui')">Oui</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Non')">Non</button>
+            </div>
+            <input type="hidden" name="entry.516077606" id="entry.516077606">
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+        <div class="question second-box">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">2ème boîte</p>
+            <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
+            <label>Soja ?</label>
+            <div class="btn-group">
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Sucrée')">Sucrée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Salée')">Salée</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Pas de sauce')">Pas de sauce</button>
+            </div>
+            <input type="hidden" name="entry.1450345325" id="entry.1450345325">
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+        <!-- Page récapitulative -->
+        <div class="question recap-page">
+            <h2>Récapitulatif de votre commande</h2>
+            <div id="recap-content"></div>
+            <div id="recap-price"></div>
+            <div class="btn-group">
+                <button type="button" class="nav-btn" onclick="confirmOrder()">Confirmer la commande</button>
+            </div>
+            <div class="error-message">Veuillez confirmer votre commande.</div>
+        </div>
+
+        <!-- Nouvelle page de remerciement -->
+        <div class="question thank-you-page">
+            <h2>Merci pour ta commande ! 🎉</h2>
+            <div class="thank-you-content">
+                <p>Ta commande a bien été enregistrée.</p>
+                <img src="pagegarde1.png" alt="Sushi" class="thank-you-sushi">
+                <p>Si tu as un problème avec ta commande,</p>
+                <p class="contact-info">Contacte-moi au +33 6 12 34 56 78</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-container">
+            <button type="button" class="nav-btn next-btn" onclick="nextQuestion()">Suivant</button>
+            <button type="submit" class="nav-btn submit-btn">Envoyer</button>
+        </div>
+    </form>
+
+    <script>
+  document.addEventListener('DOMContentLoaded', fetchStock);
+
+// Variables globales
+let currentQuestion = 0;
+let boxQuantity = 1; // 1 ou 2
+const personalInfoQuestions = 3; // Nom, Téléphone, Colloc
+const box1Questions = 5; // Questions pour la boîte 1
+const box2Questions = 4; // Questions pour la boîte 2
+const allQuestions = document.querySelectorAll(".question:not(.recap-page):not(.thank-you-page)");
+const submitBtn = document.querySelector(".submit-btn");
+const nextBtn = document.querySelector(".next-btn");
+
+// Stocker les réponses
+let responses = {
+    box1: {
+        legume: "",
+        poisson: "",
+        fromageFrais: "",
+        soja: "",
+        livre: ""
+    },
+    box2: {
+        legume: "",
+        poisson: "",
+        fromageFrais: "",
+        soja: ""
+    }
+};
+
+// Prix
+const basePrice = 6.5;
+const sojaSupplement = 0.4;
+const deliverySupplement = 0.4;
+
+// Afficher le formulaire
+function showForm() {
+    document.querySelector('.home-page').style.display = 'none';
+    document.querySelector('.contact-us').style.display = 'flex';
+}
+
+// Sélectionner le nombre de boîtes
+function selectBoxQuantity(button, quantity) {
+    boxQuantity = quantity;
+    document.getElementById('entry.557485338').value = quantity;
+    
+    let buttons = button.parentElement.querySelectorAll(".select-btn");
+    buttons.forEach(btn => btn.classList.remove("selected"));
+    button.classList.add("selected");
+    
+    const errorMessage = button.closest(".question").querySelector(".error-message");
+    errorMessage.style.display = "none";
+    
+    nextQuestion();
+}
+
+// Passer à la question suivante
+function nextQuestion() {
+    const currentQuestionElement = allQuestions[currentQuestion];
+    
+    if (!validateQuestion(currentQuestionElement)) {
+        return;
+    }
+    
+    currentQuestionElement.classList.remove("active");
+    currentQuestion++;
+    
+    // Après les infos perso = choix nombre de boîtes
+    if (currentQuestion === personalInfoQuestions) {
+        allQuestions[currentQuestion].classList.add("active");
+    } 
+    // Après choix nombre = ingrédients boîte 1
+    else if (currentQuestion === personalInfoQuestions + 1) {
+        allQuestions[currentQuestion].classList.add("active");
+    }
+    // Si 2 boîtes choisies et fini boîte 1 = passer à boîte 2
+    else if (currentQuestion === personalInfoQuestions + 1 + box1Questions && boxQuantity === 2) {
+        allQuestions[currentQuestion].classList.add("active");
+    }
+    // Si fini toutes les questions = récap
+    else if ((boxQuantity === 1 && currentQuestion >= personalInfoQuestions + 1 + box1Questions) ||
+             (boxQuantity === 2 && currentQuestion >= personalInfoQuestions + 1 + box1Questions + box2Questions)) {
+        showRecap();
+    }
+    // Sinon question suivante normale
+    else {
+        allQuestions[currentQuestion].classList.add("active");
+    }
+    
+    updateButtons();
+}
+
+// Valider une question
+function validateQuestion(question) {
+    const input = question.querySelector("input, [type=hidden]");
+    const errorMessage = question.querySelector(".error-message");
+
+    if (!input.value) {
+        errorMessage.style.display = "block";
+        return false;
+    } else {
+        errorMessage.style.display = "none";
+        return true;
+    }
+}
+
+// Sélectionner une option
+function selectOption(button, inputName, value) {
+    document.getElementById(inputName).value = value;
+
+    const questionIndex = Array.from(allQuestions).indexOf(button.closest('.question'));
+    const isBox2 = questionIndex > personalInfoQuestions + box1Questions;
+
+    if (isBox2) {
+        if (inputName.includes("entry.2021454936")) {
+            responses.box2.legume = value;
+        } else if (inputName.includes("entry.819843500")) {
+            responses.box2.poisson = value;
+        } else if (inputName.includes("entry.516077606")) {
+            responses.box2.fromageFrais = value;
+        } else if (inputName.includes("entry.1450345325")) {
+            responses.box2.soja = value;
+        }
+    } else {
+        if (inputName.includes("entry.1292076072")) {
+            responses.box1.legume = value;
+        } else if (inputName.includes("entry.1726767774")) {
+            responses.box1.poisson = value;
+        } else if (inputName.includes("entry.887168393")) {
+            responses.box1.fromageFrais = value;
+        } else if (inputName.includes("entry.41252950")) {
+            responses.box1.soja = value;
+        } else if (inputName.includes("entry.554098723")) {
+            responses.box1.livre = value;
+        }
+    }
+
+    let buttons = button.parentElement.querySelectorAll(".select-btn");
+    buttons.forEach(btn => btn.classList.remove("selected"));
+    button.classList.add("selected");
+
+    const errorMessage = button.closest(".question").querySelector(".error-message");
+    errorMessage.style.display = "none";
+
+    nextQuestion();
+}
+
+// Afficher le récapitulatif
+function showRecap() {
+    const recapPage = document.querySelector(".recap-page");
+    const recapContent = document.getElementById("recap-content");
+    const recapPrice = document.getElementById("recap-price");
+    
+    let totalPrice = basePrice;
+    if (boxQuantity === 2) totalPrice += basePrice;
+    
+    recapContent.innerHTML = `
+    <div class="recap-section">
+        <h3>Boîte 1 : 6,50 €</h3>
+        <p><strong>Légume:</strong> ${responses.box1.legume}</p>
+        <p><strong>Poisson:</strong> ${responses.box1.poisson}</p>
+        <p><strong>Fromage:</strong> ${responses.box1.fromageFrais}</p>
+        <p><strong>Soja:</strong> ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
+        <p><strong>Livraison:</strong> ${responses.box1.livre} ${responses.box1.livre === 'Oui' ? '(+0,40 €)' : ''}</p>
+        <button type="button" onclick="goToBox1()">Modifier</button>
+    </div>`;
+
+    if (boxQuantity === 2) {
+        recapContent.innerHTML += `
+        <div class="recap-section">
+            <h3>Boîte 2 : 6,50 €</h3>
+            <p><strong>Légume:</strong> ${responses.box2.legume}</p>
+            <p><strong>Poisson:</strong> ${responses.box2.poisson}</p>
+            <p><strong>Fromage:</strong> ${responses.box2.fromageFrais}</p>
+            <p><strong>Soja:</strong> ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
+            <button type="button" onclick="goToBox2()">Modifier</button>
+        </div>`;
+        
+        if (responses.box2.soja === "Sucrée" || responses.box2.soja === "Salée") totalPrice += sojaSupplement;
+    }
+
+    if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") totalPrice += sojaSupplement;
+    if (responses.box1.livre === "Oui") totalPrice += deliverySupplement;
+
+    recapPrice.innerHTML = `<h3>Total : ${totalPrice.toFixed(2)}€</h3>`;
+
+    allQuestions.forEach(q => q.classList.remove("active"));
+    recapPage.classList.add("active");
+    document.querySelector(".nav-container").style.display = "none";
+}
+
+// Modifier la boîte 1
+function goToBox1() {
+    document.querySelector(".nav-container").style.display = "flex";
+    currentQuestion = personalInfoQuestions + 1;
+    document.querySelector(".recap-page").classList.remove("active");
+    allQuestions.forEach(q => q.classList.remove('active'));
+    allQuestions[currentQuestion].classList.add("active");
+    updateButtons();
+}
+
+// Modifier la boîte 2
+function goToBox2() {
+    document.querySelector(".nav-container").style.display = "flex";
+    currentQuestion = personalInfoQuestions + 1 + box1Questions;
+    document.querySelector(".recap-page").classList.remove("active");
+    allQuestions.forEach(q => q.classList.remove('active'));
+    allQuestions[currentQuestion].classList.add("active");
+    updateButtons();
+}
+
+// Confirmer la commande
+function confirmOrder() {
+    document.querySelector(".recap-page").classList.remove("active");
+    document.querySelector(".thank-you-page").classList.add("active");
+    document.querySelector(".nav-container").style.display = "none";
+    
+    const form = document.querySelector(".contact-us");
+    const iframe = document.createElement("iframe");
+    iframe.name = "form-target";
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+    
+    form.target = "form-target";
+    form.submit();
+}
+
+// Mettre à jour les boutons
+function updateButtons() {
+    if (document.querySelector(".recap-page").classList.contains("active")) {
+        nextBtn.style.display = "none";
+        submitBtn.style.display = "none";
+    } else {
+        const currentQuestion = document.querySelector(".question.active");
+        if (currentQuestion && (currentQuestion.querySelector(".ingredient-container") || currentQuestion.querySelector(".btn-group"))) {
+            nextBtn.style.display = "none";
+        } else {
+            nextBtn.style.display = "block";
+        }
+        submitBtn.style.display = "none";
+    }
+}
+
+// Fonction pour vérifier le stock
+function fetchStock() {
+    const stockDisplay = document.getElementById('stock-display');
+    const orderBtn = document.querySelector('.order-btn');
+    
+    orderBtn.disabled = true;
+    orderBtn.textContent = "Chargement...";
+    stockDisplay.textContent = "Vérification du stock...";
+
+    fetch('https://script.google.com/macros/s/AKfycbyxZGulODyRS2L-BDUReW398zVuE1zS6S-rtyoCpeqepl5HXF_UnmPv9we5vnZtIRM_NQ/exec')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                stockDisplay.textContent = `Boîtes disponibles : ${data.stock}`;
+                
+                if (data.stock <= 0) {
+                    orderBtn.disabled = true;
+                    orderBtn.textContent = "RUPTURE DE STOCK";
+                    orderBtn.style.background = "#e74c3c";
+                } else {
+                    orderBtn.disabled = false;
+                    orderBtn.textContent = "Commander";
+                    orderBtn.style.background = "";
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            stockDisplay.textContent = 'Erreur de chargement';
+            orderBtn.disabled = false;
+            orderBtn.textContent = "Commander (hors ligne)";
+        });
+}
+
+// Initialiser
+updateButtons();
+
+    </script>
+</body>
+</html>
