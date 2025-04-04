@@ -544,30 +544,91 @@
             }
         }
 
+  /* Barre de progression */
+.progress-container {
+    width: 80%;
+    height: 15px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: none;
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    right: 0;
+    max-width: 400px;
+}
 
-                /* Barre de progression */
-                .progress-container {
-            width: 80%; /* Largeur réduite pour bien s'insérer */
-            height: 15px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            margin: 0 auto; /* Centrage horizontal */
-            display: none;
-            position: absolute;
-            bottom: 8%; /* Position plus basse (ajustez ce chiffre si nécessaire) */
-            left: 0;
-            right: 0; /* Ancrage gauche/droite pour centrage */
-            transform: none; /* Retirez le translateX */
-            max-width: 400px; /* Limite la largeur sur grands écrans */
-        }
+.progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #ff6f61, #ffa580);
+    width: 0%;
+    transition: width 0.5s ease;
+}
 
-        .progress-bar {
-            height: 100%;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #ff6f61, #ffa580);
-            width: 0%;
-            transition: width 0.5s ease;
-        }   
+/* ===== CORRECTIONS FROMAGE ===== */
+/* Style commun pour les images fromage */
+.question img.fromage-image {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+    margin: 15px auto;
+    display: block;
+}
+
+/* 1ère boîte (question 7) */
+.question:nth-child(7) .btn-group {
+    margin-bottom: 40px !important;
+    position: relative;
+    z-index: 2;
+}
+
+/* 2ème boîte (question 13) - Solution optimisée */
+.question.second-box:nth-child(13) {
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.question.second-box:nth-child(13) .btn-group {
+    margin-top: 10px !important;
+    margin-bottom: 65px !important;
+    transform: translateY(-5px);
+    position: relative;
+    z-index: 2;
+}
+
+.question.second-box:nth-child(13) .supplement-info {
+    display: block;
+    margin-bottom: 8px !important;
+    line-height: 1.2;
+    font-size: 3.5vmin;
+    color: #555;
+}
+
+/* Version mobile */
+@media (max-width: 600px) {
+    /* 1ère boîte */
+    .question:nth-child(7) .btn-group {
+        margin-bottom: 45px !important;
+    }
+    
+    /* 2ème boîte */
+    .question.second-box:nth-child(13) .btn-group {
+        margin-bottom: 75px !important;
+        transform: translateY(-8px);
+    }
+    
+    .question.second-box:nth-child(13) .supplement-info {
+        margin-bottom: 5px !important;
+        font-size: 3.2vmin !important;
+    }
+    
+    .question img.fromage-image {
+        width: 80px;
+        margin: 10px auto;
+    }
+}
 
 
     </style>
