@@ -328,13 +328,6 @@
             margin-top: 1vmin;
         }
 
-        .fromage-image {
-            width: 100px;
-            height: auto;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
         /* Page récap */
         .recap-page {
             padding: 2vmin;
@@ -567,70 +560,6 @@
     transition: width 0.5s ease;
 }
 
-/* ===== CORRECTIONS FROMAGE ===== */
-/* Style commun pour les images fromage */
-.question img.fromage-image {
-    width: 100px;
-    height: auto;
-    border-radius: 10px;
-    margin: 15px auto;
-    display: block;
-}
-
-/* 1ère boîte (question 7) */
-.question:nth-child(7) .btn-group {
-    margin-bottom: 40px !important;
-    position: relative;
-    z-index: 2;
-}
-
-/* 2ème boîte (question 13) - Solution optimisée */
-.question.second-box:nth-child(13) {
-    position: relative;
-    padding-bottom: 30px;
-}
-
-.question.second-box:nth-child(13) .btn-group {
-    margin-top: 10px !important;
-    margin-bottom: 65px !important;
-    transform: translateY(-5px);
-    position: relative;
-    z-index: 2;
-}
-
-.question.second-box:nth-child(13) .supplement-info {
-    display: block;
-    margin-bottom: 8px !important;
-    line-height: 1.2;
-    font-size: 3.5vmin;
-    color: #555;
-}
-
-/* Version mobile */
-@media (max-width: 600px) {
-    /* 1ère boîte */
-    .question:nth-child(7) .btn-group {
-        margin-bottom: 45px !important;
-    }
-    
-    /* 2ème boîte */
-    .question.second-box:nth-child(13) .btn-group {
-        margin-bottom: 75px !important;
-        transform: translateY(-8px);
-    }
-    
-    .question.second-box:nth-child(13) .supplement-info {
-        margin-bottom: 5px !important;
-        font-size: 3.2vmin !important;
-    }
-    
-    .question img.fromage-image {
-        width: 80px;
-        margin: 10px auto;
-    }
-}
-
-
     </style>
 </head>
 <body>
@@ -653,7 +582,10 @@
     </div>
 
     <!-- Formulaire -->
-    <form class="contact-us" action="https://docs.google.com/forms/d/e/1FAIpQLSec7_Wp_tyjnlGvlaTr4Ri172SPFX117Etf8mK6v7iTr1vp0Q/formResponse" method="POST">
+    <form class="contact-us" 
+      action="https://docs.google.com/forms/d/e/1FAIpQLSec7_Wp_tyjnlGvlaTr4Ri172SPFX117Etf8mK6v7iTr1vp0Q/formResponse" 
+      method="POST"
+      target="_blank">
         <!-- Questions -->
         <div class="question active first-question">
             <div class="welcome-text">
@@ -744,7 +676,6 @@
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <label>Fromage frais ?</label>
-            <img src="fromage.png" alt="Fromage frais" class="fromage-image">
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
@@ -817,7 +748,6 @@
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">2ème boîte</p>
             <label>Fromage frais ?</label>
-            <img src="fromage.png" alt="Fromage frais" class="fromage-image">
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Oui')">Oui</button>
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Non')">Non</button>
@@ -1110,22 +1040,78 @@ function goToBox2() {
     updateButtons();
     updateProgressBar();
 }
-
-// Confirmer la commande
 function confirmOrder() {
+    // 1. Valider d'abord tous les champs requis
+    let isValid = true;
+    document.querySelectorAll('[required]').forEach(field => {
+        if (!field.value) {
+            isValid = false;
+            // Trouver et afficher le message d'erreur le plus proche
+            const errorMsg = field.closest('.question')?.querySelector('.error-message');
+            if (errorMsg) errorMsg.style.display = 'block';
+        }
+    });
+    
+    if (!isValid) {
+        alert("Veuillez remplir tous les champs obligatoires");
+        return;
+    }
+
+    // 2. Afficher la page de remerciement immédiatement
     document.querySelector(".recap-page").classList.remove("active");
     document.querySelector(".thank-you-page").classList.add("active");
     document.querySelector(".nav-container").style.display = "none";
+
+    // 3. Soumettre le formulaire
+    const form = document.querySelector(".contact-us");
     
+    // Méthode 1: Envoi via fetch (recommandée)
+    try {
+        const formData = new FormData(form);
+        fetch(form.action, {
+            method: "POST",
+            body: new URLSearchParams(formData),
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            mode: 'no-cors' // Important pour contourner les restrictions CORS
+        }).then(() => {
+            console.log("Formulaire soumis avec succès (fetch)");
+        }).catch(e => {
+            console.error("Erreur fetch:", e);
+            submitWithIframe(); // Fallback si fetch échoue
+        });
+    } catch (e) {
+        console.error("Erreur:", e);
+        submitWithIframe(); // Fallback si erreur
+    }
+}
+
+// Méthode alternative avec iframe
+function submitWithIframe() {
     const form = document.querySelector(".contact-us");
     const iframe = document.createElement("iframe");
-    iframe.name = "form-target";
+    iframe.name = "form-target-" + Date.now();
     iframe.style.display = "none";
     document.body.appendChild(iframe);
     
-    form.target = "form-target";
+    // Configurer le formulaire pour cibler l'iframe
+    form.target = iframe.name;
+    
+    // Soumettre le formulaire
     form.submit();
+    
+    // Nettoyer après 5 secondes
+    setTimeout(() => {
+        iframe.remove();
+    }, 5000);
 }
+
+// Empêcher la soumission normale du formulaire
+document.querySelector(".contact-us").addEventListener("submit", function(e) {
+    e.preventDefault();
+    confirmOrder();
+});
 
 // Mettre à jour les boutons
 function updateButtons() {
