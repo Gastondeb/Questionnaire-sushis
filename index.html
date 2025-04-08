@@ -76,62 +76,99 @@
         .question input:focus {
             border-color: #ff6f61;
         }
+/* ----- Page d'accueil ----- */
+.home-page {
+    /* Structure */
+    text-align: center;
+    color: black;
+    background: #f8f4e5;
+    padding: 5%;
+    padding-bottom: 80px; /* Espace réservé pour le bouton */
+    border: 2px solid black;
+    box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
+    border-radius: 15px;
+    width: 80vmin;
+    min-height: auto; /* Supprime la hauteur fixe */
+    height: auto; /* Hauteur flexible */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
 
-        /* Page d'accueil */
-        .home-page {
-            text-align: center;
-            color: black;
-            background: #f8f4e5;
-            padding: 5%;
-            border: 2px solid black;
-            box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
-            border-radius: 15px;
-            width: 80vmin;
-            height: 80vmin;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-
-
-/* Supprimez tous les anciens styles .home-page h1 */
+/* Conteneur du logo */
 .logo-wrapper {
     flex: 0 0 auto;
-    margin-bottom: 2%; /* Réduit la marge basse */
-    max-height: 25vh; /* Ajuste la hauteur max */
+    margin-bottom: 5px; /* Espace réduit sous le logo */
+    max-height: 25vh;
     overflow: visible;
-    position: relative; /* Nouveau */
+    position: relative;
 }
 
+/* Logo principal */
 .main-logo {
-    height: 18vmin; /* Taille réduite */
+    height: 18vmin;
     width: auto;
-    max-width: 80vw; /* Largeur maximale réduite */
+    max-width: 80vw;
     object-fit: contain;
-    transform: scale(2) translateY(-10%); /* Remonte l'image de 10% */
+    transform: scale(2) translateY(-10%); /* Agrandissement + remontée */
     transform-origin: center top;
-    display: block; /* Nouveau */
-    margin: 0 auto; /* Centre l'image */
+    display: block;
+    margin: 0 auto;
 }
 
-.home-page {
-    padding-bottom: 20px; /* Garde le bouton dans le cadre */
+/* Texte descriptif */
+.home-page p {
+    font-size: 4vmin;
+    margin-bottom: 5%; /* Espace réduit sous le texte */
+    padding: 0 10px;
 }
 
-/* Ajustements mobile */
+/* Bouton de commande */
+.home-page .order-btn {
+    position: absolute;
+    bottom: 20px; /* Position fixe depuis le bas */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 300px;
+    padding: 2% 5%;
+    font-size: 4vmin;
+    background: #ff6f61;
+    color: white;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    box-shadow: 3px 3px 1px black;
+    border-radius: 10px;
+    margin-top: 0 !important;
+}
+
+.home-page .order-btn:hover {
+    background: black;
+    color: white;
+}
+
+/* ----- Version Mobile ----- */
 @media (max-width: 600px) {
+    .home-page {
+        padding-bottom: 70px; /* Espace réduit */
+        width: 90vmin;
+    }
+    
     .main-logo {
         height: 16vmin;
-        transform: scale(1) translateY(-5%); /* Adaptation mobile */
+        transform: scale(1.8) translateY(-5%); /* Ajustement mobile */
     }
-    .logo-wrapper {
-        margin-bottom: 1%; /* Réduction supplémentaire */
+    
+    .home-page .order-btn {
+        bottom: 15px; /* Bouton remonté */
+        width: 85%;
+        font-size: 3.8vmin;
     }
 }
             
