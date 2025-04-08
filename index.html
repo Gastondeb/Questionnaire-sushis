@@ -6,9 +6,6 @@
     <title>Sushi Form</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap">
     <style>
-
-
-
         /* Style de base */
         body {
             margin: 0;
@@ -76,108 +73,107 @@
         .question input:focus {
             border-color: #ff6f61;
         }
-/* ----- Page d'accueil ----- */
-.home-page {
-    /* Structure */
-    text-align: center;
-    color: black;
-    background: #f8f4e5;
-    padding: 5%;
-    padding-bottom: 80px; /* Espace réservé pour le bouton */
-    border: 2px solid black;
-    box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
-    border-radius: 15px;
-    width: 80vmin;
-    min-height: auto; /* Supprime la hauteur fixe */
-    height: auto; /* Hauteur flexible */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-}
 
-/* Conteneur du logo */
-.logo-wrapper {
-    flex: 0 0 auto;
-    margin-bottom: 5px; /* Espace réduit sous le logo */
-    max-height: 25vh;
-    overflow: visible;
-    position: relative;
-}
+        /* ----- Page d'accueil ----- */
+        .home-page {
+            text-align: center;
+            color: black;
+            background: #f8f4e5;
+            padding: 5%;
+            padding-bottom: 80px;
+            border: 2px solid black;
+            box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
+            border-radius: 15px;
+            width: 80vmin;
+            min-height: auto;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+        }
 
-/* Logo principal */
-.main-logo {
-    height: 18vmin;
-    width: auto;
-    max-width: 80vw;
-    object-fit: contain;
-    transform: scale(2) translateY(-10%); /* Agrandissement + remontée */
-    transform-origin: center top;
-    display: block;
-    margin: 0 auto;
-}
+        /* Conteneur du logo */
+        .logo-wrapper {
+            flex: 0 0 auto;
+            margin-bottom: 5px;
+            max-height: 25vh;
+            overflow: visible;
+            position: relative;
+        }
 
-/* Texte descriptif */
-.home-page p {
-    font-size: 4vmin;
-    margin-bottom: 5%; /* Espace réduit sous le texte */
-    padding: 0 10px;
-}
+        /* Logo principal */
+        .main-logo {
+            height: 18vmin;
+            width: auto;
+            max-width: 80vw;
+            object-fit: contain;
+            transform: scale(2) translateY(-10%);
+            transform-origin: center top;
+            display: block;
+            margin: 0 auto;
+        }
 
-/* Bouton de commande */
-.home-page .order-btn {
-    position: relative; /* Changé de absolute à relative */
-    bottom: auto; /* Supprimé */
-    left: auto; /* Supprimé */
-    transform: none; /* Supprimé */
-    width: 80%;
-    max-width: 300px;
-    padding: 12px 20px; /* Utilisez des valeurs fixes plutôt que des pourcentages */
-    font-size: 4vmin;
-    background: #ff6f61;
-    color: white;
-    border: 2px solid black;
-    cursor: pointer;
-    transition: 0.2s all ease-in-out;
-    box-shadow: 3px 3px 1px black;
-    border-radius: 10px;
-    margin: 20px auto 0; /* Marge automatique sur les côtés pour centrer */
-    display: block; /* Pour que la marge auto fonctionne */
-}
+        /* Texte descriptif */
+        .home-page p {
+            font-size: 4vmin;
+            margin-bottom: 5%;
+            padding: 0 10px;
+        }
 
-.home-page .order-btn:hover {
-    background: black;
-    color: white;
-}
+        /* Bouton de commande */
+        .home-page .order-btn {
+            position: relative;
+            bottom: auto;
+            left: auto;
+            transform: none;
+            width: 80%;
+            max-width: 300px;
+            padding: 12px 20px;
+            font-size: 4vmin;
+            background: #ff6f61;
+            color: white;
+            border: 2px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 3px 3px 1px black;
+            border-radius: 10px;
+            margin: 20px auto 0;
+            display: block;
+        }
 
-/* ----- Version Mobile ----- */
-@media (max-width: 600px) {
-    .home-page {
-        padding-bottom: 70px; /* Espace réduit */
-        width: 90vmin;
-    }
-    
-    .main-logo {
-        height: 16vmin;
-        transform: scale(1.8) translateY(-5%); /* Ajustement mobile */
-    }
-    
-    .home-page .order-btn {
-        bottom: 15px; /* Bouton remonté */
-        width: 85%;
-        font-size: 3.8vmin;
-    }
-}
+        .home-page .order-btn:hover {
+            background: black;
+            color: white;
+        }
+
+        /* ----- Version Mobile ----- */
+        @media (max-width: 600px) {
+            .home-page {
+                padding-bottom: 70px;
+                width: 90vmin;
+            }
+            
+            .main-logo {
+                height: 16vmin;
+                transform: scale(1.8) translateY(-5%);
+            }
+            
+            .home-page .order-btn {
+                bottom: 15px;
+                width: 85%;
+                font-size: 3.8vmin;
+            }
+        }
             
         .home-page p {
             font-size: 4vmin;
             margin-bottom: 10%;
         }
-
 
         .home-page .order-btn:hover {
             background: black;
@@ -188,7 +184,7 @@
         .contact-us {
             display: none;
             background: #f8f4e5;
-            padding: 5%;
+            padding: 12% 5% 5% 5%;
             border: 2px solid black;
             box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
             text-align: center;
@@ -320,22 +316,25 @@
         .question-title {
             font-size: 8vmin;
             text-align: center;
-            margin-top: 0;
-            margin-bottom: 3%;
+            margin: 0;
             color: #fff;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Fjalla One', sans-serif;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-            position: relative;
-            top: -40px;
-            transform: rotate(-1deg);
-            display: inline-block;
+            display: none;
             padding: 10px 20px;
             background: linear-gradient(45deg, #ff6f61, #ffa580);
             border: 2px solid #ff6f61;
             border-radius: 15px;
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            box-sizing: border-box;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-1deg);
+            z-index: 10;
         }
 
         .ingredient-container {
@@ -418,8 +417,7 @@
         }
 
         /* Page de remerciement */
-           /* Ajout pour la page de confirmation */
-           .thank-you-page {
+        .thank-you-page {
             display: none;
             text-align: center;
             padding: 20px;
@@ -481,32 +479,9 @@
             }
 
             .question-title {
-            font-size: 6vmin; /* Taille réduite pour mobile */
-            text-align: center;
-            margin: 0 auto 3%; /* Centrage et marge basse */
-            color: #fff;
-            font-family: 'Fjalla One', sans-serif;
-            font-weight: bold;
-            text-transform: uppercase;
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(45deg, #ff6f61, #ffa580);
-            border: 2px solid #ff6f61;
-            border-radius: 15px;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-            width: 90%; /* Largeur contrôlée */
-            box-sizing: border-box;
-            position: relative;
-            top: -10px; /* Ajustement du positionnement */
-            transform: rotate(-1deg);
-        }
-
-        @media (min-width: 601px) {
-            .question-title {
-                font-size: 8vmin; /* Taille originale sur desktop */
-                top: -15px;
+                font-size: 6vmin;
+                padding: 8px 15px;
             }
-        }
 
             .welcome-text {
                 top: -10px;
@@ -514,12 +489,11 @@
             }
         }
 
-
-                /* Style du bouton désactivé */
+        /* Style du bouton désactivé */
         .order-btn:disabled {
             cursor: not-allowed;
             opacity: 0.8;
-            transform: none !important; /* Désactive l'animation au hover */
+            transform: none !important;
             box-shadow: none !important;
         }
 
@@ -531,11 +505,11 @@
             cursor: wait !important;
         }
 
-            /* Nouveau style compact */
+        /* Nouveau style compact */
         .compact-btn {
-            padding: 1.5% 4% !important;  /* Réduction de 25% */
-            font-size: 3.8vmin !important;  /* Taille texte réduite */
-            min-width: 120px !important;  /* Largeur minimale */
+            padding: 1.5% 4% !important;
+            font-size: 3.8vmin !important;
+            min-width: 120px !important;
             transition: all 0.2s ease !important;
         }
 
@@ -577,38 +551,33 @@
             }
         }
 
-   
+        /* Barre de progression */
+        .progress-container {
+            width: 80%;
+            height: 15px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 0 auto;
+            display: none;
+            position: absolute;
+            bottom: 8%;
+            left: 0;
+            right: 0;
+            max-width: 400px;
+        }
 
-
-  /* Barre de progression */
-.progress-container {
-    width: 80%;
-    height: 15px;
-    background: #e0e0e0;
-    border-radius: 10px;
-    margin: 0 auto;
-    display: none;
-    position: absolute;
-    bottom: 8%;
-    left: 0;
-    right: 0;
-    max-width: 400px;
-}
-
-.progress-bar {
-    height: 100%;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #ff6f61, #ffa580);
-    width: 0%;
-    transition: width 0.5s ease;
-}
-
-
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #ff6f61, #ffa580);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
     </style>
 </head>
 <body>
     <div class="home-page">
-        <div class="logo-wrapper">  <!-- Nouveau conteneur -->
+        <div class="logo-wrapper">
             <h1>
                 <img src="titre.png" alt="Logo" class="main-logo">
             </h1>
@@ -630,6 +599,10 @@
       action="https://docs.google.com/forms/d/e/1FAIpQLSec7_Wp_tyjnlGvlaTr4Ri172SPFX117Etf8mK6v7iTr1vp0Q/formResponse" 
       method="POST"
       target="_blank">
+        
+        <!-- Titre fixe pour les questions d'ingrédients -->
+        <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+
         <!-- Questions -->
         <div class="question active first-question">
             <div class="welcome-text">
@@ -668,27 +641,24 @@
             <div class="error-message">Veuillez répondre à cette question.</div>
         </div>
 
-                <!-- Nouvelle question pour le nombre de boîtes -->
-                <div class="question">
-                    <h2 class="question-title">Combien de boîtes veux-tu ?</h2>
-                    
-                    <!-- Ajoute cette div pour l'image -->
-                    <div class="box-choice-image">
-                        <img src="imageboite.png" alt="Choix des boîtes" style="max-width: 200px; margin: 15px 0;">
-                    </div>
-                    
-                    <div class="btn-group box-quantity-btns">
-                        <button type="button" class="select-btn compact-btn" onclick="selectBoxQuantity(this, 1)">1 boîte (6,50 €)</button>
-                        <button type="button" class="select-btn compact-btn" onclick="selectBoxQuantity(this, 2)">2 boîtes (13,00 €)</button>
-                    </div>
-                    <input type="hidden" name="entry.557485338" id="entry.557485338" required>
-                    <div class="error-message">Veuillez choisir une option.</div>
-                </div>
-
-        <!-- Questions sur les ingrédients -->
+        <!-- Nouvelle question pour le nombre de boîtes -->
         <div class="question">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-           
+            <h2>Combien de boîtes veux-tu ?</h2>
+            
+            <div class="box-choice-image">
+                <img src="imageboite.png" alt="Choix des boîtes" style="max-width: 200px; margin: 15px 0;">
+            </div>
+            
+            <div class="btn-group box-quantity-btns">
+                <button type="button" class="select-btn compact-btn" onclick="selectBoxQuantity(this, 1)">1 boîte (6,50 €)</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectBoxQuantity(this, 2)">2 boîtes (13,00 €)</button>
+            </div>
+            <input type="hidden" name="entry.557485338" id="entry.557485338" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+        <!-- Questions sur les ingrédients (BOÎTE 1) -->
+        <div class="question ingredient-question">
             <div class="ingredient-container">
                 <img src="avocat.png" alt="Avocat" class="ingredient-image">
                 <label>Quel légume ?</label>
@@ -702,8 +672,7 @@
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <div class="question">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+        <div class="question ingredient-question">
             <div class="ingredient-container">
                 <img src="saumon.png" alt="Saumon" class="ingredient-image">
                 <label>Quel poisson ?</label>
@@ -717,9 +686,12 @@
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <div class="question">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-            <label>Fromage frais ?</label>
+        <div class="question ingredient-question">
+            <div class="ingredient-container">
+                <img src="fromage.png" alt="Fromage" class="ingredient-image">
+                <label>Fromage frais ?</label>
+                <img src="fromage.png" alt="Fromage" class="ingredient-image">
+            </div>
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
@@ -727,9 +699,8 @@
             <input type="hidden" name="entry.887168393" id="entry.887168393" required>
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
-
-        <div class="question">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+        
+        <div class="question ingredient-question">
             <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
             <label>Soja ?</label>
             <div class="btn-group">
@@ -742,7 +713,6 @@
         </div>
 
         <div class="question">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">Supplément livraison : <strong>+0,40 €</strong></p>
             <label>Livré ?</label>
             <div class="btn-group">
@@ -753,11 +723,8 @@
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-
-
         <!-- Questions pour la deuxième boîte -->
-        <div class="question second-box">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+        <div class="question second-box ingredient-question">
             <p class="supplement-info">2ème boîte</p>
             <div class="ingredient-container">
                 <img src="avocat.png" alt="Avocat" class="ingredient-image">
@@ -772,8 +739,7 @@
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <div class="question second-box">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+        <div class="question second-box ingredient-question">
             <p class="supplement-info">2ème boîte</p>
             <div class="ingredient-container">
                 <img src="saumon.png" alt="Saumon" class="ingredient-image">
@@ -788,10 +754,13 @@
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <div class="question second-box">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+        <div class="question second-box ingredient-question">
             <p class="supplement-info">2ème boîte</p>
-            <label>Fromage frais ?</label>
+            <div class="ingredient-container">
+                <img src="fromage.png" alt="Fromage" class="ingredient-image">
+                <label>Fromage frais ?</label>
+                <img src="fromage.png" alt="Fromage" class="ingredient-image">
+            </div>
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Oui')">Oui</button>
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Non')">Non</button>
@@ -799,9 +768,8 @@
             <input type="hidden" name="entry.516077606" id="entry.516077606">
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
-
-        <div class="question second-box">
-            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+       
+        <div class="question second-box ingredient-question">
             <p class="supplement-info">2ème boîte</p>
             <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
             <label>Soja ?</label>
@@ -841,375 +809,421 @@
             <button type="button" class="nav-btn next-btn" onclick="nextQuestion()">Suivant</button>
             <button type="submit" class="nav-btn submit-btn">Envoyer</button>
         </div>
-                <!-- Barre de progression -->
+        
+        <!-- Barre de progression -->
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
     </form>
 
     <script>
-  document.addEventListener('DOMContentLoaded', fetchStock);
+        document.addEventListener('DOMContentLoaded', fetchStock);
 
-// Variables globales
-let currentQuestion = 0;
-let boxQuantity = 1; // 1 ou 2
-const personalInfoQuestions = 3; // Nom, Téléphone, Colloc
-const box1Questions = 5; // Questions pour la boîte 1
-const box2Questions = 4; // Questions pour la boîte 2
-const allQuestions = document.querySelectorAll(".question:not(.recap-page):not(.thank-you-page)");
-const submitBtn = document.querySelector(".submit-btn");
-const nextBtn = document.querySelector(".next-btn");
+        // Variables globales
+        let currentQuestion = 0;
+        let boxQuantity = 1;
+        const personalInfoQuestions = 3;
+        const box1Questions = 5;
+        const box2Questions = 4;
+        const allQuestions = document.querySelectorAll(".question:not(.recap-page):not(.thank-you-page)");
+        const submitBtn = document.querySelector(".submit-btn");
+        const nextBtn = document.querySelector(".next-btn");
 
-// Stocker les réponses
-let responses = {
-    box1: {
-        legume: "",
-        poisson: "",
-        fromageFrais: "",
-        soja: "",
-        livre: ""
-    },
-    box2: {
-        legume: "",
-        poisson: "",
-        fromageFrais: "",
-        soja: ""
-    }
-};
-
-// Prix
-const basePrice = 6.5;
-const sojaSupplement = 0.4;
-const deliverySupplement = 0.4;
-
-// Afficher le formulaire
-function showForm() {
-    document.querySelector('.home-page').style.display = 'none';
-    document.querySelector('.contact-us').style.display = 'flex';
-}
-
-// Sélectionner le nombre de boîtes
-function selectBoxQuantity(button, quantity) {
-    boxQuantity = quantity;
-    document.getElementById('entry.557485338').value = quantity;
-    
-    let buttons = button.parentElement.querySelectorAll(".select-btn");
-    buttons.forEach(btn => btn.classList.remove("selected"));
-    button.classList.add("selected");
-    
-    const errorMessage = button.closest(".question").querySelector(".error-message");
-    errorMessage.style.display = "none";
-    
-    nextQuestion();
-}
-
-// Passer à la question suivante
-function nextQuestion() {
-    const currentQuestionElement = allQuestions[currentQuestion];
-    
-    if (!validateQuestion(currentQuestionElement)) {
-        return;
-    }
-    
-    currentQuestionElement.classList.remove("active");
-    currentQuestion++;
-    
-    // Après les infos perso = choix nombre de boîtes
-    if (currentQuestion === personalInfoQuestions) {
-        allQuestions[currentQuestion].classList.add("active");
-    } 
-    // Après choix nombre = ingrédients boîte 1
-    else if (currentQuestion === personalInfoQuestions + 1) {
-        allQuestions[currentQuestion].classList.add("active");
-    }
-    // Si 2 boîtes choisies et fini boîte 1 = passer à boîte 2
-    else if (currentQuestion === personalInfoQuestions + 1 + box1Questions && boxQuantity === 2) {
-        allQuestions[currentQuestion].classList.add("active");
-    }
-    // Si fini toutes les questions = récap
-    else if ((boxQuantity === 1 && currentQuestion >= personalInfoQuestions + 1 + box1Questions) ||
-             (boxQuantity === 2 && currentQuestion >= personalInfoQuestions + 1 + box1Questions + box2Questions)) {
-        showRecap();
-    }
-    // Sinon question suivante normale
-    else {
-        allQuestions[currentQuestion].classList.add("active");
-    }
-    
-    updateButtons();
-    updateProgressBar();
-}
-
-// Valider une question
-function validateQuestion(question) {
-    const input = question.querySelector("input, [type=hidden]");
-    const errorMessage = question.querySelector(".error-message");
-
-    if (!input.value) {
-        errorMessage.style.display = "block";
-        return false;
-    } else {
-        errorMessage.style.display = "none";
-        return true;
-    }
-}
-
-// Sélectionner une option
-function selectOption(button, inputName, value) {
-    document.getElementById(inputName).value = value;
-
-    const questionIndex = Array.from(allQuestions).indexOf(button.closest('.question'));
-    const isBox2 = questionIndex > personalInfoQuestions + box1Questions;
-
-    if (isBox2) {
-        if (inputName.includes("entry.2021454936")) {
-            responses.box2.legume = value;
-        } else if (inputName.includes("entry.819843500")) {
-            responses.box2.poisson = value;
-        } else if (inputName.includes("entry.516077606")) {
-            responses.box2.fromageFrais = value;
-        } else if (inputName.includes("entry.1450345325")) {
-            responses.box2.soja = value;
-        }
-    } else {
-        if (inputName.includes("entry.1292076072")) {
-            responses.box1.legume = value;
-        } else if (inputName.includes("entry.1726767774")) {
-            responses.box1.poisson = value;
-        } else if (inputName.includes("entry.887168393")) {
-            responses.box1.fromageFrais = value;
-        } else if (inputName.includes("entry.41252950")) {
-            responses.box1.soja = value;
-        } else if (inputName.includes("entry.554098723")) {
-            responses.box1.livre = value;
-        }
-    }
-
-    let buttons = button.parentElement.querySelectorAll(".select-btn");
-    buttons.forEach(btn => btn.classList.remove("selected"));
-    button.classList.add("selected");
-
-    const errorMessage = button.closest(".question").querySelector(".error-message");
-    errorMessage.style.display = "none";
-
-    nextQuestion();
-}
-// Mettre à jour la barre de progression
-function updateProgressBar() {
-    const progressContainer = document.querySelector('.progress-container');
-    const progressBar = document.getElementById('progressBar');
-    const recapPageActive = document.querySelector('.recap-page.active');
-    const thankYouPageActive = document.querySelector('.thank-you-page.active');
-
-    // Masquer sur les pages recap/remerciement
-    if (recapPageActive || thankYouPageActive) {
-        progressContainer.style.display = 'none';
-        return;
-    }
-
-    // Afficher et mettre à jour seulement sur les questions
-    if (currentQuestion > personalInfoQuestions) {
-        progressContainer.style.display = 'block';
-        let totalQuestions = boxQuantity === 1 
-            ? personalInfoQuestions + box1Questions 
-            : personalInfoQuestions + box1Questions + box2Questions;
-        const progress = ((currentQuestion - personalInfoQuestions) / (totalQuestions - personalInfoQuestions)) * 100;
-        progressBar.style.width = `${progress}%`;
-    } else {
-        progressContainer.style.display = 'none';
-    }
-}
-// Afficher le récapitulatif
-function showRecap() {
-    const recapPage = document.querySelector(".recap-page");
-    const recapContent = document.getElementById("recap-content");
-    const recapPrice = document.getElementById("recap-price");
-    
-    let totalPrice = basePrice;
-    if (boxQuantity === 2) totalPrice += basePrice;
-    
-    recapContent.innerHTML = `
-    <div class="recap-section">
-        <h3>Boîte 1 : 6,50 €</h3>
-        <p><strong>Légume:</strong> ${responses.box1.legume}</p>
-        <p><strong>Poisson:</strong> ${responses.box1.poisson}</p>
-        <p><strong>Fromage:</strong> ${responses.box1.fromageFrais}</p>
-        <p><strong>Soja:</strong> ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
-        <p><strong>Livraison:</strong> ${responses.box1.livre} ${responses.box1.livre === 'Oui' ? '(+0,40 €)' : ''}</p>
-        <button type="button" onclick="goToBox1()">Modifier</button>
-    </div>`;
-
-    if (boxQuantity === 2) {
-        recapContent.innerHTML += `
-        <div class="recap-section">
-            <h3>Boîte 2 : 6,50 €</h3>
-            <p><strong>Légume:</strong> ${responses.box2.legume}</p>
-            <p><strong>Poisson:</strong> ${responses.box2.poisson}</p>
-            <p><strong>Fromage:</strong> ${responses.box2.fromageFrais}</p>
-            <p><strong>Soja:</strong> ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
-            <button type="button" onclick="goToBox2()">Modifier</button>
-        </div>`;
-        
-        if (responses.box2.soja === "Sucrée" || responses.box2.soja === "Salée") totalPrice += sojaSupplement;
-    }
-
-    if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") totalPrice += sojaSupplement;
-    if (responses.box1.livre === "Oui") totalPrice += deliverySupplement;
-
-    recapPrice.innerHTML = `<h3>Total : ${totalPrice.toFixed(2)}€</h3>`;
-
-    allQuestions.forEach(q => q.classList.remove("active"));
-    recapPage.classList.add("active");
-    document.querySelector(".nav-container").style.display = "none";
-}
-
-// Modifier la boîte 1
-function goToBox1() {
-    document.querySelector(".nav-container").style.display = "flex";
-    currentQuestion = personalInfoQuestions + 1;
-    document.querySelector(".recap-page").classList.remove("active");
-    allQuestions.forEach(q => q.classList.remove('active'));
-    allQuestions[currentQuestion].classList.add("active");
-    updateButtons();
-    updateProgressBar();
-}
-
-// Modifier la boîte 2
-function goToBox2() {
-    document.querySelector(".nav-container").style.display = "flex";
-    currentQuestion = personalInfoQuestions + 1 + box1Questions;
-    document.querySelector(".recap-page").classList.remove("active");
-    allQuestions.forEach(q => q.classList.remove('active'));
-    allQuestions[currentQuestion].classList.add("active");
-    updateButtons();
-    updateProgressBar();
-}
-function confirmOrder() {
-    // 1. Valider d'abord tous les champs requis
-    let isValid = true;
-    document.querySelectorAll('[required]').forEach(field => {
-        if (!field.value) {
-            isValid = false;
-            // Trouver et afficher le message d'erreur le plus proche
-            const errorMsg = field.closest('.question')?.querySelector('.error-message');
-            if (errorMsg) errorMsg.style.display = 'block';
-        }
-    });
-    
-    if (!isValid) {
-        alert("Veuillez remplir tous les champs obligatoires");
-        return;
-    }
-
-    // 2. Afficher la page de remerciement immédiatement
-    document.querySelector(".recap-page").classList.remove("active");
-    document.querySelector(".thank-you-page").classList.add("active");
-    document.querySelector(".nav-container").style.display = "none";
-
-    // 3. Soumettre le formulaire
-    const form = document.querySelector(".contact-us");
-    
-    // Méthode 1: Envoi via fetch (recommandée)
-    try {
-        const formData = new FormData(form);
-        fetch(form.action, {
-            method: "POST",
-            body: new URLSearchParams(formData),
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
+        // Stocker les réponses
+        let responses = {
+            box1: {
+                legume: "",
+                poisson: "",
+                fromageFrais: "",
+                soja: "",
+                livre: ""
             },
-            mode: 'no-cors' // Important pour contourner les restrictions CORS
-        }).then(() => {
-            console.log("Formulaire soumis avec succès (fetch)");
-        }).catch(e => {
-            console.error("Erreur fetch:", e);
-            submitWithIframe(); // Fallback si fetch échoue
-        });
-    } catch (e) {
-        console.error("Erreur:", e);
-        submitWithIframe(); // Fallback si erreur
-    }
-}
+            box2: {
+                legume: "",
+                poisson: "",
+                fromageFrais: "",
+                soja: ""
+            }
+        };
 
-// Méthode alternative avec iframe
-function submitWithIframe() {
-    const form = document.querySelector(".contact-us");
-    const iframe = document.createElement("iframe");
-    iframe.name = "form-target-" + Date.now();
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
-    
-    // Configurer le formulaire pour cibler l'iframe
-    form.target = iframe.name;
-    
-    // Soumettre le formulaire
-    form.submit();
-    
-    // Nettoyer après 5 secondes
-    setTimeout(() => {
-        iframe.remove();
-    }, 5000);
-}
+        // Prix
+        const basePrice = 6.5;
+        const sojaSupplement = 0.4;
+        const deliverySupplement = 0.4;
 
-// Empêcher la soumission normale du formulaire
-document.querySelector(".contact-us").addEventListener("submit", function(e) {
-    e.preventDefault();
-    confirmOrder();
-});
-
-// Mettre à jour les boutons
-function updateButtons() {
-    if (document.querySelector(".recap-page").classList.contains("active")) {
-        nextBtn.style.display = "none";
-        submitBtn.style.display = "none";
-    } else {
-        const currentQuestion = document.querySelector(".question.active");
-        if (currentQuestion && (currentQuestion.querySelector(".ingredient-container") || currentQuestion.querySelector(".btn-group"))) {
-            nextBtn.style.display = "none";
-        } else {
-            nextBtn.style.display = "block";
+        // Afficher le formulaire
+        function showForm() {
+            document.querySelector('.home-page').style.display = 'none';
+            document.querySelector('.contact-us').style.display = 'flex';
         }
-        submitBtn.style.display = "none";
-    }
-}
 
-// Fonction pour vérifier le stock
-function fetchStock() {
-    const stockDisplay = document.getElementById('stock-display');
-    const orderBtn = document.querySelector('.order-btn');
-    
-    orderBtn.disabled = true;
-    orderBtn.textContent = "Chargement...";
-    stockDisplay.textContent = "Vérification du stock...";
+        // Sélectionner le nombre de boîtes
+        function selectBoxQuantity(button, quantity) {
+            boxQuantity = quantity;
+            document.getElementById('entry.557485338').value = quantity;
+            
+            let buttons = button.parentElement.querySelectorAll(".select-btn");
+            buttons.forEach(btn => btn.classList.remove("selected"));
+            button.classList.add("selected");
+            
+            const errorMessage = button.closest(".question").querySelector(".error-message");
+            errorMessage.style.display = "none";
+            
+            nextQuestion();
+        }
 
-    fetch('https://script.google.com/macros/s/AKfycbwHGDDnZFpdeaKeH-R1x_Ws2Hm8-WFtyYma7RB-vo3dKc4f3t4cs-aBfm4U455_sckgXA/exec')
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                stockDisplay.textContent = `Boîtes disponibles : ${data.stock}`;
+        // Passer à la question suivante
+
+        function nextQuestion() {
+            const currentQuestionElement = allQuestions[currentQuestion];
+            const ingredientTitle = document.querySelector('.question-title');
+            
+            // 1. Gestion du titre - Afficher uniquement sur les questions avec ingredient-container
+            if (currentQuestionElement.querySelector('.ingredient-container')) {
+                ingredientTitle.style.display = 'block';
                 
-                if (data.stock <= 0) {
-                    orderBtn.disabled = true;
-                    orderBtn.textContent = "RUPTURE DE STOCK";
-                    orderBtn.style.background = "#e74c3c";
-                } else {
-                    orderBtn.disabled = false;
-                    orderBtn.textContent = "Commander";
-                    orderBtn.style.background = "";
+                // Positionner le titre 5px sous le haut du cadre beige (comme demandé)
+                ingredientTitle.style.top = '5px';
+                ingredientTitle.style.left = '50%';
+                ingredientTitle.style.transform = 'translateX(-50%) rotate(-1deg)';
+            } else {
+                ingredientTitle.style.display = 'none';
+            }
+            
+            // 2. Validation de la question actuelle
+            if (!validateQuestion(currentQuestionElement)) {
+                return; // Bloquer si la question n'est pas valide
+            }
+            
+            // 3. Masquer la question actuelle
+            currentQuestionElement.classList.remove("active");
+            
+            // 4. Calcul de la prochaine question
+            currentQuestion++;
+            
+            // 5. Gestion du flux spécial
+            if (currentQuestion === personalInfoQuestions) {
+                // Après infos perso → choix nombre de boîtes
+                allQuestions[currentQuestion].classList.add("active");
+            } 
+            else if (currentQuestion === personalInfoQuestions + 1) {
+                // Après choix nombre → premier ingrédient (légume)
+                allQuestions[currentQuestion].classList.add("active");
+            }
+            else if (currentQuestion === personalInfoQuestions + 1 + box1Questions && boxQuantity === 2) {
+                // Si 2 boîtes → passer à la boîte 2
+                allQuestions[currentQuestion].classList.add("active");
+            }
+            else if ((boxQuantity === 1 && currentQuestion >= personalInfoQuestions + 1 + box1Questions) ||
+                    (boxQuantity === 2 && currentQuestion >= personalInfoQuestions + 1 + box1Questions + box2Questions)) {
+                // Si fin des questions → afficher récap
+                showRecap();
+            }
+            else {
+                // Cas normal → question suivante
+                allQuestions[currentQuestion].classList.add("active");
+            }
+            
+            // 6. Mise à jour de l'interface
+            updateButtons();
+            updateProgressBar();
+        }
+  
+        // Valider une question
+        function validateQuestion(question) {
+            const input = question.querySelector("input, [type=hidden]");
+            const errorMessage = question.querySelector(".error-message");
+
+            if (!input.value) {
+                errorMessage.style.display = "block";
+                return false;
+            } else {
+                errorMessage.style.display = "none";
+                return true;
+            }
+        }
+
+        // Sélectionner une option
+        function selectOption(button, inputName, value) {
+            document.getElementById(inputName).value = value;
+
+            const questionIndex = Array.from(allQuestions).indexOf(button.closest('.question'));
+            const isBox2 = questionIndex > personalInfoQuestions + box1Questions;
+
+            if (isBox2) {
+                if (inputName.includes("entry.2021454936")) {
+                    responses.box2.legume = value;
+                } else if (inputName.includes("entry.819843500")) {
+                    responses.box2.poisson = value;
+                } else if (inputName.includes("entry.516077606")) {
+                    responses.box2.fromageFrais = value;
+                } else if (inputName.includes("entry.1450345325")) {
+                    responses.box2.soja = value;
+                }
+            } else {
+                if (inputName.includes("entry.1292076072")) {
+                    responses.box1.legume = value;
+                } else if (inputName.includes("entry.1726767774")) {
+                    responses.box1.poisson = value;
+                } else if (inputName.includes("entry.887168393")) {
+                    responses.box1.fromageFrais = value;
+                } else if (inputName.includes("entry.41252950")) {
+                    responses.box1.soja = value;
+                } else if (inputName.includes("entry.554098723")) {
+                    responses.box1.livre = value;
                 }
             }
-        })
-        .catch(error => {
-            console.error('Erreur:', error);
-            stockDisplay.textContent = 'Erreur de chargement';
-            orderBtn.disabled = false;
-            orderBtn.textContent = "Commander (hors ligne)";
+
+            let buttons = button.parentElement.querySelectorAll(".select-btn");
+            buttons.forEach(btn => btn.classList.remove("selected"));
+            button.classList.add("selected");
+
+            const errorMessage = button.closest(".question").querySelector(".error-message");
+            errorMessage.style.display = "none";
+
+            nextQuestion();
+        }
+
+        // Mettre à jour la barre de progression
+        function updateProgressBar() {
+            const progressContainer = document.querySelector('.progress-container');
+            const progressBar = document.getElementById('progressBar');
+            const recapPageActive = document.querySelector('.recap-page.active');
+            const thankYouPageActive = document.querySelector('.thank-you-page.active');
+
+            if (recapPageActive || thankYouPageActive) {
+                progressContainer.style.display = 'none';
+                return;
+            }
+
+            if (currentQuestion > personalInfoQuestions) {
+                progressContainer.style.display = 'block';
+                let totalQuestions = boxQuantity === 1 
+                    ? personalInfoQuestions + box1Questions 
+                    : personalInfoQuestions + box1Questions + box2Questions;
+                const progress = ((currentQuestion - personalInfoQuestions) / (totalQuestions - personalInfoQuestions)) * 100;
+                progressBar.style.width = `${progress}%`;
+            } else {
+                progressContainer.style.display = 'none';
+            }
+        }
+
+        // Afficher le récapitulatif
+        function showRecap() {
+            const recapPage = document.querySelector(".recap-page");
+            const recapContent = document.getElementById("recap-content");
+            const recapPrice = document.getElementById("recap-price");
+            
+            // Masquer le titre
+            document.querySelector('.question-title').style.display = 'none';
+            
+            let totalPrice = basePrice;
+            if (boxQuantity === 2) totalPrice += basePrice;
+            
+            recapContent.innerHTML = `
+            <div class="recap-section">
+                <h3>Boîte 1 : 6,50 €</h3>
+                <p><strong>Légume:</strong> ${responses.box1.legume}</p>
+                <p><strong>Poisson:</strong> ${responses.box1.poisson}</p>
+                <p><strong>Fromage:</strong> ${responses.box1.fromageFrais}</p>
+                <p><strong>Soja:</strong> ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
+                <p><strong>Livraison:</strong> ${responses.box1.livre} ${responses.box1.livre === 'Oui' ? '(+0,40 €)' : ''}</p>
+                <button type="button" onclick="goToBox1()">Modifier</button>
+            </div>`;
+
+            if (boxQuantity === 2) {
+                recapContent.innerHTML += `
+                <div class="recap-section">
+                    <h3>Boîte 2 : 6,50 €</h3>
+                    <p><strong>Légume:</strong> ${responses.box2.legume}</p>
+                    <p><strong>Poisson:</strong> ${responses.box2.poisson}</p>
+                    <p><strong>Fromage:</strong> ${responses.box2.fromageFrais}</p>
+                    <p><strong>Soja:</strong> ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
+                    <button type="button" onclick="goToBox2()">Modifier</button>
+                </div>`;
+                
+                if (responses.box2.soja === "Sucrée" || responses.box2.soja === "Salée") totalPrice += sojaSupplement;
+            }
+
+            if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") totalPrice += sojaSupplement;
+            if (responses.box1.livre === "Oui") totalPrice += deliverySupplement;
+
+            recapPrice.innerHTML = `<h3>Total : ${totalPrice.toFixed(2)}€</h3>`;
+
+            allQuestions.forEach(q => q.classList.remove("active"));
+            recapPage.classList.add("active");
+            document.querySelector(".nav-container").style.display = "none";
+        }
+
+        // Modifier la boîte 1
+        function goToBox1() {
+            // Masquer le titre immédiatement
+            document.querySelector('.question-title').style.display = 'none';
+            
+            // Réafficher la navigation
+            document.querySelector(".nav-container").style.display = "flex";
+            
+            // Positionner sur la première question d'ingrédients (boîte 1)
+            currentQuestion = personalInfoQuestions + 1;
+            
+            // Masquer la page récap
+            document.querySelector(".recap-page").classList.remove("active");
+            
+            // Masquer toutes les questions
+            allQuestions.forEach(q => q.classList.remove('active'));
+            
+            // Afficher la question courante
+            allQuestions[currentQuestion].classList.add("active");
+            
+            // Mettre à jour l'interface
+            updateButtons();
+            updateProgressBar();
+        }
+
+        // Modifier la boîte 2
+        function goToBox2() {
+            // Masquer le titre immédiatement
+            document.querySelector('.question-title').style.display = 'none';
+            
+            // Réafficher la navigation
+            document.querySelector(".nav-container").style.display = "flex";
+            
+            // Positionner sur la première question d'ingrédients (boîte 2)
+            currentQuestion = personalInfoQuestions + 1 + box1Questions;
+            
+            // Masquer la page récap
+            document.querySelector(".recap-page").classList.remove("active");
+            
+            // Masquer toutes les questions
+            allQuestions.forEach(q => q.classList.remove('active'));
+            
+            // Afficher la question courante
+            allQuestions[currentQuestion].classList.add("active");
+            
+            // Mettre à jour l'interface
+            updateButtons();
+            updateProgressBar();
+        }
+
+        function confirmOrder() {
+            // 1. Valider d'abord tous les champs requis
+            let isValid = true;
+            document.querySelectorAll('[required]').forEach(field => {
+                if (!field.value) {
+                    isValid = false;
+                    const errorMsg = field.closest('.question')?.querySelector('.error-message');
+                    if (errorMsg) errorMsg.style.display = 'block';
+                }
+            });
+            
+            if (!isValid) {
+                alert("Veuillez remplir tous les champs obligatoires");
+                return;
+            }
+
+            // 2. Afficher la page de remerciement immédiatement
+            document.querySelector(".recap-page").classList.remove("active");
+            document.querySelector(".thank-you-page").classList.add("active");
+            document.querySelector(".nav-container").style.display = "none";
+
+            // 3. Soumettre le formulaire
+            const form = document.querySelector(".contact-us");
+            
+            try {
+                const formData = new FormData(form);
+                fetch(form.action, {
+                    method: "POST",
+                    body: new URLSearchParams(formData),
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    mode: 'no-cors'
+                }).then(() => {
+                    console.log("Formulaire soumis avec succès (fetch)");
+                }).catch(e => {
+                    console.error("Erreur fetch:", e);
+                    submitWithIframe();
+                });
+            } catch (e) {
+                console.error("Erreur:", e);
+                submitWithIframe();
+            }
+        }
+
+        // Méthode alternative avec iframe
+        function submitWithIframe() {
+            const form = document.querySelector(".contact-us");
+            const iframe = document.createElement("iframe");
+            iframe.name = "form-target-" + Date.now();
+            iframe.style.display = "none";
+            document.body.appendChild(iframe);
+            
+            form.target = iframe.name;
+            form.submit();
+            
+            setTimeout(() => {
+                iframe.remove();
+            }, 5000);
+        }
+
+        // Empêcher la soumission normale du formulaire
+        document.querySelector(".contact-us").addEventListener("submit", function(e) {
+            e.preventDefault();
+            confirmOrder();
         });
-}
 
-// Initialiser
-updateButtons();
+        // Mettre à jour les boutons
+        function updateButtons() {
+            if (document.querySelector(".recap-page").classList.contains("active")) {
+                nextBtn.style.display = "none";
+                submitBtn.style.display = "none";
+            } else {
+                const currentQuestion = document.querySelector(".question.active");
+                if (currentQuestion && (currentQuestion.querySelector(".ingredient-container") || currentQuestion.querySelector(".btn-group"))) {
+                    nextBtn.style.display = "none";
+                } else {
+                    nextBtn.style.display = "block";
+                }
+                submitBtn.style.display = "none";
+            }
+        }
 
+        // Fonction pour vérifier le stock
+        function fetchStock() {
+            const stockDisplay = document.getElementById('stock-display');
+            const orderBtn = document.querySelector('.order-btn');
+            
+            orderBtn.disabled = true;
+            orderBtn.textContent = "Chargement...";
+            stockDisplay.textContent = "Vérification du stock...";
+
+            fetch('https://script.google.com/macros/s/AKfycbwHGDDnZFpdeaKeH-R1x_Ws2Hm8-WFtyYma7RB-vo3dKc4f3t4cs-aBfm4U455_sckgXA/exec')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        stockDisplay.textContent = `Boîtes disponibles : ${data.stock}`;
+                        
+                        if (data.stock <= 0) {
+                            orderBtn.disabled = true;
+                            orderBtn.textContent = "RUPTURE DE STOCK";
+                            orderBtn.style.background = "#e74c3c";
+                        } else {
+                            orderBtn.disabled = false;
+                            orderBtn.textContent = "Commander";
+                            orderBtn.style.background = "";
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    stockDisplay.textContent = 'Erreur de chargement';
+                    orderBtn.disabled = false;
+                    orderBtn.textContent = "Commander (hors ligne)";
+                });
+        }
+
+        // Initialiser
+        updateButtons();
     </script>
 </body>
 </html>
