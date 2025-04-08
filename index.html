@@ -130,13 +130,13 @@
 
 /* Bouton de commande */
 .home-page .order-btn {
-    position: absolute;
-    bottom: 20px; /* Position fixe depuis le bas */
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative; /* Changé de absolute à relative */
+    bottom: auto; /* Supprimé */
+    left: auto; /* Supprimé */
+    transform: none; /* Supprimé */
     width: 80%;
     max-width: 300px;
-    padding: 2% 5%;
+    padding: 12px 20px; /* Utilisez des valeurs fixes plutôt que des pourcentages */
     font-size: 4vmin;
     background: #ff6f61;
     color: white;
@@ -145,7 +145,8 @@
     transition: 0.2s all ease-in-out;
     box-shadow: 3px 3px 1px black;
     border-radius: 10px;
-    margin-top: 0 !important;
+    margin: 20px auto 0; /* Marge automatique sur les côtés pour centrer */
+    display: block; /* Pour que la marge auto fonctionne */
 }
 
 .home-page .order-btn:hover {
@@ -177,17 +178,6 @@
             margin-bottom: 10%;
         }
 
-        .home-page .order-btn {
-            padding: 5% 10%;
-            font-size: 5vmin;
-            background: #ff6f61;
-            color: white;
-            border: 2px solid black;
-            cursor: pointer;
-            transition: 0.2s all ease-in-out;
-            box-shadow: 3px 3px 1px black;
-            border-radius: 10px;
-        }
 
         .home-page .order-btn:hover {
             background: black;
