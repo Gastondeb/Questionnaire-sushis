@@ -98,30 +98,43 @@
             transform: translate(-50%, -50%);
         }
 
-        .home-page h1 {
-            font-size: 8vmin;
-            margin-bottom: 5%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
 
-        .home-page h1 img {
-            width: 80px;
-            height: auto;
-            border-radius: 10px;
-            opacity: 0.8;
-        }
 
-        .home-page h1 img:first-child {
-            transform: rotate(-5deg);
-        }
+/* Supprimez tous les anciens styles .home-page h1 */
+.logo-wrapper {
+    flex: 0 0 auto;
+    margin-bottom: 2%; /* Réduit la marge basse */
+    max-height: 25vh; /* Ajuste la hauteur max */
+    overflow: visible;
+    position: relative; /* Nouveau */
+}
 
-        .home-page h1 img:last-child {
-            transform: rotate(5deg);
-        }
+.main-logo {
+    height: 18vmin; /* Taille réduite */
+    width: auto;
+    max-width: 80vw; /* Largeur maximale réduite */
+    object-fit: contain;
+    transform: scale(2) translateY(-10%); /* Remonte l'image de 10% */
+    transform-origin: center top;
+    display: block; /* Nouveau */
+    margin: 0 auto; /* Centre l'image */
+}
 
+.home-page {
+    padding-bottom: 20px; /* Garde le bouton dans le cadre */
+}
+
+/* Ajustements mobile */
+@media (max-width: 600px) {
+    .main-logo {
+        height: 16vmin;
+        transform: scale(1) translateY(-5%); /* Adaptation mobile */
+    }
+    .logo-wrapper {
+        margin-bottom: 1%; /* Réduction supplémentaire */
+    }
+}
+            
         .home-page p {
             font-size: 4vmin;
             margin-bottom: 10%;
@@ -537,6 +550,9 @@
             }
         }
 
+   
+
+
   /* Barre de progression */
 .progress-container {
     width: 80%;
@@ -560,15 +576,16 @@
     transition: width 0.5s ease;
 }
 
+
     </style>
 </head>
 <body>
     <div class="home-page">
-        <h1>
-            <img src="pagegarde1.png" alt="Sushi">
-            Sushicam
-            <img src="pagegarde2.png" alt="Sushi">
-        </h1>
+        <div class="logo-wrapper">  <!-- Nouveau conteneur -->
+            <h1>
+                <img src="titre.png" alt="Logo" class="main-logo">
+            </h1>
+        </div>
         <p>
             Tous les samedis commandez et decouvrez mes makis frais, préparés avec soin et des ingrédients de qualité, à des prix étudiants imbattables. Commandez vite, les places sont limitées !
         </p>
