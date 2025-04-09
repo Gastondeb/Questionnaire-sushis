@@ -322,7 +322,7 @@
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-            display: none;
+            display: block;
             padding: 10px 20px;
             background: linear-gradient(45deg, #ff6f61, #ffa580);
             border: 2px solid #ff6f61;
@@ -331,7 +331,7 @@
             width: 90%;
             box-sizing: border-box;
             position: fixed;
-            top: 20px;
+            top: 15px; /* Changé de 5px à 15px comme demandé */
             left: 50%;
             transform: translateX(-50%) rotate(-1deg);
             z-index: 10;
@@ -481,6 +481,7 @@
             .question-title {
                 font-size: 6vmin;
                 padding: 8px 15px;
+                top: 15px; /* Même modification pour mobile */
             }
 
             .welcome-text {
@@ -659,6 +660,7 @@
 
         <!-- Questions sur les ingrédients (BOÎTE 1) -->
         <div class="question ingredient-question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <div class="ingredient-container">
                 <img src="avocat.png" alt="Avocat" class="ingredient-image">
                 <label>Quel légume ?</label>
@@ -673,6 +675,7 @@
         </div>
 
         <div class="question ingredient-question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <div class="ingredient-container">
                 <img src="saumon.png" alt="Saumon" class="ingredient-image">
                 <label>Quel poisson ?</label>
@@ -687,6 +690,7 @@
         </div>
 
         <div class="question ingredient-question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <div class="ingredient-container">
                 <img src="fromage.png" alt="Fromage" class="ingredient-image">
                 <label>Fromage frais ?</label>
@@ -701,6 +705,7 @@
         </div>
         
         <div class="question ingredient-question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
             <label>Soja ?</label>
             <div class="btn-group">
@@ -713,6 +718,7 @@
         </div>
 
         <div class="question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">Supplément livraison : <strong>+0,40 €</strong></p>
             <label>Livré ?</label>
             <div class="btn-group">
@@ -725,6 +731,7 @@
 
         <!-- Questions pour la deuxième boîte -->
         <div class="question second-box ingredient-question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">2ème boîte</p>
             <div class="ingredient-container">
                 <img src="avocat.png" alt="Avocat" class="ingredient-image">
@@ -740,6 +747,7 @@
         </div>
 
         <div class="question second-box ingredient-question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">2ème boîte</p>
             <div class="ingredient-container">
                 <img src="saumon.png" alt="Saumon" class="ingredient-image">
@@ -755,6 +763,7 @@
         </div>
 
         <div class="question second-box ingredient-question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">2ème boîte</p>
             <div class="ingredient-container">
                 <img src="fromage.png" alt="Fromage" class="ingredient-image">
@@ -770,6 +779,7 @@
         </div>
        
         <div class="question second-box ingredient-question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">2ème boîte</p>
             <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
             <label>Soja ?</label>
@@ -875,59 +885,48 @@
         // Passer à la question suivante
 
         function nextQuestion() {
-            const currentQuestionElement = allQuestions[currentQuestion];
-            const ingredientTitle = document.querySelector('.question-title');
-            
-            // 1. Gestion du titre - Afficher uniquement sur les questions avec ingredient-container
-            if (currentQuestionElement.querySelector('.ingredient-container')) {
-                ingredientTitle.style.display = 'block';
-                
-                // Positionner le titre 5px sous le haut du cadre beige (comme demandé)
-                ingredientTitle.style.top = '5px';
-                ingredientTitle.style.left = '50%';
-                ingredientTitle.style.transform = 'translateX(-50%) rotate(-1deg)';
-            } else {
-                ingredientTitle.style.display = 'none';
-            }
-            
-            // 2. Validation de la question actuelle
-            if (!validateQuestion(currentQuestionElement)) {
-                return; // Bloquer si la question n'est pas valide
-            }
-            
-            // 3. Masquer la question actuelle
-            currentQuestionElement.classList.remove("active");
-            
-            // 4. Calcul de la prochaine question
-            currentQuestion++;
-            
-            // 5. Gestion du flux spécial
-            if (currentQuestion === personalInfoQuestions) {
-                // Après infos perso → choix nombre de boîtes
-                allQuestions[currentQuestion].classList.add("active");
-            } 
-            else if (currentQuestion === personalInfoQuestions + 1) {
-                // Après choix nombre → premier ingrédient (légume)
-                allQuestions[currentQuestion].classList.add("active");
-            }
-            else if (currentQuestion === personalInfoQuestions + 1 + box1Questions && boxQuantity === 2) {
-                // Si 2 boîtes → passer à la boîte 2
-                allQuestions[currentQuestion].classList.add("active");
-            }
-            else if ((boxQuantity === 1 && currentQuestion >= personalInfoQuestions + 1 + box1Questions) ||
-                    (boxQuantity === 2 && currentQuestion >= personalInfoQuestions + 1 + box1Questions + box2Questions)) {
-                // Si fin des questions → afficher récap
-                showRecap();
-            }
-            else {
-                // Cas normal → question suivante
-                allQuestions[currentQuestion].classList.add("active");
-            }
-            
-            // 6. Mise à jour de l'interface
-            updateButtons();
-            updateProgressBar();
-        }
+    const currentQuestionElement = allQuestions[currentQuestion];
+    const ingredientTitle = document.querySelector('.question-title');
+    
+    // Toujours afficher le titre pour les questions d'ingrédients
+    if (currentQuestionElement.classList.contains('ingredient-question')) {
+        ingredientTitle.style.display = 'block';
+        ingredientTitle.style.top = '15px';
+        ingredientTitle.style.left = '50%';
+        ingredientTitle.style.transform = 'translateX(-50%) rotate(-1deg)';
+    } else {
+        // Cacher pour les autres questions
+        ingredientTitle.style.display = 'none';
+    }
+    
+    // Le reste de la fonction reste inchangé...
+    if (!validateQuestion(currentQuestionElement)) {
+        return;
+    }
+    
+    currentQuestionElement.classList.remove("active");
+    currentQuestion++;
+    
+    if (currentQuestion === personalInfoQuestions) {
+        allQuestions[currentQuestion].classList.add("active");
+    } 
+    else if (currentQuestion === personalInfoQuestions + 1) {
+        allQuestions[currentQuestion].classList.add("active");
+    }
+    else if (currentQuestion === personalInfoQuestions + 1 + box1Questions && boxQuantity === 2) {
+        allQuestions[currentQuestion].classList.add("active");
+    }
+    else if ((boxQuantity === 1 && currentQuestion >= personalInfoQuestions + 1 + box1Questions) ||
+            (boxQuantity === 2 && currentQuestion >= personalInfoQuestions + 1 + box1Questions + box2Questions)) {
+        showRecap();
+    }
+    else {
+        allQuestions[currentQuestion].classList.add("active");
+    }
+    
+    updateButtons();
+    updateProgressBar();
+}
   
         // Valider une question
         function validateQuestion(question) {
