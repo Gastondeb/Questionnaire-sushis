@@ -331,7 +331,7 @@
             width: 90%;
             box-sizing: border-box;
             position: fixed;
-            top: 15px; /* Changé de 5px à 15px comme demandé */
+            top: 15px;
             left: 50%;
             transform: translateX(-50%) rotate(-1deg);
             z-index: 10;
@@ -481,7 +481,7 @@
             .question-title {
                 font-size: 6vmin;
                 padding: 8px 15px;
-                top: 15px; /* Même modification pour mobile */
+                top: 15px;
             }
 
             .welcome-text {
@@ -574,6 +574,12 @@
             width: 0%;
             transition: width 0.5s ease;
         }
+        /* Style personnalisé pour les images de fromage */
+        .fromage-image {
+            width: 55px !important; /* Taille réduite, ajustez selon vos besoins */
+            height: auto;
+            transform: scale(0.8); /* Réduction supplémentaire */
+        }
     </style>
 </head>
 <body>
@@ -604,7 +610,7 @@
         <!-- Titre fixe pour les questions d'ingrédients -->
         <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
 
-        <!-- Questions -->
+        <!-- Questions d'informations personnelles (SANS titre) -->
         <div class="question active first-question">
             <div class="welcome-text">
                 Avant de te préparer tes sushis sur mesure, on a besoin de quelques infos !
@@ -658,7 +664,7 @@
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <!-- Questions sur les ingrédients (BOÎTE 1) -->
+        <!-- Questions sur les ingrédients (BOÎTE 1) - AVEC titre -->
         <div class="question ingredient-question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <div class="ingredient-container">
@@ -692,9 +698,9 @@
         <div class="question ingredient-question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <div class="ingredient-container">
-                <img src="fromage.png" alt="Fromage" class="ingredient-image">
+                <img src="fromage.png" alt="Fromage" class="ingredient-image fromage-image">
                 <label>Fromage frais ?</label>
-                <img src="fromage.png" alt="Fromage" class="ingredient-image">
+                <img src="fromage.png" alt="Fromage" class="ingredient-image fromage-image">
             </div>
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
@@ -720,16 +726,18 @@
         <div class="question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">Supplément livraison : <strong>+0,40 €</strong></p>
-            <label>Livré ?</label>
+            <label>Comment souhaites-tu récupérer ta commande ?</label>
             <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Oui')">Oui</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Non')">Non</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Livraison (+0,40€)')">Livraison chez moi (+0,40€)</button>
+                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.554098723', 'Retrait')">Je viens la chercher</button>
             </div>
             <input type="hidden" name="entry.554098723" id="entry.554098723" required>
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <!-- Questions pour la deuxième boîte -->
+   
+
+        <!-- Questions pour la deuxième boîte - AVEC titre -->
         <div class="question second-box ingredient-question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">2ème boîte</p>
@@ -766,9 +774,9 @@
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">2ème boîte</p>
             <div class="ingredient-container">
-                <img src="fromage.png" alt="Fromage" class="ingredient-image">
+                <img src="fromage.png" alt="Fromage" class="ingredient-image fromage-image">
                 <label>Fromage frais ?</label>
-                <img src="fromage.png" alt="Fromage" class="ingredient-image">
+                <img src="fromage.png" alt="Fromage" class="ingredient-image fromage-image">
             </div>
             <div class="btn-group">
                 <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Oui')">Oui</button>
@@ -827,7 +835,21 @@
     </form>
 
     <script>
-        document.addEventListener('DOMContentLoaded', fetchStock);
+        document.addEventListener('DOMContentLoaded', function() {
+        fetchStock();
+        initializeUI(); // Ajoutez un appel à une nouvelle fonction
+    });
+
+    // Ajouter cette nouvelle fonction dans votre section <script>
+function initializeUI() {
+    // Masquer le titre au chargement initial
+    const titleElement = document.querySelector('.question-title');
+    if (titleElement) {
+        titleElement.style.display = 'none';
+    }
+    
+    // Vous pouvez ajouter ici d'autres initialisations d'interface si nécessaire
+}
 
         // Variables globales
         let currentQuestion = 0;
@@ -884,49 +906,48 @@
 
         // Passer à la question suivante
 
+
+        // Passer à la question suivante
         function nextQuestion() {
-    const currentQuestionElement = allQuestions[currentQuestion];
-    const ingredientTitle = document.querySelector('.question-title');
-    
-    // Toujours afficher le titre pour les questions d'ingrédients
-    if (currentQuestionElement.classList.contains('ingredient-question')) {
-        ingredientTitle.style.display = 'block';
-        ingredientTitle.style.top = '15px';
-        ingredientTitle.style.left = '50%';
-        ingredientTitle.style.transform = 'translateX(-50%) rotate(-1deg)';
-    } else {
-        // Cacher pour les autres questions
-        ingredientTitle.style.display = 'none';
-    }
-    
-    // Le reste de la fonction reste inchangé...
-    if (!validateQuestion(currentQuestionElement)) {
-        return;
-    }
-    
-    currentQuestionElement.classList.remove("active");
-    currentQuestion++;
-    
-    if (currentQuestion === personalInfoQuestions) {
-        allQuestions[currentQuestion].classList.add("active");
-    } 
-    else if (currentQuestion === personalInfoQuestions + 1) {
-        allQuestions[currentQuestion].classList.add("active");
-    }
-    else if (currentQuestion === personalInfoQuestions + 1 + box1Questions && boxQuantity === 2) {
-        allQuestions[currentQuestion].classList.add("active");
-    }
-    else if ((boxQuantity === 1 && currentQuestion >= personalInfoQuestions + 1 + box1Questions) ||
-            (boxQuantity === 2 && currentQuestion >= personalInfoQuestions + 1 + box1Questions + box2Questions)) {
-        showRecap();
-    }
-    else {
-        allQuestions[currentQuestion].classList.add("active");
-    }
-    
-    updateButtons();
-    updateProgressBar();
-}
+            const currentQuestionElement = allQuestions[currentQuestion];
+            const ingredientTitle = document.querySelector('.question-title');
+            
+            // Afficher uniquement pour les questions avec la classe ingredient-question
+            const nextQuestionElement = allQuestions[currentQuestion + 1];
+            if (nextQuestionElement && nextQuestionElement.classList.contains('ingredient-question')) {
+                ingredientTitle.style.display = 'block';
+                ingredientTitle.style.top = '15px';
+            } else {
+                ingredientTitle.style.display = 'none';
+            }
+            
+            if (!validateQuestion(currentQuestionElement)) {
+                return;
+            }
+            
+            currentQuestionElement.classList.remove("active");
+            currentQuestion++;
+            
+            if (currentQuestion === personalInfoQuestions) {
+                allQuestions[currentQuestion].classList.add("active");
+            } 
+            else if (currentQuestion === personalInfoQuestions + 1) {
+                allQuestions[currentQuestion].classList.add("active");
+            }
+            else if (currentQuestion === personalInfoQuestions + 1 + box1Questions && boxQuantity === 2) {
+                allQuestions[currentQuestion].classList.add("active");
+            }
+            else if ((boxQuantity === 1 && currentQuestion >= personalInfoQuestions + 1 + box1Questions) ||
+                    (boxQuantity === 2 && currentQuestion >= personalInfoQuestions + 1 + box1Questions + box2Questions)) {
+                showRecap();
+            }
+            else {
+                allQuestions[currentQuestion].classList.add("active");
+            }
+            
+            updateButtons();
+            updateProgressBar();
+        }
   
         // Valider une question
         function validateQuestion(question) {
@@ -949,7 +970,8 @@
             const questionIndex = Array.from(allQuestions).indexOf(button.closest('.question'));
             const isBox2 = questionIndex > personalInfoQuestions + box1Questions;
 
-            if (isBox2) {
+   
+                if (isBox2) {
                 if (inputName.includes("entry.2021454936")) {
                     responses.box2.legume = value;
                 } else if (inputName.includes("entry.819843500")) {
@@ -1020,15 +1042,15 @@
             if (boxQuantity === 2) totalPrice += basePrice;
             
             recapContent.innerHTML = `
-            <div class="recap-section">
-                <h3>Boîte 1 : 6,50 €</h3>
-                <p><strong>Légume:</strong> ${responses.box1.legume}</p>
-                <p><strong>Poisson:</strong> ${responses.box1.poisson}</p>
-                <p><strong>Fromage:</strong> ${responses.box1.fromageFrais}</p>
-                <p><strong>Soja:</strong> ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
-                <p><strong>Livraison:</strong> ${responses.box1.livre} ${responses.box1.livre === 'Oui' ? '(+0,40 €)' : ''}</p>
-                <button type="button" onclick="goToBox1()">Modifier</button>
-            </div>`;
+                <div class="recap-section">
+                    <h3>Boîte 1 : 6,50 €</h3>
+                    <p><strong>Légume:</strong> ${responses.box1.legume}</p>
+                    <p><strong>Poisson:</strong> ${responses.box1.poisson}</p>
+                    <p><strong>Fromage:</strong> ${responses.box1.fromageFrais}</p>
+                    <p><strong>Soja:</strong> ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
+                    <p><strong>Récupération:</strong> ${responses.box1.livre}</p>
+                    <button type="button" onclick="goToBox1()">Modifier</button>
+                </div>`;
 
             if (boxQuantity === 2) {
                 recapContent.innerHTML += `
@@ -1044,8 +1066,9 @@
                 if (responses.box2.soja === "Sucrée" || responses.box2.soja === "Salée") totalPrice += sojaSupplement;
             }
 
+            // Dans la fonction showRecap()
             if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") totalPrice += sojaSupplement;
-            if (responses.box1.livre === "Oui") totalPrice += deliverySupplement;
+            if (responses.box1.livre === "Livraison (+0,40€)") totalPrice += deliverySupplement;
 
             recapPrice.innerHTML = `<h3>Total : ${totalPrice.toFixed(2)}€</h3>`;
 
