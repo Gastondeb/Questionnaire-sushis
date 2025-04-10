@@ -201,7 +201,7 @@
             max-width: 300px;
             padding: 12px 20px;
             font-size: 4vmin;
-            background: #ff6f61;
+            background: #ffa580; 
             color: white;
             border: 2px solid black;
             cursor: pointer;
@@ -218,6 +218,17 @@
         }
 
         /* ----- Version Mobile ----- */
+
+        /* Règle globale pour uniformiser tous les boutons */
+.order-btn, .select-btn, .nav-btn, .delivery-btn-vertical, .compact-btn {
+    background: #ffa580 !important;
+}
+
+/* Garder le style pour les boutons sélectionnés */
+.select-btn.selected {
+    background: black !important;
+    color: white !important;
+}
 
 /* Adaptation responsive */
 @media (max-width: 600px) {
@@ -309,24 +320,23 @@
         }
 
         .select-btn {
-            padding: 4% 6%;
-            background: #ff6f61;
-            color: white;
-            font-weight: bold;
-            border: 2px solid black;
-            cursor: pointer;
-            transition: 0.2s all ease-in-out;
-            box-shadow: 3px 3px 1px black;
-            font-size: 4vmin;
-            border-radius: 15px;
-            min-width: 120px;
-        }
+    padding: 4% 6%;
+    background: #ffa580; /* Changé en orange pour toutes les questions */
+    color: white;
+    font-weight: bold;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    box-shadow: 3px 3px 1px black;
+    font-size: 4vmin;
+    border-radius: 15px;
+    min-width: 120px;
+}
 
-        .select-btn.selected {
-            background: black;
-            color: white;
-        }
-
+.select-btn.selected {
+    background: black;
+    color: white;
+}
         .nav-container {
             display: flex;
             justify-content: center;
@@ -337,10 +347,11 @@
             width: 90%;
         }
 
+        /* Style pour les boutons de navigation également */
         .nav-btn {
             padding: 3% 6%;
             font-size: 4vmin;
-            background: #ffa580;
+            background: #ffa580; /* Uniformisé avec l'orange */
             border: 1px solid black;
             cursor: pointer;
             transition: 0.2s all ease-in-out;
@@ -769,13 +780,18 @@
             <div class="error-message">Veuillez répondre à cette question.</div>
         </div>
 
+        
         <!-- Nouvelle question pour le nombre de boîtes -->
         <div class="question">
             <h2>Combien de boîtes veux-tu ?</h2>
             
             <div class="box-choice-image">
-                <img src="imageboite.png" alt="Choix des boîtes" style="max-width: 200px; margin: 15px 0;">
+                <img src="imageboite.png" alt="Choix des boîtes" style="max-width: 160px; margin: 15px 0;">
             </div>
+            
+            <p style="font-size: 3.8vmin; font-weight: bold; margin: 10px 0 15px; color: #ff6f61;">
+                1 boîte = 8 makis | 2 boîtes = 16 makis
+            </p>
             
             <div class="btn-group box-quantity-btns">
                 <button type="button" class="select-btn compact-btn" onclick="selectBoxQuantity(this, 1)">1 boîte (6,50 €)</button>
@@ -850,7 +866,7 @@
             
             <div class="box-choice-image">
                 <img src="Boite.png" alt="Boîte de sushis" onerror="this.onerror=null; this.src='boite.png';" 
-                style="max-width: 180px; margin: 10px 0;">
+                style="max-width: 140px; margin: 10px 0; background-color: transparent;">
             </div>
             
             <label class="delivery-label">Comment souhaites-tu récupérer ta commande ?</label>
