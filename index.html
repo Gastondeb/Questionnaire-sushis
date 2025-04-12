@@ -6,7 +6,8 @@
     <title>Sushi Form</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap">
     <style>
-        /* Style de base */
+
+                /* Style de base */
         body {
             margin: 0;
             padding: 0;
@@ -21,65 +22,65 @@
             font-family: 'Fjalla One', sans-serif;
         }
 
-          /* Styles améliorés pour le texte de la page d'accueil */
-    .intro-text {
-        margin: 0 auto 15px;
-        max-width: 90%;
-    }
-    
-    .tagline {
-        font-size: 3.8vmin;
-        font-weight: bold;
-        margin-bottom: 12px;
-        letter-spacing: 0.5px;
-        color: #333;
-    }
-    
-    .highlight {
-        color: #ff6f61;
-        position: relative;
-    }
-    
-    .highlight::after {
-        content: "";
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: #ff6f61;
-        border-radius: 1px;
-    }
-    
-    .description {
-        font-size: 3.5vmin;
-        line-height: 1.4;
-        margin-bottom: 12px;
-        color: #444;
-    }
-    
-    .call-to-action {
-        font-size: 3.2vmin;
-        font-weight: bold;
-        font-style: italic;
-        color: #333;
-        margin-bottom: 15px;
-    }
-    
-    /* Adaptation responsive */
-    @media (max-width: 600px) {
+        /* Styles améliorés pour le texte de la page d'accueil */
+        .intro-text {
+            margin: 0 auto 15px;
+            max-width: 90%;
+        }
+
         .tagline {
-            font-size: 3.5vmin;
+            font-size: 3.8vmin;
+            font-weight: bold;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            color: #333;
         }
-        
+
+        .highlight {
+            color: #ff6f61;
+            position: relative;
+        }
+
+        .highlight::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff6f61;
+            border-radius: 1px;
+        }
+
         .description {
-            font-size: 3.2vmin;
+            font-size: 3.5vmin;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            color: #444;
         }
-        
+
         .call-to-action {
-            font-size: 3vmin;
+            font-size: 3.2vmin;
+            font-weight: bold;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 15px;
         }
-    }
+
+        /* Adaptation responsive */
+        @media (max-width: 600px) {
+            .tagline {
+                font-size: 3.5vmin;
+            }
+            
+            .description {
+                font-size: 3.2vmin;
+            }
+            
+            .call-to-action {
+                font-size: 3vmin;
+            }
+        }
 
         .icon {
             font-size: 6vmin;
@@ -107,16 +108,31 @@
 
         .welcome-text {
             font-size: 4vmin;
-            margin: 0 0 5% 0;
+            margin: 0 0 20px 0;
             color: #333;
             font-style: italic;
             text-align: center;
             position: relative;
-            top: -15px;
         }
 
         .first-question .welcome-text {
-            margin-top: -10px;
+            margin-top: 0;
+        }
+
+        /* Style pour centrer les questions personnelles */
+        .first-question, .question:nth-child(2), .question:nth-child(3) {
+            justify-content: center;
+            padding-top: 0;
+            padding-bottom: 0;
+            height: 100%;
+        }
+
+        .first-question label, .question:nth-child(2) label, .question:nth-child(3) label {
+            margin-bottom: 15px;
+        }
+
+        .first-question input, .question:nth-child(2) input, .question:nth-child(3) input {
+            margin-bottom: 15px;
         }
 
         .question input {
@@ -157,32 +173,26 @@
             box-sizing: border-box;
         }
 
-/* Logo principal */
-.main-logo {
-    height: 18vmin;
-    width: auto;
-    max-width: 80vw;
-    object-fit: contain;
-    transform: scale(3) translateY(-20%); /* Réduit de scale(4) à scale(3) */
-    transform-origin: center top;
-    display: block;
-    margin: 0 auto;
-}
+        /* Logo principal */
+        .main-logo {
+            height: 18vmin;
+            width: auto;
+            max-width: 80vw;
+            object-fit: contain;
+            transform: scale(3) translateY(-20%); /* Réduit de scale(4) à scale(3) */
+            transform-origin: center top;
+            display: block;
+            margin: 0 auto;
+        }
 
-/* Conteneur du logo */
-.logo-wrapper {
-    flex: 0 0 auto;
-    margin-bottom: 20px; /* Légèrement réduit aussi */
-    max-height: 28vh;
-    overflow: visible;
-    position: relative;
-}
-
-        
-
-
-
-  
+        /* Conteneur du logo */
+        .logo-wrapper {
+            flex: 0 0 auto;
+            margin-bottom: 20px; /* Légèrement réduit aussi */
+            max-height: 28vh;
+            overflow: visible;
+            position: relative;
+        }
 
         /* Texte descriptif */
         .home-page p {
@@ -220,37 +230,35 @@
         /* ----- Version Mobile ----- */
 
         /* Règle globale pour uniformiser tous les boutons */
-.order-btn, .select-btn, .nav-btn, .delivery-btn-vertical, .compact-btn {
-    background: #ffa580 !important;
-}
+        .order-btn, .select-btn, .nav-btn, .delivery-btn-vertical, .compact-btn {
+            background: #ffa580 !important;
+        }
 
-/* Garder le style pour les boutons sélectionnés */
-.select-btn.selected {
-    background: black !important;
-    color: white !important;
-}
+        /* Garder le style pour les boutons sélectionnés */
+        .select-btn.selected {
+            background: black !important;
+            color: white !important;
+        }
 
-/* Adaptation responsive */
-@media (max-width: 600px) {
-    .home-page {
-        padding-bottom: 70px;
-        width: 90vmin;
-    }
-    
-    .main-logo {
-        height: 16vmin;
-        transform: scale(2.7) translateY(-20%); /* Réduit également sur mobile */
-    }
-    
-    .home-page .order-btn {
-        bottom: 15px;
-        width: 85%;
-        font-size: 3.8vmin;
-    }
-}
-
- 
+        /* Adaptation responsive */
+        @media (max-width: 600px) {
+            .home-page {
+                padding-bottom: 70px;
+                width: 90vmin;
+            }
             
+            .main-logo {
+                height: 16vmin;
+                transform: scale(2.7) translateY(-20%); /* Réduit également sur mobile */
+            }
+            
+            .home-page .order-btn {
+                bottom: 15px;
+                width: 85%;
+                font-size: 3.8vmin;
+            }
+        }
+
         .home-page p {
             font-size: 4vmin;
             margin-bottom: 10%;
@@ -265,7 +273,7 @@
         .contact-us {
             display: none;
             background: #f8f4e5;
-            padding: 12% 5% 5% 5%;
+            padding: 5% 5% 5% 5%;
             border: 2px solid black;
             box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px black;
             text-align: center;
@@ -286,8 +294,9 @@
             display: none;
             text-align: center;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
+            height: 85%;
         }
 
         .question.active {
@@ -320,23 +329,24 @@
         }
 
         .select-btn {
-    padding: 4% 6%;
-    background: #ffa580; /* Changé en orange pour toutes les questions */
-    color: white;
-    font-weight: bold;
-    border: 2px solid black;
-    cursor: pointer;
-    transition: 0.2s all ease-in-out;
-    box-shadow: 3px 3px 1px black;
-    font-size: 4vmin;
-    border-radius: 15px;
-    min-width: 120px;
-}
+            padding: 4% 6%;
+            background: #ffa580; /* Changé en orange pour toutes les questions */
+            color: white;
+            font-weight: bold;
+            border: 2px solid black;
+            cursor: pointer;
+            transition: 0.2s all ease-in-out;
+            box-shadow: 3px 3px 1px black;
+            font-size: 4vmin;
+            border-radius: 15px;
+            min-width: 120px;
+        }
 
-.select-btn.selected {
-    background: black;
-    color: white;
-}
+        .select-btn.selected {
+            background: black;
+            color: white;
+        }
+
         .nav-container {
             display: flex;
             justify-content: center;
@@ -509,38 +519,38 @@
             align-items: center;
             height: 100%;
         }
-        
+
         .thank-you-page h2 {
             color: #ff6f61;
             font-size: 6vmin;
             margin-bottom: 20px;
         }
-        
+
         .thank-you-content {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        
+
         .thank-you-content p {
             font-size: 4vmin;
             margin: 15px 0;
             color: #333;
         }
-        
+
         .thank-you-sushi {
             width: 100px;
             margin: 20px auto;
             animation: bounce 0.5s infinite alternate;
         }
-        
+
         .contact-info {
             font-size: 3.5vmin;
             color: #ff6f61;
             margin-top: 20px;
             font-weight: bold;
         }
-        
+
         @keyframes bounce {
             from { transform: translateY(0); }
             to { transform: translateY(-10px); }
@@ -566,8 +576,11 @@
             }
 
             .welcome-text {
-                top: -10px;
-                margin-bottom: 10%;
+                margin-bottom: 15px;
+            }
+            
+            .first-question, .question:nth-child(2), .question:nth-child(3) {
+                justify-content: center;
             }
         }
 
@@ -606,13 +619,9 @@
             text-align: center;
             margin: 10px 0 20px;
         }
-
         .box-choice-image img {
-            max-height: 240px; /* Augmenté de 120px à 240px (x2) */
-            border-radius: 10px;
-            /* Suppression de la bordure orange */
-            /* border: 2px solid #ff6f61; */
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+            max-height: 240px;
+            background-color: transparent;
         }
 
         /* Style spécifique pour les boutons de quantité */
@@ -663,47 +672,56 @@
             transform: scale(0.8); /* Réduction supplémentaire */
         }
         /* Style pour les boutons de livraison verticaux */
-.delivery-buttons-vertical {
-    display: flex;
-    flex-direction: column; /* Affiche les éléments en colonne */
-    align-items: center;    /* Centre les boutons horizontalement */
-    gap: 12px;             /* Espace entre les boutons */
-    width: 80%;            /* Largeur du conteneur */
-    margin: 0 auto;        /* Centre le conteneur */
-    margin-bottom: 50px;   /* Espace sous les boutons pour la barre de progression */
-}
+        .delivery-buttons-vertical {
+            display: flex;
+            flex-direction: column; /* Affiche les éléments en colonne */
+            align-items: center;    /* Centre les boutons horizontalement */
+            gap: 12px;             /* Espace entre les boutons */
+            width: 80%;            /* Largeur du conteneur */
+            margin: 0 auto;        /* Centre le conteneur */
+            margin-bottom: 50px;   /* Espace sous les boutons pour la barre de progression */
+        }
 
-.delivery-btn-vertical {
-    width: 100%;          /* Prend toute la largeur disponible */
-    max-width: 280px;     /* Largeur maximale */
-    padding: 8px 15px !important;
-    font-size: 3.8vmin !important;
-    white-space: normal;  /* Permettre le retour à la ligne */
-    line-height: 1.3;     /* Espacement entre les lignes */
-    height: auto;         /* Hauteur automatique */
-    min-height: 45px;     /* Hauteur minimale */
-}
+        .delivery-btn-vertical {
+            width: 100%;          /* Prend toute la largeur disponible */
+            max-width: 280px;     /* Largeur maximale */
+            padding: 8px 15px !important;
+            font-size: 3.8vmin !important;
+            white-space: normal;  /* Permettre le retour à la ligne */
+            line-height: 1.3;     /* Espacement entre les lignes */
+            height: auto;         /* Hauteur automatique */
+            min-height: 45px;     /* Hauteur minimale */
+        }
 
-/* Style pour réduire la taille de la question de livraison */
-.delivery-label {
-    font-size: 4.5vmin !important;
-    margin-bottom: 15px !important;
-}
+        /* Style pour réduire la taille de la question de livraison */
+        .delivery-label {
+            font-size: 4.5vmin !important;
+            margin-bottom: 15px !important;
+        }
 
-/* Adaptation responsive */
-@media (max-width: 600px) {
-    .delivery-buttons-vertical {
-        margin-bottom: 60px; /* Plus d'espace en bas sur mobile */
-    }
-    
-    .delivery-btn-vertical {
-        font-size: 3.5vmin !important;
-        padding: 10px !important;
-    }
-}
+        /* Adaptation responsive */
+        @media (max-width: 600px) {
+            .delivery-buttons-vertical {
+                margin-bottom: 60px; /* Plus d'espace en bas sur mobile */
+            }
+            
+            .delivery-btn-vertical {
+                font-size: 3.5vmin !important;
+                padding: 10px !important;
+            }
+        }
+            /* Style spécifique pour les boutons d'ingrédients */
+            .ingredient-question .select-btn.compact-btn {
+            min-width: 120px;
+            padding: 2% 4%;
+            font-size: 3.8vmin;
+            margin: 3px;
+        }
+  
     </style>
 </head>
 <body>
+    
     <div class="home-page">
         <div class="logo-wrapper">
             <h1>
@@ -713,9 +731,7 @@
         
         <!-- Texte amélioré avec mise en forme -->
         <div class="intro-text">
-            <p class="tagline">
-                <span class="highlight">FRAÎCHEUR ET QUALITÉ</span> CHAQUE SAMEDI
-            </p>
+          
             <p class="description">
                 Découvrez mes makis artisanaux, préparés avec soin et des ingrédients sélectionnés, à des prix adaptés aux budgets étudiants.
             </p>
@@ -786,7 +802,8 @@
             <h2>Combien de boîtes veux-tu ?</h2>
             
             <div class="box-choice-image">
-                <img src="imageboite.png" alt="Choix des boîtes" style="max-width: 160px; margin: 15px 0;">
+                <img src="imageboite.png" alt="Boîte de sushis" onerror="this.onerror=null; this.src='boite.png';" 
+                style="max-width: 140px; margin: 10px 0; background-color: transparent; border-radius: 0; box-shadow: none;">
             </div>
             
             <p style="font-size: 3.8vmin; font-weight: bold; margin: 10px 0 15px; color: #ff6f61;">
@@ -810,8 +827,8 @@
                 <img src="concombre.png" alt="Concombre" class="ingredient-image">
             </div>
             <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1292076072', 'avocats')">Avocat</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1292076072', 'concombres')">Concombre</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1292076072', 'avocats')">Avocat</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1292076072', 'concombres')">Concombre</button>
             </div>
             <input type="hidden" name="entry.1292076072" id="entry.1292076072" required>
             <div class="error-message">Veuillez choisir une option.</div>
@@ -825,8 +842,8 @@
                 <img src="crevette.png" alt="Crevette" class="ingredient-image">
             </div>
             <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1726767774', 'Saumon')">Saumon</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1726767774', 'Crevettes')">Crevette</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1726767774', 'Saumon')">Saumon</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1726767774', 'Crevettes')">Crevette</button>
             </div>
             <input type="hidden" name="entry.1726767774" id="entry.1726767774" required>
             <div class="error-message">Veuillez choisir une option.</div>
@@ -840,8 +857,8 @@
                 <img src="fromage.png" alt="Fromage" class="ingredient-image fromage-image">
             </div>
             <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
             </div>
             <input type="hidden" name="entry.887168393" id="entry.887168393" required>
             <div class="error-message">Veuillez choisir une option.</div>
@@ -851,10 +868,12 @@
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
             <label>Soja ?</label>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Salée')">Salée</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.41252950', 'Pas de sauce')">Pas de sauce</button>
+            <div class="btn-group" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div style="display: flex; gap: 10px; margin-bottom: 5px;">
+                    <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
+                    <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.41252950', 'Salée')">Salée</button>
+                </div>
+                <button type="button" class="select-btn compact-btn" style="width: 100%; max-width: 200px;" onclick="selectOption(this, 'entry.41252950', 'Pas de sauce')">Pas de sauce</button>
             </div>
             <input type="hidden" name="entry.41252950" id="entry.41252950" required>
             <div class="error-message">Veuillez choisir une option.</div>
@@ -864,9 +883,9 @@
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
             <p class="supplement-info">Supplément livraison : <strong>+0,40 €</strong></p>
             
-            <div class="box-choice-image">
+            <div class="box-choice-image" style="position: relative; z-index: 15;">
                 <img src="Boite.png" alt="Boîte de sushis" onerror="this.onerror=null; this.src='boite.png';" 
-                style="max-width: 140px; margin: 10px 0; background-color: transparent;">
+                style="max-width: 140px; margin: 40px 0 10px 0; background-color: transparent; border-radius: 0; box-shadow: none;">
             </div>
             
             <label class="delivery-label">Comment souhaites-tu récupérer ta commande ?</label>
@@ -892,8 +911,8 @@
                 <img src="concombre.png" alt="Concombre" class="ingredient-image">
             </div>
             <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.2021454936', 'avocats')">Avocat</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.2021454936', 'concombres')">Concombre</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.2021454936', 'avocats')">Avocat</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.2021454936', 'concombres')">Concombre</button>
             </div>
             <input type="hidden" name="entry.2021454936" id="entry.2021454936">
             <div class="error-message">Veuillez choisir une option.</div>
@@ -908,8 +927,8 @@
                 <img src="crevette.png" alt="Crevette" class="ingredient-image">
             </div>
             <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.819843500', 'Saumon')">Saumon</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.819843500', 'Crevettes')">Crevette</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.819843500', 'Saumon')">Saumon</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.819843500', 'Crevettes')">Crevette</button>
             </div>
             <input type="hidden" name="entry.819843500" id="entry.819843500">
             <div class="error-message">Veuillez choisir une option.</div>
@@ -924,8 +943,8 @@
                 <img src="fromage.png" alt="Fromage" class="ingredient-image fromage-image">
             </div>
             <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Oui')">Oui</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.516077606', 'Non')">Non</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.516077606', 'Oui')">Oui</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.516077606', 'Non')">Non</button>
             </div>
             <input type="hidden" name="entry.516077606" id="entry.516077606">
             <div class="error-message">Veuillez choisir une option.</div>
@@ -936,10 +955,12 @@
             <p class="supplement-info">2ème boîte</p>
             <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
             <label>Soja ?</label>
-            <div class="btn-group">
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Sucrée')">Sucrée</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Salée')">Salée</button>
-                <button type="button" class="select-btn" onclick="selectOption(this, 'entry.1450345325', 'Pas de sauce')">Pas de sauce</button>
+            <div class="btn-group" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div style="display: flex; gap: 10px; margin-bottom: 5px;">
+                    <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1450345325', 'Sucrée')">Sucrée</button>
+                    <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1450345325', 'Salée')">Salée</button>
+                </div>
+                <button type="button" class="select-btn compact-btn" style="width: 100%; max-width: 200px;" onclick="selectOption(this, 'entry.1450345325', 'Pas de sauce')">Pas de sauce</button>
             </div>
             <input type="hidden" name="entry.1450345325" id="entry.1450345325">
             <div class="error-message">Veuillez choisir une option.</div>
