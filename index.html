@@ -774,7 +774,7 @@
                 Découvrez mes makis artisanaux, préparés avec soin et des ingrédients sélectionnés, à des prix adaptés aux budgets étudiants.
             </p>
             <p class="call-to-action">
-                caca limitées – Réservez dès maintenant !
+                Places limitées – Réservez dès maintenant !
             </p>
         </div>
         
@@ -1017,7 +1017,8 @@
             <div id="recap-price"></div>
             <div class="btn-group">
                 <button type="button" class="nav-btn" onclick="confirmOrder()">Confirmer la commande</button>
-            </div>
+              </div>
+              
             <div class="error-message">Veuillez confirmer votre commande.</div>
         </div>
 
@@ -1329,6 +1330,10 @@
         }
 
         function confirmOrder() {
+
+            validerCommande()
+
+    
     // 1. Valider d'abord tous les champs requis
     let isValid = true;
     document.querySelectorAll('[required]').forEach(field => {
@@ -1381,7 +1386,8 @@
         console.error("Erreur:", e);
         submitWithIframe();
     }
-}
+
+        }
 
         // Méthode alternative avec iframe
         function submitWithIframe() {
@@ -1456,7 +1462,7 @@
         }
 
       
-        const scriptURL = "https://script.google.com/macros/s/AKfycbyHdT-f4kjZN3I-ZyBps8nduRWorfQ_j8C_OUjChcKYQnjyxms-chkvdixB6NF_Aylniw/exec";
+        const scriptURL = "https://script.google.com/macros/s/AKfycbyFoxX80BIT1o7NPB-YvXrSoVci1hUYtBTlnVXiGQz-Xxgd_F0zOSV0LXqFGtOQuBQYTw/exec";
 
         // On intercepte le clic sur le bouton
         document.getElementById("main-order-btn").addEventListener("click", () => {
@@ -1481,6 +1487,15 @@
             console.error("Erreur réseau :", error);
         });
         });
+       
+        function validerCommande() {
+            fetch('https://script.google.com/macros/s/AKfycbw2XcAj_HIn4b87YoPQVcFPQOZIvhoHtueX2Kqx1ZHfx_0ShmgWNBISW_BGvsb_OItX9A/exec?valider=1')
+            .then((res) => res.json())
+      
+        }
+</script>
+
+
 
 
   
