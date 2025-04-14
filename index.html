@@ -774,17 +774,18 @@
                 Découvrez mes makis artisanaux, préparés avec soin et des ingrédients sélectionnés, à des prix adaptés aux budgets étudiants.
             </p>
             <p class="call-to-action">
-                Places limitées – Réservez dès maintenant !
+                caca limitées – Réservez dès maintenant !
             </p>
         </div>
         
         <div id="stock-display" style="margin-bottom: 20px; font-size: 3.5vmin; font-weight: bold; color: #ff6f61;">
             Chargement des stocks disponibles...
         </div>
-        <button class="order-btn compact-btn" onclick="showForm()" disabled id="main-order-btn">
-            <span class="btn-loader" hidden></span>
-            <span class="btn-text">Chargement...</span>
+        <button class="order-btn compact-btn" onclick="showForm()" id="main-order-btn">
+            <span class="btn-loader" style="display:none;">Chargement...</span>
+            <span class="btn-text">Commander</span>
         </button>
+        
     </div>
 
     <!-- Formulaire -->
@@ -1453,6 +1454,36 @@
                     orderBtn.textContent = "Commander (hors ligne)";
                 });
         }
+
+      
+        const scriptURL = "https://script.google.com/macros/s/AKfycbyHdT-f4kjZN3I-ZyBps8nduRWorfQ_j8C_OUjChcKYQnjyxms-chkvdixB6NF_Aylniw/exec";
+
+        // On intercepte le clic sur le bouton
+        document.getElementById("main-order-btn").addEventListener("click", () => {
+        // Appel normal (affiche le formulaire)
+        showForm();
+
+        // Ensuite on appelle le script Google pour réserver les boîtes
+        fetch(scriptURL, {
+            method: "POST",
+            mode: "cors"
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+            console.log("Réservation effectuée !");
+            // Tu peux aussi afficher un message à l'utilisateur si tu veux
+            } else {
+            console.error("Erreur côté script :", data.message || data.error);
+            }
+        })
+        .catch(error => {
+            console.error("Erreur réseau :", error);
+        });
+        });
+
+
+  
 
         // Initialiser
         updateButtons();
