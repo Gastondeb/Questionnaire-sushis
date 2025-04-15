@@ -1307,16 +1307,37 @@ function updateProgressBar() {
     // Si nous sommes après les questions personnelles
     if (currentQuestion > personalInfoQuestions) {
         progressContainer.style.display = 'block';
-        let totalQuestions = boxQuantity === 1 
-            ? personalInfoQuestions + box1Questions + deliveryQuestion
-            : personalInfoQuestions + box1Questions + box2Questions + deliveryQuestion;
-        const progress = ((currentQuestion - personalInfoQuestions) / (totalQuestions - personalInfoQuestions)) * 100;
-        progressBar.style.width = `${progress}%`;
+        
+        // Calculer le nombre total de questions à afficher selon le nombre de boîtes
+        let totalQuestions = personalInfoQuestions + 1; // Questions personnelles + question nombre de boîtes
+        
+        // Ajouter les questions pour la/les boîte(s)
+        if (boxQuantity === 1) {
+            totalQuestions += box1Questions + deliveryQuestion;
+        } else {
+            totalQuestions += box1Questions + box2Questions + deliveryQuestion;
+        }
+        
+        // Calculer la position actuelle dans le flux de questions
+        let currentPosition = currentQuestion;
+        
+        // Ajuster la position si on a sauté des questions (cas d'une seule boîte)
+        if (boxQuantity === 1 && currentQuestion > personalInfoQuestions + 1 + box1Questions) {
+            currentPosition = personalInfoQuestions + 1 + box1Questions + deliveryQuestion 
+                            - (personalInfoQuestions + 1 + box1Questions + box2Questions + deliveryQuestion - currentQuestion);
+        }
+        
+        // Calculer le pourcentage de progression
+        const progress = ((currentPosition - personalInfoQuestions) / (totalQuestions - personalInfoQuestions)) * 100;
+        
+        // Limiter la progression à 100% maximum
+        const clampedProgress = Math.min(progress, 100);
+        
+        progressBar.style.width = `${clampedProgress}%`;
     } else {
         progressContainer.style.display = 'none';
     }
 }
-
 // Afficher le récapitulatif
 function showRecap() {
     const recapPage = document.querySelector(".recap-page");
