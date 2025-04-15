@@ -863,98 +863,71 @@
         </div>
 
        
-       <!-- Questions sur les ingrédients (BOÎTE 1) - AVEC titre -->
-<div class="question ingredient-question">
-    <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-    <p class="supplement-info">Boîte 1</p>
-    <div class="ingredient-container">
-        <img src="avocat.png" alt="Avocat" class="ingredient-image">
-        <label>Quel légume ?</label>
-        <img src="concombre.png" alt="Concombre" class="ingredient-image">
-    </div>
-    <div class="btn-group box-quantity-btns">
-        <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1292076072', 'avocats')">Avocat</button>
-        <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1292076072', 'concombres')">Concombre</button>
-    </div>
-    <input type="hidden" name="entry.1292076072" id="entry.1292076072" required>
-    <div class="error-message">Veuillez choisir une option.</div>
-</div>
-
-<div class="question ingredient-question">
-    <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-    <p class="supplement-info">Boîte 1</p>
-    <div class="ingredient-container">
-        <img src="saumon.png" alt="Saumon" class="ingredient-image">
-        <label>Quel poisson ?</label>
-        <img src="crevette.png" alt="Crevette" class="ingredient-image">
-    </div>
-    <div class="btn-group box-quantity-btns">
-        <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1726767774', 'Saumon')">Saumon</button>
-        <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1726767774', 'Crevettes')">Crevette</button>
-    </div>
-    <input type="hidden" name="entry.1726767774" id="entry.1726767774" required>
-    <div class="error-message">Veuillez choisir une option.</div>
-</div>
-
-<div class="question ingredient-question">
-    <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-    <p class="supplement-info">Boîte 1</p>
-    <div class="ingredient-container">
-        <img src="fromage.png" alt="Fromage" class="ingredient-image fromage-image">
-        <label>Fromage frais ?</label>
-        <img src="fromage.png" alt="Fromage" class="ingredient-image fromage-image">
-    </div>
-    <div class="btn-group box-quantity-btns">
-        <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
-        <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
-    </div>
-    <input type="hidden" name="entry.887168393" id="entry.887168393" required>
-    <div class="error-message">Veuillez choisir une option.</div>
-</div>
-
-<div class="question ingredient-question">
-    <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
-    <p class="supplement-info">Boîte 1</p>
-    <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
-    <label>Soja ?</label>
-    <div class="btn-group box-quantity-btns" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-        <div style="display: flex; gap: 10px; margin-bottom: 5px;">
-            <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
-            <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.41252950', 'Salée')">Salée</button>
-        </div>
-        <button type="button" class="select-btn compact-btn" style="width: 100%; max-width: 200px;" onclick="selectOption(this, 'entry.41252950', 'Pas de sauce')">Pas de sauce</button>
-    </div>
-    <input type="hidden" name="entry.41252950" id="entry.41252950" required>
-    <div class="error-message">Veuillez choisir une option.</div>
-</div>
-        
+            <!-- Questions sur les ingrédients (BOÎTE 1) - AVEC titre -->
         <div class="question ingredient-question">
-            <!-- Le titre "Que veux-tu dans ton maki ?" a été supprimé -->
-            
-            
-            <h2 style="font-size: 5vmin; margin-top: 15px; color: #333; text-align: center;">Comment souhaites-tu récupérer ta commande ?</h2>
-            <p class="supplement-info">Supplément livraison : <strong>+0,40 €</strong></p>
-            <div class="box-choice-image" style="position: relative; z-index: 15;">
-                <img src="Boite.png" alt="Boîte de sushis" onerror="this.onerror=null; this.src='boite.png';" 
-                class="delivery-box-image">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">Boîte 1</p>
+            <div class="ingredient-container">
+                <img src="avocat.png" alt="Avocat" class="ingredient-image">
+                <label>Quel légume ?</label>
+                <img src="concombre.png" alt="Concombre" class="ingredient-image">
             </div>
-            
-            <!-- L'ancien label a été supprimé -->
-            
-            <!-- Boutons modifiés pour être l'un au-dessus de l'autre -->
-            <div class="btn-group delivery-buttons-vertical">
-                <button type="button" class="select-btn delivery-btn-vertical" onclick="selectOption(this, 'entry.554098723', 'Livraison chez moi (+0,40€)')">Livraison chez moi (+0,40€)</button>
-                <button type="button" class="select-btn delivery-btn-vertical" onclick="selectOption(this, 'entry.554098723', 'Je viens la chercher')">Je viens la chercher</button>
+            <div class="btn-group box-quantity-btns">
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1292076072', 'avocats')">Avocat</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1292076072', 'concombres')">Concombre</button>
             </div>
-
-            <input type="hidden" name="entry.554098723" id="entry.554098723" required>
+            <input type="hidden" name="entry.1292076072" id="entry.1292076072" required>
             <div class="error-message">Veuillez choisir une option.</div>
-
-            
         </div>
 
-   
+        <div class="question ingredient-question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">Boîte 1</p>
+            <div class="ingredient-container">
+                <img src="saumon.png" alt="Saumon" class="ingredient-image">
+                <label>Quel poisson ?</label>
+                <img src="crevette.png" alt="Crevette" class="ingredient-image">
+            </div>
+            <div class="btn-group box-quantity-btns">
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1726767774', 'Saumon')">Saumon</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1726767774', 'Crevettes')">Crevette</button>
+            </div>
+            <input type="hidden" name="entry.1726767774" id="entry.1726767774" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
 
+        <div class="question ingredient-question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">Boîte 1</p>
+            <div class="ingredient-container">
+                <img src="fromage.png" alt="Fromage" class="ingredient-image fromage-image">
+                <label>Fromage frais ?</label>
+                <img src="fromage.png" alt="Fromage" class="ingredient-image fromage-image">
+            </div>
+            <div class="btn-group box-quantity-btns">
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.887168393', 'Oui')">Oui</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.887168393', 'Non')">Non</button>
+            </div>
+            <input type="hidden" name="entry.887168393" id="entry.887168393" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+
+        <div class="question ingredient-question">
+            <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
+            <p class="supplement-info">Boîte 1</p>
+            <p class="supplement-info">Supplément sauce soja : <strong>+0,40 €</strong></p>
+            <label>Soja ?</label>
+            <div class="btn-group box-quantity-btns" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div style="display: flex; gap: 10px; margin-bottom: 5px;">
+                    <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
+                    <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.41252950', 'Salée')">Salée</button>
+                </div>
+                <button type="button" class="select-btn compact-btn" style="width: 100%; max-width: 200px;" onclick="selectOption(this, 'entry.41252950', 'Pas de sauce')">Pas de sauce</button>
+            </div>
+            <input type="hidden" name="entry.41252950" id="entry.41252950" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+        </div>
+                
         <!-- Questions pour la deuxième boîte - AVEC titre -->
         <div class="question second-box ingredient-question">
             <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
@@ -1020,6 +993,25 @@
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
+        <div class="question ingredient-question">
+
+            <h2 style="font-size: 5vmin; margin-top: 15px; color: #333; text-align: center;">Comment souhaites-tu récupérer ta commande ?</h2>
+            <p class="supplement-info">Supplément livraison : <strong>+0,40 €</strong></p>
+            <div class="box-choice-image" style="position: relative; z-index: 15;">
+                <img src="Boite.png" alt="Boîte de sushis" onerror="this.onerror=null; this.src='boite.png';" 
+                class="delivery-box-image">
+            </div>
+
+            <div class="btn-group delivery-buttons-vertical">
+                <button type="button" class="select-btn delivery-btn-vertical" onclick="selectOption(this, 'entry.554098723', 'Livraison chez moi (+0,40€)')">Livraison chez moi (+0,40€)</button>
+                <button type="button" class="select-btn delivery-btn-vertical" onclick="selectOption(this, 'entry.554098723', 'Je viens la chercher')">Je viens la chercher</button>
+            </div>
+
+            <input type="hidden" name="entry.554098723" id="entry.554098723" required>
+            <div class="error-message">Veuillez choisir une option.</div>
+
+        </div>
+
         <!-- Page récapitulative -->
         <div class="question recap-page">
             <h2>Récapitulatif de votre commande</h2>
@@ -1061,480 +1053,523 @@
     </form>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        fetchStock();
-       
-    });
-
-
-
-    
 
         // Variables globales
-        let currentQuestion = 0;
-        let boxQuantity = 1;
-        const personalInfoQuestions = 3;
-        const box1Questions = 5;
-        const box2Questions = 4;
-        const allQuestions = document.querySelectorAll(".question:not(.recap-page):not(.thank-you-page)");
-        const submitBtn = document.querySelector(".submit-btn");
-        const nextBtn = document.querySelector(".next-btn");
+let availableBoxes = 0;
+let currentQuestion = 0;
+let boxQuantity = 1;
+const personalInfoQuestions = 3;
+const box1Questions = 4; // Réduit de 5 à 4 car la question de livraison est déplacée
+const box2Questions = 4;
+const deliveryQuestion = 1; // Nouvelle constante pour la question de livraison
+const allQuestions = document.querySelectorAll(".question:not(.recap-page):not(.thank-you-page)");
+const submitBtn = document.querySelector(".submit-btn");
+const nextBtn = document.querySelector(".next-btn");
 
-        // Stocker les réponses
-        let responses = {
-            box1: {
-                legume: "",
-                poisson: "",
-                fromageFrais: "",
-                soja: "",
-                livre: ""
-            },
-            box2: {
-                legume: "",
-                poisson: "",
-                fromageFrais: "",
-                soja: ""
-            }
-        };
+// Stocker les réponses
+let responses = {
+    box1: {
+        legume: "",
+        poisson: "",
+        fromageFrais: "",
+        soja: "",
+        livre: ""
+    },
+    box2: {
+        legume: "",
+        poisson: "",
+        fromageFrais: "",
+        soja: ""
+    }
+};
 
-        // Prix
-        const basePrice = 6.5;
-        const sojaSupplement = 0.4;
-        const deliverySupplement = 0.4;
+// Prix
+const basePrice = 6.5;
+const sojaSupplement = 0.4;
+const deliverySupplement = 0.4;
 
-        // Afficher le formulaire
-        function showForm() {
-            document.querySelector('.home-page').style.display = 'none';
-            document.querySelector('.contact-us').style.display = 'flex';
-        }
-
-        // Sélectionner le nombre de boîtes
-        function selectBoxQuantity(button, quantity) {
-            boxQuantity = quantity;
-            document.getElementById('entry.557485338').value = quantity;
-            
-            let buttons = button.parentElement.querySelectorAll(".select-btn");
-            buttons.forEach(btn => btn.classList.remove("selected"));
-            button.classList.add("selected");
-            
-            const errorMessage = button.closest(".question").querySelector(".error-message");
-            errorMessage.style.display = "none";
-            
-            nextQuestion();
-        }
-
-        // Passer à la question suivante
-
-
-        function nextQuestion() {
-            const currentQuestionElement = allQuestions[currentQuestion];
-            const ingredientTitle = document.querySelector('.question-title');
-            
-            if (!validateQuestion(currentQuestionElement)) {
-                return;
-            }
-            
-            currentQuestionElement.classList.remove("active");
-            currentQuestion++;
-            
-            // Vérifier si nous sommes en mode d'édition
-            const editingBox = document.body.getAttribute('data-editing-box');
-            
-            // Si nous éditons la boîte 1 et avons terminé les questions de la boîte 1
-            if (editingBox === '1' && currentQuestion >= personalInfoQuestions + 1 + box1Questions) {
-                // Retourner directement au récapitulatif
-                document.body.removeAttribute('data-editing-box');
-                showRecap();
-                return;
-            }
-            
-            // Si nous éditons la boîte 2 et avons terminé les questions de la boîte 2
-            if (editingBox === '2' && currentQuestion >= personalInfoQuestions + 1 + box1Questions + box2Questions) {
-                // Retourner directement au récapitulatif
-                document.body.removeAttribute('data-editing-box');
-                showRecap();
-                return;
-            }
-            
-            // Logique normale de progression
-            if (currentQuestion === personalInfoQuestions) {
-                allQuestions[currentQuestion].classList.add("active");
-            } 
-            else if (currentQuestion === personalInfoQuestions + 1) {
-                allQuestions[currentQuestion].classList.add("active");
-            }
-            else if (currentQuestion === personalInfoQuestions + 1 + box1Questions && boxQuantity === 2) {
-                allQuestions[currentQuestion].classList.add("active");
-            }
-            else if ((boxQuantity === 1 && currentQuestion >= personalInfoQuestions + 1 + box1Questions) ||
-                    (boxQuantity === 2 && currentQuestion >= personalInfoQuestions + 1 + box1Questions + box2Questions)) {
-                showRecap();
-            }
-            else {
-                allQuestions[currentQuestion].classList.add("active");
-            }
-            
-            updateButtons();
-            updateProgressBar();
-        }
-
-
-        // Valider une question
-        function validateQuestion(question) {
-            const input = question.querySelector("input, [type=hidden]");
-            const errorMessage = question.querySelector(".error-message");
-
-            if (!input.value) {
-                errorMessage.style.display = "block";
-                return false;
-            } else {
-                errorMessage.style.display = "none";
-                return true;
-            }
-        }
-
-        // Sélectionner une option
-        function selectOption(button, inputName, value) {
-            document.getElementById(inputName).value = value;
-
-            const questionIndex = Array.from(allQuestions).indexOf(button.closest('.question'));
-            const isBox2 = questionIndex > personalInfoQuestions + box1Questions;
-
-   
-                if (isBox2) {
-                if (inputName.includes("entry.2021454936")) {
-                    responses.box2.legume = value;
-                } else if (inputName.includes("entry.819843500")) {
-                    responses.box2.poisson = value;
-                } else if (inputName.includes("entry.516077606")) {
-                    responses.box2.fromageFrais = value;
-                } else if (inputName.includes("entry.1450345325")) {
-                    responses.box2.soja = value;
-                }
-            } else {
-                if (inputName.includes("entry.1292076072")) {
-                    responses.box1.legume = value;
-                } else if (inputName.includes("entry.1726767774")) {
-                    responses.box1.poisson = value;
-                } else if (inputName.includes("entry.887168393")) {
-                    responses.box1.fromageFrais = value;
-                } else if (inputName.includes("entry.41252950")) {
-                    responses.box1.soja = value;
-                } else if (inputName.includes("entry.554098723")) {
-                    responses.box1.livre = value;
-                }
-            }
-
-            let buttons = button.parentElement.querySelectorAll(".select-btn");
-            buttons.forEach(btn => btn.classList.remove("selected"));
-            button.classList.add("selected");
-
-            const errorMessage = button.closest(".question").querySelector(".error-message");
-            errorMessage.style.display = "none";
-
-            nextQuestion();
-        }
-
-        // Mettre à jour la barre de progression
-        function updateProgressBar() {
-            const progressContainer = document.querySelector('.progress-container');
-            const progressBar = document.getElementById('progressBar');
-            const recapPageActive = document.querySelector('.recap-page.active');
-            const thankYouPageActive = document.querySelector('.thank-you-page.active');
-
-            // Si nous sommes sur la page de récap ou de remerciement, on cache la barre
-            if (recapPageActive || thankYouPageActive) {
-                progressContainer.style.display = 'none';
-                return;
-            }
-
-            // Si nous sommes après les questions personnelles
-            if (currentQuestion > personalInfoQuestions) {
-                progressContainer.style.display = 'block';
-                let totalQuestions = boxQuantity === 1 
-                    ? personalInfoQuestions + box1Questions 
-                    : personalInfoQuestions + box1Questions + box2Questions;
-                const progress = ((currentQuestion - personalInfoQuestions) / (totalQuestions - personalInfoQuestions)) * 100;
-                progressBar.style.width = `${progress}%`;
-            } else {
-                progressContainer.style.display = 'none';
-            }
-        }
-
-        // Afficher le récapitulatif
-     
-        function showRecap() {
-            const recapPage = document.querySelector(".recap-page");
-            const recapContent = document.getElementById("recap-content");
-            const recapPrice = document.getElementById("recap-price");
-            
-            // Masquer le titre
-            document.querySelector('.question-title').style.display = 'none';
-            
-            let totalPrice = basePrice;
-            if (boxQuantity === 2) totalPrice += basePrice;
-            
-            recapContent.innerHTML = `
-                <div class="recap-section">
-                    <h3>Boîte 1 : 6,50 €</h3>
-                    <p><strong>Légume:</strong> ${responses.box1.legume}</p>
-                    <p><strong>Poisson:</strong> ${responses.box1.poisson}</p>
-                    <p><strong>Fromage:</strong> ${responses.box1.fromageFrais}</p>
-                    <p><strong>Soja:</strong> ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
-                    <p><strong>Récupération:</strong> ${responses.box1.livre}</p>
-                    <button type="button" onclick="goToBox1()">Modifier</button>
-                </div>`;
-
-            if (boxQuantity === 2) {
-                recapContent.innerHTML += `
-                <div class="recap-section">
-                    <h3>Boîte 2 : 6,50 €</h3>
-                    <p><strong>Légume:</strong> ${responses.box2.legume}</p>
-                    <p><strong>Poisson:</strong> ${responses.box2.poisson}</p>
-                    <p><strong>Fromage:</strong> ${responses.box2.fromageFrais}</p>
-                    <p><strong>Soja:</strong> ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
-                    <button type="button" onclick="goToBox2()">Modifier</button>
-                </div>`;
-                
-                if (responses.box2.soja === "Sucrée" || responses.box2.soja === "Salée") totalPrice += sojaSupplement;
-            }
-
-            if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") totalPrice += sojaSupplement;
-            if (responses.box1.livre === "Livraison (+0,40€)") totalPrice += deliverySupplement;
-
-            recapPrice.innerHTML = `<h3>Total : ${totalPrice.toFixed(2)}€</h3>`;
-
-            allQuestions.forEach(q => q.classList.remove("active"));
-            recapPage.classList.add("active");
-            document.querySelector(".nav-container").style.display = "none";
-            
-            // Explicitement masquer la barre de progression
-            document.querySelector('.progress-container').style.display = 'none';
-        }
-
-            // Modifiez la fonction goToBox1() comme suit :
-        function goToBox1() {
-            // Rendre le titre visible
-            document.querySelector('.question-title').style.display = 'block';
-            
-            // Réafficher la navigation
-            document.querySelector(".nav-container").style.display = "flex";
-            
-            // Positionner sur la première question d'ingrédients (boîte 1)
-            currentQuestion = personalInfoQuestions + 1;
-            
-            // Masquer la page récap
-            document.querySelector(".recap-page").classList.remove("active");
-            
-            // Masquer toutes les questions
-            allQuestions.forEach(q => q.classList.remove('active'));
-            
-            // Afficher la question courante
-            allQuestions[currentQuestion].classList.add("active");
-            
-            // Ajouter un attribut de modification en cours
-            document.body.setAttribute('data-editing-box', '1');
-            
-            // Mettre à jour l'interface
-            updateButtons();
-            updateProgressBar();
-        }
-
-        // Modifiez de la même façon goToBox2() pour la cohérence :
-        function goToBox2() {
-            // Rendre le titre visible
-            document.querySelector('.question-title').style.display = 'block';
-            
-            // Réafficher la navigation
-            document.querySelector(".nav-container").style.display = "flex";
-            
-            // Positionner sur la première question d'ingrédients (boîte 2)
-            currentQuestion = personalInfoQuestions + 1 + box1Questions;
-            
-            // Masquer la page récap
-            document.querySelector(".recap-page").classList.remove("active");
-            
-            // Masquer toutes les questions
-            allQuestions.forEach(q => q.classList.remove('active'));
-            
-            // Afficher la question courante
-            allQuestions[currentQuestion].classList.add("active");
-            
-            // Ajouter un attribut de modification en cours
-            document.body.setAttribute('data-editing-box', '2');
-            
-            // Mettre à jour l'interface
-            updateButtons();
-            updateProgressBar();
-        }
-
-
-    function confirmOrder() {
+// Afficher le formulaire
+function showForm() {
+    document.querySelector('.home-page').style.display = 'none';
+    document.querySelector('.contact-us').style.display = 'flex';
     
-        document.body.removeAttribute('data-editing-box');
-        validerCommande();
-
-
-        // 1. Valider d'abord tous les champs requis
-        let isValid = true;
-        document.querySelectorAll('[required]').forEach(field => {
-            if (!field.value) {
-                isValid = false;
-                const errorMsg = field.closest('.question')?.querySelector('.error-message');
-                if (errorMsg) errorMsg.style.display = 'block';
-            }
-        });
-        
-        if (!isValid) {
-            alert("Veuillez remplir tous les champs obligatoires");
-            return;
-        }
-
-        // 2. Afficher la page de remerciement immédiatement
-        document.querySelector(".recap-page").classList.remove("active");
-        document.querySelector(".thank-you-page").classList.add("active");
-        document.querySelector(".nav-container").style.display = "none";
-        
-        // Nouveau code : afficher le message approprié selon le choix de livraison
-        const deliveryChoice = responses.box1.livre;
-        const deliveryMessageElement = document.getElementById('delivery-message');
-        
-        if (deliveryChoice === 'Livraison chez moi (+0,40€)') {
-            deliveryMessageElement.textContent = 'Tu seras livré entre 19h et 20h !';
-        } else if (deliveryChoice === 'Je viens la chercher') {
-            deliveryMessageElement.textContent = 'Viens la chercher vers 20h en b43';
-        }
-
-        // 3. Soumettre le formulaire
-        const form = document.querySelector(".contact-us");
-        
-        try {
-            const formData = new FormData(form);
-            fetch(form.action, {
-                method: "POST",
-                body: new URLSearchParams(formData),
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                mode: 'no-cors'
-            }).then(() => {
-                console.log("Formulaire soumis avec succès (fetch)");
-            }).catch(e => {
-                console.error("Erreur fetch:", e);
-                submitWithIframe();
-            });
-        } catch (e) {
-            console.error("Erreur:", e);
-            submitWithIframe();
-        }
-
-            }
-
-        // Méthode alternative avec iframe
-        function submitWithIframe() {
-            const form = document.querySelector(".contact-us");
-            const iframe = document.createElement("iframe");
-            iframe.name = "form-target-" + Date.now();
-            iframe.style.display = "none";
-            document.body.appendChild(iframe);
+    // Désactiver le bouton "2 boîtes" s'il n'y a qu'une seule boîte disponible
+    setTimeout(() => {
+        const boxButtonsContainer = document.querySelector('.box-quantity-btns');
+        if (boxButtonsContainer) {
+            const twoBoxesButton = boxButtonsContainer.querySelectorAll('.select-btn')[1]; // Le bouton "2 boîtes"
             
-            form.target = iframe.name;
-            form.submit();
-            
-            setTimeout(() => {
-                iframe.remove();
-            }, 5000);
-        }
-
-        // Empêcher la soumission normale du formulaire
-        document.querySelector(".contact-us").addEventListener("submit", function(e) {
-            e.preventDefault();
-            confirmOrder();
-        });
-
-        // Mettre à jour les boutons
-        function updateButtons() {
-            if (document.querySelector(".recap-page").classList.contains("active")) {
-                nextBtn.style.display = "none";
-                submitBtn.style.display = "none";
-            } else {
-                const currentQuestion = document.querySelector(".question.active");
-                if (currentQuestion && (currentQuestion.querySelector(".ingredient-container") || currentQuestion.querySelector(".btn-group"))) {
-                    nextBtn.style.display = "none";
-                } else {
-                    nextBtn.style.display = "block";
+            if (availableBoxes === 1) {
+                twoBoxesButton.disabled = true;
+                twoBoxesButton.style.opacity = '0.5';
+                twoBoxesButton.style.cursor = 'not-allowed';
+                twoBoxesButton.title = "Stock insuffisant";
+                
+                // Vérifier si un message existe déjà
+                const existingMessage = boxButtonsContainer.parentNode.querySelector('p[data-stock-message="true"]');
+                if (!existingMessage) {
+                    // Ajouter un message d'information seulement s'il n'existe pas déjà
+                    const infoMessage = document.createElement('p');
+                    infoMessage.textContent = "Une seule boîte disponible en stock";
+                    infoMessage.style.color = "#e74c3c";
+                    infoMessage.style.fontSize = "3vmin";
+                    infoMessage.style.fontWeight = "bold";
+                    infoMessage.style.margin = "5px 0";
+                    infoMessage.setAttribute('data-stock-message', 'true'); // Ajouter un attribut pour l'identifier
+                    boxButtonsContainer.parentNode.insertBefore(infoMessage, boxButtonsContainer.nextSibling);
                 }
-                submitBtn.style.display = "none";
             }
         }
+    }, 100);
+}
 
-        // Fonction pour vérifier le stock
-        function fetchStock() {
-            const stockDisplay = document.getElementById('stock-display');
-            const orderBtn = document.querySelector('.order-btn');
-            
-            orderBtn.disabled = true;
-            orderBtn.textContent = "Chargement...";
-            stockDisplay.textContent = "Vérification du stock...";
+// Sélectionner le nombre de boîtes
+function selectBoxQuantity(button, quantity) {
+    // Vérifier si le bouton est désactivé
+    if (button.disabled) {
+        return;
+    }
+    
+    // Si on demande 2 boîtes mais qu'il n'y en a qu'une disponible
+    if (quantity === 2 && availableBoxes === 1) {
+        const errorMsg = button.closest(".question").querySelector(".error-message");
+        errorMsg.textContent = "Stock insuffisant pour commander 2 boîtes";
+        errorMsg.style.display = "block";
+        return;
+    }
+    
+    boxQuantity = quantity;
+    document.getElementById('entry.557485338').value = quantity;
+    
+    let buttons = button.parentElement.querySelectorAll(".select-btn");
+    buttons.forEach(btn => btn.classList.remove("selected"));
+    button.classList.add("selected");
+    
+    const errorMessage = button.closest(".question").querySelector(".error-message");
+    errorMessage.style.display = "none";
+    
+    nextQuestion();
+}
 
-            fetch('https://script.google.com/macros/s/AKfycbwHGDDnZFpdeaKeH-R1x_Ws2Hm8-WFtyYma7RB-vo3dKc4f3t4cs-aBfm4U455_sckgXA/exec')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        stockDisplay.textContent = `Boîtes disponibles : ${data.stock}`;
-                        
-                        if (data.stock <= 0) {
-                            orderBtn.disabled = true;
-                            orderBtn.textContent = "RUPTURE DE STOCK";
-                            orderBtn.style.background = "#e74c3c";
-                        } else {
-                            orderBtn.disabled = false;
-                            orderBtn.textContent = "Commander";
-                            orderBtn.style.background = "";
-                        }
-                    }
-                })
-                .catch(error => {
-                    console.error('Erreur:', error);
-                    stockDisplay.textContent = 'Erreur de chargement';
-                    orderBtn.disabled = false;
-                    orderBtn.textContent = "Commander (hors ligne)";
-                });
+// Passer à la question suivante
+function nextQuestion() {
+    const currentQuestionElement = allQuestions[currentQuestion];
+    
+    if (!validateQuestion(currentQuestionElement)) {
+        return;
+    }
+    
+    currentQuestionElement.classList.remove("active");
+    currentQuestion++;
+    
+    // Vérifier si nous sommes en mode d'édition
+    const editingBox = document.body.getAttribute('data-editing-box');
+    
+    // Si nous éditons la boîte 1 et avons terminé les questions de la boîte 1
+    if (editingBox === '1' && currentQuestion >= personalInfoQuestions + 1 + box1Questions) {
+        // Retourner directement au récapitulatif
+        document.body.removeAttribute('data-editing-box');
+        showRecap();
+        return;
+    }
+    
+    // Si nous éditons la boîte 2 et avons terminé les questions de la boîte 2
+    if (editingBox === '2' && currentQuestion >= personalInfoQuestions + 1 + box1Questions + box2Questions) {
+        // Retourner directement au récapitulatif
+        document.body.removeAttribute('data-editing-box');
+        showRecap();
+        return;
+    }
+    
+    // Logique normale de progression
+    if (currentQuestion === personalInfoQuestions) {
+        // Question sur le nombre de boîtes
+        allQuestions[currentQuestion].classList.add("active");
+    } 
+    else if (currentQuestion === personalInfoQuestions + 1) {
+        // Première question sur les ingrédients (boîte 1)
+        allQuestions[currentQuestion].classList.add("active");
+    }
+    else if (currentQuestion === personalInfoQuestions + 1 + box1Questions && boxQuantity === 2) {
+        // Première question sur les ingrédients (boîte 2)
+        allQuestions[currentQuestion].classList.add("active");
+    }
+    else if (currentQuestion === personalInfoQuestions + 1 + box1Questions && boxQuantity === 1) {
+        // Si une seule boîte, aller à la question de livraison après les questions de la boîte 1
+        const deliveryQuestionIndex = personalInfoQuestions + 1 + box1Questions + box2Questions;
+        allQuestions[deliveryQuestionIndex].classList.add("active");
+        currentQuestion = deliveryQuestionIndex;
+    }
+    else if (currentQuestion === personalInfoQuestions + 1 + box1Questions + box2Questions) {
+        // Si deux boîtes, aller à la question de livraison après les questions de la boîte 2
+        allQuestions[currentQuestion].classList.add("active");
+    }
+    else if (currentQuestion === personalInfoQuestions + 1 + box1Questions + box2Questions + deliveryQuestion) {
+        // Après la question de livraison, montrer le récapitulatif
+        showRecap();
+    }
+    else {
+        // Questions normales
+        allQuestions[currentQuestion].classList.add("active");
+    }
+    
+    updateButtons();
+    updateProgressBar();
+}
+
+// Valider une question
+function validateQuestion(question) {
+    const input = question.querySelector("input, [type=hidden]");
+    const errorMessage = question.querySelector(".error-message");
+
+    if (!input.value) {
+        errorMessage.style.display = "block";
+        return false;
+    } else {
+        errorMessage.style.display = "none";
+        return true;
+    }
+}
+
+// Sélectionner une option
+function selectOption(button, inputName, value) {
+    document.getElementById(inputName).value = value;
+
+    const questionIndex = Array.from(allQuestions).indexOf(button.closest('.question'));
+    const isBox2 = questionIndex >= personalInfoQuestions + 1 + box1Questions && 
+                  questionIndex < personalInfoQuestions + 1 + box1Questions + box2Questions;
+    const isDelivery = questionIndex === personalInfoQuestions + 1 + box1Questions + box2Questions;
+
+    if (isBox2) {
+        if (inputName.includes("entry.2021454936")) {
+            responses.box2.legume = value;
+        } else if (inputName.includes("entry.819843500")) {
+            responses.box2.poisson = value;
+        } else if (inputName.includes("entry.516077606")) {
+            responses.box2.fromageFrais = value;
+        } else if (inputName.includes("entry.1450345325")) {
+            responses.box2.soja = value;
         }
+    } else if (isDelivery) {
+        responses.box1.livre = value;
+    } else {
+        if (inputName.includes("entry.1292076072")) {
+            responses.box1.legume = value;
+        } else if (inputName.includes("entry.1726767774")) {
+            responses.box1.poisson = value;
+        } else if (inputName.includes("entry.887168393")) {
+            responses.box1.fromageFrais = value;
+        } else if (inputName.includes("entry.41252950")) {
+            responses.box1.soja = value;
+        } else if (inputName.includes("entry.554098723")) {
+            responses.box1.livre = value;
+        }
+    }
 
-      
-        const scriptURL = "https://script.google.com/macros/s/AKfycbyFoxX80BIT1o7NPB-YvXrSoVci1hUYtBTlnVXiGQz-Xxgd_F0zOSV0LXqFGtOQuBQYTw/exec";
+    let buttons = button.parentElement.querySelectorAll(".select-btn");
+    buttons.forEach(btn => btn.classList.remove("selected"));
+    button.classList.add("selected");
 
-        // On intercepte le clic sur le bouton
-        document.getElementById("main-order-btn").addEventListener("click", () => {
-        // Appel normal (affiche le formulaire)
-        showForm();
+    const errorMessage = button.closest(".question").querySelector(".error-message");
+    errorMessage.style.display = "none";
 
-        // Ensuite on appelle le script Google pour réserver les boîtes
-        fetch(scriptURL, {
+    nextQuestion();
+}
+
+// Mettre à jour la barre de progression
+function updateProgressBar() {
+    const progressContainer = document.querySelector('.progress-container');
+    const progressBar = document.getElementById('progressBar');
+    const recapPageActive = document.querySelector('.recap-page.active');
+    const thankYouPageActive = document.querySelector('.thank-you-page.active');
+
+    // Si nous sommes sur la page de récap ou de remerciement, on cache la barre
+    if (recapPageActive || thankYouPageActive) {
+        progressContainer.style.display = 'none';
+        return;
+    }
+
+    // Si nous sommes après les questions personnelles
+    if (currentQuestion > personalInfoQuestions) {
+        progressContainer.style.display = 'block';
+        let totalQuestions = boxQuantity === 1 
+            ? personalInfoQuestions + box1Questions + deliveryQuestion
+            : personalInfoQuestions + box1Questions + box2Questions + deliveryQuestion;
+        const progress = ((currentQuestion - personalInfoQuestions) / (totalQuestions - personalInfoQuestions)) * 100;
+        progressBar.style.width = `${progress}%`;
+    } else {
+        progressContainer.style.display = 'none';
+    }
+}
+
+// Afficher le récapitulatif
+function showRecap() {
+    const recapPage = document.querySelector(".recap-page");
+    const recapContent = document.getElementById("recap-content");
+    const recapPrice = document.getElementById("recap-price");
+    
+    // Masquer le titre s'il existe
+    const questionTitle = document.querySelector('.question-title');
+    if (questionTitle) {
+        questionTitle.style.display = 'none';
+    }
+    
+    let totalPrice = basePrice;
+    if (boxQuantity === 2) totalPrice += basePrice;
+    
+    recapContent.innerHTML = `
+        <div class="recap-section">
+            <h3>Boîte 1 : 6,50 €</h3>
+            <p><strong>Légume:</strong> ${responses.box1.legume}</p>
+            <p><strong>Poisson:</strong> ${responses.box1.poisson}</p>
+            <p><strong>Fromage:</strong> ${responses.box1.fromageFrais}</p>
+            <p><strong>Soja:</strong> ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
+            <button type="button" onclick="goToBox1()">Modifier</button>
+        </div>`;
+
+    if (boxQuantity === 2) {
+        recapContent.innerHTML += `
+        <div class="recap-section">
+            <h3>Boîte 2 : 6,50 €</h3>
+            <p><strong>Légume:</strong> ${responses.box2.legume}</p>
+            <p><strong>Poisson:</strong> ${responses.box2.poisson}</p>
+            <p><strong>Fromage:</strong> ${responses.box2.fromageFrais}</p>
+            <p><strong>Soja:</strong> ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
+            <button type="button" onclick="goToBox2()">Modifier</button>
+        </div>`;
+        
+        if (responses.box2.soja === "Sucrée" || responses.box2.soja === "Salée") totalPrice += sojaSupplement;
+    }
+
+    // Ajouter les informations de livraison au récapitulatif
+    recapContent.innerHTML += `
+    <div class="recap-section">
+        <h3>Récupération</h3>
+        <p><strong>Mode:</strong> ${responses.box1.livre}</p>
+        <button type="button" onclick="goToDelivery()">Modifier</button>
+    </div>`;
+
+    if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") totalPrice += sojaSupplement;
+    if (responses.box1.livre === "Livraison chez moi (+0,40€)") totalPrice += deliverySupplement;
+
+    recapPrice.innerHTML = `<h3>Total : ${totalPrice.toFixed(2)}€</h3>`;
+
+    allQuestions.forEach(q => q.classList.remove("active"));
+    recapPage.classList.add("active");
+    document.querySelector(".nav-container").style.display = "none";
+    
+    // Explicitement masquer la barre de progression
+    document.querySelector('.progress-container').style.display = 'none';
+}
+
+// Fonction pour revenir à la modification de la boîte 1
+function goToBox1() {
+    const questionTitle = document.querySelector('.question-title');
+    if (questionTitle) {
+        questionTitle.style.display = 'block';
+    }
+    document.querySelector(".nav-container").style.display = "flex";
+    currentQuestion = personalInfoQuestions + 1;            
+    document.querySelector(".recap-page").classList.remove("active");
+    allQuestions.forEach(q => q.classList.remove('active'));           
+    allQuestions[currentQuestion].classList.add("active");           
+    document.body.setAttribute('data-editing-box', '1');
+    
+    // Mettre à jour l'interface
+    updateButtons();
+    updateProgressBar();
+}
+
+// Fonction pour revenir à la modification de la boîte 2
+function goToBox2() {
+    const questionTitle = document.querySelector('.question-title');
+    if (questionTitle) {
+        questionTitle.style.display = 'block';
+    }
+    document.querySelector(".nav-container").style.display = "flex";
+    currentQuestion = personalInfoQuestions + 1 + box1Questions;
+    document.querySelector(".recap-page").classList.remove("active");
+    allQuestions.forEach(q => q.classList.remove('active'));
+    allQuestions[currentQuestion].classList.add("active");
+    document.body.setAttribute('data-editing-box', '2');
+    
+    updateButtons();
+    updateProgressBar();
+}
+
+// Nouvelle fonction pour revenir à la question de livraison
+function goToDelivery() {
+    document.querySelector(".nav-container").style.display = "flex";
+    currentQuestion = personalInfoQuestions + 1 + box1Questions + box2Questions;
+    document.querySelector(".recap-page").classList.remove("active");
+    allQuestions.forEach(q => q.classList.remove('active'));
+    allQuestions[currentQuestion].classList.add("active");
+    
+    updateButtons();
+    updateProgressBar();
+}
+
+function confirmOrder() {
+    document.body.removeAttribute('data-editing-box');
+    validerCommande();
+    let isValid = true;
+    document.querySelectorAll('[required]').forEach(field => {
+        if (!field.value) {
+            isValid = false;
+            const errorMsg = field.closest('.question')?.querySelector('.error-message');
+            if (errorMsg) errorMsg.style.display = 'block';
+        }
+    });
+    
+    if (!isValid) {
+        alert("Veuillez remplir tous les champs obligatoires");
+        return;
+    }
+    document.querySelector(".recap-page").classList.remove("active");
+    document.querySelector(".thank-you-page").classList.add("active");
+    document.querySelector(".nav-container").style.display = "none";
+    
+    // Nouveau code : afficher le message approprié selon le choix de livraison
+    const deliveryChoice = responses.box1.livre;
+    const deliveryMessageElement = document.getElementById('delivery-message');
+    
+    if (deliveryChoice === 'Livraison chez moi (+0,40€)') {
+        deliveryMessageElement.textContent = 'Tu seras livré entre 19h et 20h !';
+    } else if (deliveryChoice === 'Je viens la chercher') {
+        deliveryMessageElement.textContent = 'Viens la chercher vers 20h en b43';
+    }
+
+    const form = document.querySelector(".contact-us");
+    
+    try {
+        const formData = new FormData(form);
+        fetch(form.action, {
             method: "POST",
-            mode: "cors"
-        })
+            body: new URLSearchParams(formData),
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            mode: 'no-cors'
+        }).then(() => {
+            console.log("Formulaire soumis avec succès (fetch)");
+        }).catch(e => {
+            console.error("Erreur fetch:", e);
+            submitWithIframe();
+        });
+    } catch (e) {
+        console.error("Erreur:", e);
+        submitWithIframe();
+    }
+}
+
+function submitWithIframe() {
+    const form = document.querySelector(".contact-us");
+    const iframe = document.createElement("iframe");
+    iframe.name = "form-target-" + Date.now();
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+    
+    form.target = iframe.name;
+    form.submit();
+    
+    setTimeout(() => {
+        iframe.remove();
+    }, 5000);
+}
+
+document.querySelector(".contact-us").addEventListener("submit", function(e) {
+    e.preventDefault();
+    confirmOrder();
+});
+
+function updateButtons() {
+    if (document.querySelector(".recap-page").classList.contains("active")) {
+        nextBtn.style.display = "none";
+        submitBtn.style.display = "none";
+    } else {
+        const currentQuestion = document.querySelector(".question.active");
+        if (currentQuestion && (currentQuestion.querySelector(".ingredient-container") || currentQuestion.querySelector(".btn-group"))) {
+            nextBtn.style.display = "none";
+        } else {
+            nextBtn.style.display = "block";
+        }
+        submitBtn.style.display = "none";
+    }
+}
+
+// Fonction pour vérifier le stock
+function fetchStock() {
+    const stockDisplay = document.getElementById('stock-display');
+    const orderBtn = document.querySelector('.order-btn');
+    
+    orderBtn.disabled = true;
+    orderBtn.textContent = "Chargement...";
+    stockDisplay.textContent = "Vérification du stock...";
+
+    fetch('https://script.google.com/macros/s/AKfycbwHGDDnZFpdeaKeH-R1x_Ws2Hm8-WFtyYma7RB-vo3dKc4f3t4cs-aBfm4U455_sckgXA/exec')
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-            console.log("Réservation effectuée !");
-            // Tu peux aussi afficher un message à l'utilisateur si tu veux
-            } else {
-            console.error("Erreur côté script :", data.message || data.error);
+                // Stocker le nombre de boîtes disponibles
+                availableBoxes = data.stock;
+                
+                stockDisplay.textContent = `Boîtes disponibles : ${availableBoxes}`;
+                
+                if (availableBoxes <= 0) {
+                    orderBtn.disabled = true;
+                    orderBtn.textContent = "RUPTURE DE STOCK";
+                    orderBtn.style.background = "#e74c3c";
+                } else {
+                    orderBtn.disabled = false;
+                    orderBtn.textContent = "Commander";
+                    orderBtn.style.background = "";
+                }
             }
         })
         .catch(error => {
-            console.error("Erreur réseau :", error);
+            console.error('Erreur:', error);
+            stockDisplay.textContent = 'Erreur de chargement';
+            orderBtn.disabled = true;
+            orderBtn.textContent = "Commander (hors ligne)";
         });
-        });
-       
-        function validerCommande() {
-            fetch('https://script.google.com/macros/s/AKfycbw2XcAj_HIn4b87YoPQVcFPQOZIvhoHtueX2Kqx1ZHfx_0ShmgWNBISW_BGvsb_OItX9A/exec?valider=1')
-            .then((res) => res.json())
-      
-        }
-</script>
+}
 
+const scriptURL = "https://script.google.com/macros/s/AKfycbyFoxX80BIT1o7NPB-YvXrSoVci1hUYtBTlnVXiGQz-Xxgd_F0zOSV0LXqFGtOQuBQYTw/exec";
+
+// On intercepte le clic sur le bouton
+document.getElementById("main-order-btn").addEventListener("click", () => {
+    // Appel normal (affiche le formulaire)
+    showForm();
+
+    // Ensuite on appelle le script Google pour réserver les boîtes
+    fetch(scriptURL, {
+        method: "POST",
+        mode: "cors"
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log("Réservation effectuée !");
+            // Tu peux aussi afficher un message à l'utilisateur si tu veux
+        } else {
+            console.error("Erreur côté script :", data.message || data.error);
+        }
+    })
+    .catch(error => {
+        console.error("Erreur réseau :", error);
+    });
+});
+
+function validerCommande() {
+    fetch('https://script.google.com/macros/s/AKfycbw2XcAj_HIn4b87YoPQVcFPQOZIvhoHtueX2Kqx1ZHfx_0ShmgWNBISW_BGvsb_OItX9A/exec?valider=1')
+    .then((res) => res.json())
+}
+
+// Initialisation au chargement de la page
+document.addEventListener('DOMContentLoaded', function() {
+    fetchStock();
+});
+
+</script>
 </body>
 </html>
