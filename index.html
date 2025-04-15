@@ -756,9 +756,10 @@
                 max-width: 110px !important; /* Encore plus petit sur mobile */
             }
         }
-        .second-box .supplement-info {
+        .ingredient-question .supplement-info {
     position: relative;
-    z-index: 20;
+    z-index: 20; /* Plus élevé que le z-index de question-title (10) */
+    margin-top: 5px; /* Un petit espace après le titre */
 }
     </style>
 </head>
@@ -861,7 +862,7 @@
             <div class="error-message">Veuillez choisir une option.</div>
         </div>
 
-        <!-- Questions sur les ingrédients (BOÎTE 1) - AVEC titre -->
+       
        <!-- Questions sur les ingrédients (BOÎTE 1) - AVEC titre -->
 <div class="question ingredient-question">
     <h2 class="question-title">Que veux-tu dans ton maki ?</h2>
@@ -1125,12 +1126,9 @@
         // Passer à la question suivante
 
 
-        // Passer à la question suivante
         function nextQuestion() {
             const currentQuestionElement = allQuestions[currentQuestion];
             const ingredientTitle = document.querySelector('.question-title');
-            
-         
             
             if (!validateQuestion(currentQuestionElement)) {
                 return;
@@ -1139,6 +1137,26 @@
             currentQuestionElement.classList.remove("active");
             currentQuestion++;
             
+            // Vérifier si nous sommes en mode d'édition
+            const editingBox = document.body.getAttribute('data-editing-box');
+            
+            // Si nous éditons la boîte 1 et avons terminé les questions de la boîte 1
+            if (editingBox === '1' && currentQuestion >= personalInfoQuestions + 1 + box1Questions) {
+                // Retourner directement au récapitulatif
+                document.body.removeAttribute('data-editing-box');
+                showRecap();
+                return;
+            }
+            
+            // Si nous éditons la boîte 2 et avons terminé les questions de la boîte 2
+            if (editingBox === '2' && currentQuestion >= personalInfoQuestions + 1 + box1Questions + box2Questions) {
+                // Retourner directement au récapitulatif
+                document.body.removeAttribute('data-editing-box');
+                showRecap();
+                return;
+            }
+            
+            // Logique normale de progression
             if (currentQuestion === personalInfoQuestions) {
                 allQuestions[currentQuestion].classList.add("active");
             } 
@@ -1159,7 +1177,8 @@
             updateButtons();
             updateProgressBar();
         }
-  
+
+
         // Valider une question
         function validateQuestion(question) {
             const input = question.querySelector("input, [type=hidden]");
@@ -1223,11 +1242,13 @@
             const recapPageActive = document.querySelector('.recap-page.active');
             const thankYouPageActive = document.querySelector('.thank-you-page.active');
 
+            // Si nous sommes sur la page de récap ou de remerciement, on cache la barre
             if (recapPageActive || thankYouPageActive) {
                 progressContainer.style.display = 'none';
                 return;
             }
 
+            // Si nous sommes après les questions personnelles
             if (currentQuestion > personalInfoQuestions) {
                 progressContainer.style.display = 'block';
                 let totalQuestions = boxQuantity === 1 
@@ -1241,6 +1262,7 @@
         }
 
         // Afficher le récapitulatif
+     
         function showRecap() {
             const recapPage = document.querySelector(".recap-page");
             const recapContent = document.getElementById("recap-content");
@@ -1277,7 +1299,6 @@
                 if (responses.box2.soja === "Sucrée" || responses.box2.soja === "Salée") totalPrice += sojaSupplement;
             }
 
-            // Dans la fonction showRecap()
             if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") totalPrice += sojaSupplement;
             if (responses.box1.livre === "Livraison (+0,40€)") totalPrice += deliverySupplement;
 
@@ -1286,12 +1307,15 @@
             allQuestions.forEach(q => q.classList.remove("active"));
             recapPage.classList.add("active");
             document.querySelector(".nav-container").style.display = "none";
+            
+            // Explicitement masquer la barre de progression
+            document.querySelector('.progress-container').style.display = 'none';
         }
 
-        // Modifier la boîte 1
+            // Modifiez la fonction goToBox1() comme suit :
         function goToBox1() {
-            // Masquer le titre immédiatement
-            document.querySelector('.question-title').style.display = 'none';
+            // Rendre le titre visible
+            document.querySelector('.question-title').style.display = 'block';
             
             // Réafficher la navigation
             document.querySelector(".nav-container").style.display = "flex";
@@ -1308,15 +1332,18 @@
             // Afficher la question courante
             allQuestions[currentQuestion].classList.add("active");
             
+            // Ajouter un attribut de modification en cours
+            document.body.setAttribute('data-editing-box', '1');
+            
             // Mettre à jour l'interface
             updateButtons();
             updateProgressBar();
         }
 
-        // Modifier la boîte 2
+        // Modifiez de la même façon goToBox2() pour la cohérence :
         function goToBox2() {
-            // Masquer le titre immédiatement
-            document.querySelector('.question-title').style.display = 'none';
+            // Rendre le titre visible
+            document.querySelector('.question-title').style.display = 'block';
             
             // Réafficher la navigation
             document.querySelector(".nav-container").style.display = "flex";
@@ -1333,70 +1360,75 @@
             // Afficher la question courante
             allQuestions[currentQuestion].classList.add("active");
             
+            // Ajouter un attribut de modification en cours
+            document.body.setAttribute('data-editing-box', '2');
+            
             // Mettre à jour l'interface
             updateButtons();
             updateProgressBar();
         }
 
-        function confirmOrder() {
 
-            validerCommande()
+    function confirmOrder() {
+    
+        document.body.removeAttribute('data-editing-box');
+        validerCommande();
 
-    
-    // 1. Valider d'abord tous les champs requis
-    let isValid = true;
-    document.querySelectorAll('[required]').forEach(field => {
-        if (!field.value) {
-            isValid = false;
-            const errorMsg = field.closest('.question')?.querySelector('.error-message');
-            if (errorMsg) errorMsg.style.display = 'block';
-        }
-    });
-    
-    if (!isValid) {
-        alert("Veuillez remplir tous les champs obligatoires");
-        return;
-    }
 
-    // 2. Afficher la page de remerciement immédiatement
-    document.querySelector(".recap-page").classList.remove("active");
-    document.querySelector(".thank-you-page").classList.add("active");
-    document.querySelector(".nav-container").style.display = "none";
-    
-    // Nouveau code : afficher le message approprié selon le choix de livraison
-    const deliveryChoice = responses.box1.livre;
-    const deliveryMessageElement = document.getElementById('delivery-message');
-    
-    if (deliveryChoice === 'Livraison chez moi (+0,40€)') {
-        deliveryMessageElement.textContent = 'Tu seras livré entre 19h et 20h !';
-    } else if (deliveryChoice === 'Je viens la chercher') {
-        deliveryMessageElement.textContent = 'Viens la chercher vers 20h en b43';
-    }
-
-    // 3. Soumettre le formulaire
-    const form = document.querySelector(".contact-us");
-    
-    try {
-        const formData = new FormData(form);
-        fetch(form.action, {
-            method: "POST",
-            body: new URLSearchParams(formData),
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            mode: 'no-cors'
-        }).then(() => {
-            console.log("Formulaire soumis avec succès (fetch)");
-        }).catch(e => {
-            console.error("Erreur fetch:", e);
-            submitWithIframe();
+        // 1. Valider d'abord tous les champs requis
+        let isValid = true;
+        document.querySelectorAll('[required]').forEach(field => {
+            if (!field.value) {
+                isValid = false;
+                const errorMsg = field.closest('.question')?.querySelector('.error-message');
+                if (errorMsg) errorMsg.style.display = 'block';
+            }
         });
-    } catch (e) {
-        console.error("Erreur:", e);
-        submitWithIframe();
-    }
-
+        
+        if (!isValid) {
+            alert("Veuillez remplir tous les champs obligatoires");
+            return;
         }
+
+        // 2. Afficher la page de remerciement immédiatement
+        document.querySelector(".recap-page").classList.remove("active");
+        document.querySelector(".thank-you-page").classList.add("active");
+        document.querySelector(".nav-container").style.display = "none";
+        
+        // Nouveau code : afficher le message approprié selon le choix de livraison
+        const deliveryChoice = responses.box1.livre;
+        const deliveryMessageElement = document.getElementById('delivery-message');
+        
+        if (deliveryChoice === 'Livraison chez moi (+0,40€)') {
+            deliveryMessageElement.textContent = 'Tu seras livré entre 19h et 20h !';
+        } else if (deliveryChoice === 'Je viens la chercher') {
+            deliveryMessageElement.textContent = 'Viens la chercher vers 20h en b43';
+        }
+
+        // 3. Soumettre le formulaire
+        const form = document.querySelector(".contact-us");
+        
+        try {
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: "POST",
+                body: new URLSearchParams(formData),
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                mode: 'no-cors'
+            }).then(() => {
+                console.log("Formulaire soumis avec succès (fetch)");
+            }).catch(e => {
+                console.error("Erreur fetch:", e);
+                submitWithIframe();
+            });
+        } catch (e) {
+            console.error("Erreur:", e);
+            submitWithIframe();
+        }
+
+            }
 
         // Méthode alternative avec iframe
         function submitWithIframe() {
@@ -1504,13 +1536,5 @@
         }
 </script>
 
-
-
-
-  
-
-        // Initialiser
-        updateButtons();
-    </script>
 </body>
 </html>
