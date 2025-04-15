@@ -8,7 +8,7 @@
     <style>
 
                 /* Style de base */
-        body {
+                body {
             margin: 0;
             padding: 0;
             height: 100vh;
@@ -405,9 +405,10 @@
 
         /* Styles spécifiques */
         .question-title {
+            margin-bottom: 25px;
             font-size: 8vmin;
             text-align: center;
-            margin: 0 0 25px 0;
+            margin: 0;
             color: #fff;
             font-family: 'Fjalla One', sans-serif;
             font-weight: bold;
@@ -427,6 +428,17 @@
             transform: translateX(-50%) rotate(-1deg);
             z-index: 10;
         }
+        @media (max-width: 600px) {
+            .ingredient-question .supplement-info {
+                margin-top: 25px; /* Plus d'espace sur les petits écrans */
+                display: block; /* Assurez-vous qu'il s'agit d'un bloc distinct */
+                clear: both; /* Évite les superpositions avec d'autres éléments */
+            }
+            
+            .question-title {
+                margin-bottom: 30px; /* Plus d'espace sur mobile */
+            }
+        }
 
         .ingredient-container {
             display: flex;
@@ -434,7 +446,7 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 5%;
-            margin-top: 30px; /* Augmenté de -20px à 30px */
+            margin-top: -20px;
         }
 
         .ingredient-image {
@@ -455,7 +467,9 @@
         .supplement-info {
             font-size: 3.5vmin;
             color: #555;
-            margin-top: 1vmin;
+            margin-top: 20px; /* Augmenté de 1vmin à 20px */
+            position: relative;
+            z-index: 5; /* Réduit de 20 à 5 pour éviter les conflits de superposition */
         }
 
         /* Page récap */
@@ -759,28 +773,8 @@
         .ingredient-question .supplement-info {
             position: relative;
             z-index: 20; /* Plus élevé que le z-index de question-title (10) */
-            margin-top: 15px; /* Augmenté de 5px à 15px pour plus d'espace */
-            clear: both; /* Pour s'assurer qu'il n'y a pas de flottement avec d'autres éléments */
-            display: block; /* Pour garantir qu'il s'affiche correctement */
+            margin-top: 5px; /* Un petit espace après le titre */
         }
-        @media (max-width: 600px) {
-            .supplement-info {
-                margin-top: 20px; /* Encore plus d'espace sur mobile */
-                margin-bottom: 15px; /* Espace supplémentaire en dessous */
-                font-weight: bold; /* Rendre plus visible */
-            }
-            
-            .ingredient-container {
-                margin-top: 35px; /* Plus d'espace sur mobile */
-            }
-            
-            .question-title {
-                font-size: 6vmin; /* Légèrement plus petit sur mobile */
-                padding: 8px 15px;
-                top: 15px; 
-            }
-        }
-
 
     </style>
 </head>
