@@ -467,9 +467,29 @@
         .supplement-info {
             font-size: 3.5vmin;
             color: #555;
-            margin-top: 20px; /* Augmenté de 1vmin à 20px */
             position: relative;
-            z-index: 5; /* Réduit de 20 à 5 pour éviter les conflits de superposition */
+            z-index: 20; /* Augmenté de 5 à 20 */
+            top: 30px; /* Ajout d'une position fixe */
+            margin-top: 0; /* Remplacé 20px par 0 */
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+
+                /* Ajustement de l'espace entre le titre et le premier élément sous la boîte */
+        .ingredient-container {
+            margin-top: 45px; /* Augmenter l'espace pour accommoder le texte "Boîte X" */
+        }
+
+        /* Ajustement pour la question de sauce soja où il y a plus de texte */
+        .supplement-info + .supplement-info {
+            top: 55px; /* Position plus basse pour le deuxième texte (supplément sauce soja) */
+        }
+
+        /* Augmenter légèrement l'espace pour le conteneur d'ingrédients après les textes */
+        .supplement-info + .supplement-info + label {
+            margin-top: 25px;
+            display: block;
         }
 
         /* Page récap */
@@ -849,7 +869,7 @@
                 Avant de te préparer tes sushis sur mesure, on a besoin de quelques infos !
             </div>
             <label for="entry.1985104958">
-                <span class="icon">🏠</span> Tu habites dans quelle colloc ?
+                <span class="icon">🏠</span> Tu habites dans quelle coloc ?
             </label>
             <input type="text" name="entry.1985104958" placeholder="b43" required>
             <div class="error-message">Veuillez répondre à cette question.</div>
