@@ -496,46 +496,38 @@
         /* Page récap */
         .recap-page {
             padding: 2vmin;
-            font-size: 3.2vmin; /* Augmenté de 2.7vmin à 3.2vmin */
+            font-size: 2.7vmin;
         }
 
         .recap-page h2 {
-            font-size: 4.5vmin; /* Augmenté de 4vmin à 4.5vmin */
-            margin-bottom: 2.5vmin; /* Ajusté pour l'espacement */
+            font-size: 4vmin;
+            margin-bottom: 2vmin;
         }
 
         .recap-page h3 {
-            font-size: 3.8vmin; /* Augmenté de 3.2vmin à 3.8vmin */
-            margin-bottom: 2vmin; /* Ajusté pour l'espacement */
+            font-size: 3.2vmin;
+            margin-bottom: 1.5vmin;
         }
 
         .recap-page p {
-            font-size: 3.2vmin; /* Augmenté de 2.7vmin à 3.2vmin */
-            margin: 1.5vmin 0; /* Légèrement ajusté */
-            line-height: 1.3; /* Légèrement augmenté pour la lisibilité */
+            font-size: 2.7vmin;
+            margin: 1.2vmin 0;
+            line-height: 1.2;
         }
 
         .recap-page button {
-            padding: 1.5vmin 3vmin; /* Augmenté pour un bouton plus grand */
-            font-size: 3.2vmin; /* Augmenté de 2.5vmin à 3.2vmin */
+            padding: 1vmin 2vmin;
+            font-size: 2.5vmin;
             background: #ff6f61;
             color: white;
             border: 1px solid black;
             cursor: pointer;
             transition: 0.2s all ease-in-out;
-            box-shadow: 3px 3px 1px black; /* Légèrement plus grand */
-            border-radius: 6px; /* Légèrement plus arrondi */
-            margin: 2vmin 0; /* Plus d'espace autour du bouton */
-            font-weight: bold; /* Pour accentuer le bouton */
+            box-shadow: 2px 2px 1px black;
+            border-radius: 5px;
+            margin: 1vmin 0;
         }
 
-        /* Ajoutez cette règle pour le bouton de navigation dans la page récap */
-        .recap-page .nav-btn {
-            font-size: 3.5vmin; /* Taille de police plus grande */
-            padding: 1.8vmin 3.5vmin; /* Plus large et plus haut */
-            width: auto; /* Largeur automatique basée sur le contenu */
-            max-width: 240px; /* Légèrement plus large que l'original */
-        }
         .recap-page button:hover {
             background: black;
             color: white;
@@ -804,6 +796,22 @@
             z-index: 20; /* Plus élevé que le z-index de question-title (10) */
             margin-top: 5px; /* Un petit espace après le titre */
         }
+        /* Ajouter ce style pour agrandir le bouton de confirmation */
+.recap-page .nav-btn {
+    padding: 3% 6%;
+    font-size: 4.5vmin;
+    width: 90%;
+    max-width: 280px;
+    margin: 20px auto;
+    background: #ffa580;
+    transition: all 0.3s ease;
+}
+
+.recap-page .nav-btn:hover {
+    transform: scale(1.05);
+    background: black;
+    color: white;
+}
 
     </style>
 </head>
@@ -1382,30 +1390,42 @@ function showRecap() {
     let totalPrice = basePrice;
     if (boxQuantity === 2) totalPrice += basePrice;
     
+    // Calculer le prix de la boîte 1 avec supplément
+    let box1Price = basePrice;
+    if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") {
+        box1Price += sojaSupplement;
+        totalPrice += sojaSupplement;
+    }
+    
     recapContent.innerHTML = `
         <div class="recap-section">
-            <h3>Boîte 1 : 6,50 €</h3>
+            <h3>Boîte 1 : ${box1Price.toFixed(2)} €</h3>
             <p><strong>Légume:</strong> ${responses.box1.legume}</p>
             <p><strong>Poisson:</strong> ${responses.box1.poisson}</p>
             <p><strong>Fromage:</strong> ${responses.box1.fromageFrais}</p>
             <p><strong>Soja:</strong> ${responses.box1.soja} ${responses.box1.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
             <button type="button" onclick="goToBox1()">Modifier</button>
         </div>`;
-
+    
     if (boxQuantity === 2) {
+        // Calculer le prix de la boîte 2 avec supplément
+        let box2Price = basePrice;
+        if (responses.box2.soja === "Sucrée" || responses.box2.soja === "Salée") {
+            box2Price += sojaSupplement;
+            totalPrice += sojaSupplement;
+        }
+        
         recapContent.innerHTML += `
         <div class="recap-section">
-            <h3>Boîte 2 : 6,50 €</h3>
+            <h3>Boîte 2 : ${box2Price.toFixed(2)} €</h3>
             <p><strong>Légume:</strong> ${responses.box2.legume}</p>
             <p><strong>Poisson:</strong> ${responses.box2.poisson}</p>
             <p><strong>Fromage:</strong> ${responses.box2.fromageFrais}</p>
             <p><strong>Soja:</strong> ${responses.box2.soja} ${responses.box2.soja !== 'Pas de sauce' ? '(+0,40 €)' : ''}</p>
             <button type="button" onclick="goToBox2()">Modifier</button>
         </div>`;
-        
-        if (responses.box2.soja === "Sucrée" || responses.box2.soja === "Salée") totalPrice += sojaSupplement;
     }
-
+    
     // Ajouter les informations de livraison au récapitulatif
     recapContent.innerHTML += `
     <div class="recap-section">
@@ -1413,12 +1433,14 @@ function showRecap() {
         <p><strong>Mode:</strong> ${responses.box1.livre}</p>
         <button type="button" onclick="goToDelivery()">Modifier</button>
     </div>`;
-
-    if (responses.box1.soja === "Sucrée" || responses.box1.soja === "Salée") totalPrice += sojaSupplement;
-    if (responses.box1.livre === "Livraison chez moi (+0,40€)") totalPrice += deliverySupplement;
-
+    
+    // Ajout du supplément de livraison au prix total
+    if (responses.box1.livre === "Livraison chez moi (+0,40€)") {
+        totalPrice += deliverySupplement;
+    }
+    
     recapPrice.innerHTML = `<h3>Total : ${totalPrice.toFixed(2)}€</h3>`;
-
+    
     allQuestions.forEach(q => q.classList.remove("active"));
     recapPage.classList.add("active");
     document.querySelector(".nav-container").style.display = "none";
