@@ -481,52 +481,61 @@
             margin-top: 45px; /* Augmenter l'espace pour accommoder le texte "Boîte X" */
         }
 
-        /* Ajustement pour la question de sauce soja où il y a plus de texte */
         .supplement-info + .supplement-info {
-            top: 55px; /* Position plus basse pour le deuxième texte (supplément sauce soja) */
+            top: 30px; /* Même position que le premier texte */
+            margin-top: 25px; /* Espace supplémentaire après "Boîte X" */
+            margin-bottom: 15px; /* Espace avant "Soja?" */
         }
-
-        /* Augmenter légèrement l'espace pour le conteneur d'ingrédients après les textes */
+                /* Augmenter légèrement l'espace pour le conteneur d'ingrédients après les textes */
         .supplement-info + .supplement-info + label {
-            margin-top: 25px;
+            margin-top: 40px; /* Augmenté pour plus d'espace */
             display: block;
+            clear: both; /* Assure qu'il n'y a pas de chevauchement */
         }
 
         /* Page récap */
         .recap-page {
             padding: 2vmin;
-            font-size: 2.7vmin;
+            font-size: 3.2vmin; /* Augmenté de 2.7vmin à 3.2vmin */
         }
 
         .recap-page h2 {
-            font-size: 4vmin;
-            margin-bottom: 2vmin;
+            font-size: 4.5vmin; /* Augmenté de 4vmin à 4.5vmin */
+            margin-bottom: 2.5vmin; /* Ajusté pour l'espacement */
         }
 
         .recap-page h3 {
-            font-size: 3.2vmin;
-            margin-bottom: 1.5vmin;
+            font-size: 3.8vmin; /* Augmenté de 3.2vmin à 3.8vmin */
+            margin-bottom: 2vmin; /* Ajusté pour l'espacement */
         }
 
         .recap-page p {
-            font-size: 2.7vmin;
-            margin: 1.2vmin 0;
-            line-height: 1.2;
+            font-size: 3.2vmin; /* Augmenté de 2.7vmin à 3.2vmin */
+            margin: 1.5vmin 0; /* Légèrement ajusté */
+            line-height: 1.3; /* Légèrement augmenté pour la lisibilité */
         }
 
         .recap-page button {
-            padding: 1vmin 2vmin;
-            font-size: 2.5vmin;
+            padding: 1.5vmin 3vmin; /* Augmenté pour un bouton plus grand */
+            font-size: 3.2vmin; /* Augmenté de 2.5vmin à 3.2vmin */
             background: #ff6f61;
             color: white;
             border: 1px solid black;
             cursor: pointer;
             transition: 0.2s all ease-in-out;
-            box-shadow: 2px 2px 1px black;
-            border-radius: 5px;
-            margin: 1vmin 0;
+            box-shadow: 3px 3px 1px black; /* Légèrement plus grand */
+            border-radius: 6px; /* Légèrement plus arrondi */
+            margin: 2vmin 0; /* Plus d'espace autour du bouton */
+            font-weight: bold; /* Pour accentuer le bouton */
         }
 
+        /* Ajoutez cette règle pour le bouton de navigation dans la page récap */
+        .recap-page .nav-btn {
+            font-size: 3.5vmin; /* Taille de police plus grande */
+            padding: 1.8vmin 3.5vmin; /* Plus large et plus haut */
+            width: auto; /* Largeur automatique basée sur le contenu */
+            max-width: 240px; /* Légèrement plus large que l'original */
+        }
         .recap-page button:hover {
             background: black;
             color: white;
