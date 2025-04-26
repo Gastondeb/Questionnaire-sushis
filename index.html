@@ -812,7 +812,42 @@
     background: black;
     color: white;
 }
+/* Ajoutez ces styles à votre CSS existant */
 
+/* Style pour les boutons non disponibles */
+.select-btn.unavailable {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.7;
+  overflow: hidden;
+}
+
+/* L'étiquette "Pas dispo" qui apparaîtra sur le bouton */
+.select-btn.unavailable::before {
+  content: "Pas dispo";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vmin;
+  font-weight: bold;
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+/* Désactive les effets de survol sur les boutons non disponibles */
+.select-btn.unavailable:hover {
+  transform: none;
+  box-shadow: 3px 3px 1px black;
+  background: #ffa580;
+  color: white;
+}
     </style>
 </head>
 <body>
@@ -903,7 +938,7 @@
             </div>
             
             <p style="font-size: 3.8vmin; font-weight: bold; margin: 10px 0 15px; color: #ff6f61;">
-                1 boîte = 8 makis | 2 boîtes = 16 makis
+                1 boîte = 10 makis | 2 boîtes = 20 makis
             </p>
             
             <div class="btn-group box-quantity-btns">
@@ -942,7 +977,7 @@
             </div>
             <div class="btn-group box-quantity-btns">
                 <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1726767774', 'Saumon')">Saumon</button>
-                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1726767774', 'Crevettes')">Crevette</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1726767774', 'Crevettes')">Pas dispo encore</button>
             </div>
             <input type="hidden" name="entry.1726767774" id="entry.1726767774" required>
             <div class="error-message">Veuillez choisir une option.</div>
@@ -972,7 +1007,7 @@
             <div class="btn-group box-quantity-btns" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
                 <div style="display: flex; gap: 10px; margin-bottom: 5px;">
                     <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.41252950', 'Sucrée')">Sucrée</button>
-                    <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.41252950', 'Salée')">Salée</button>
+        
                 </div>
                 <button type="button" class="select-btn compact-btn" style="width: 100%; max-width: 200px;" onclick="selectOption(this, 'entry.41252950', 'Pas de sauce')">Pas de sauce</button>
             </div>
@@ -1007,7 +1042,7 @@
             </div>
             <div class="btn-group box-quantity-btns">
                 <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.819843500', 'Saumon')">Saumon</button>
-                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.819843500', 'Crevettes')">Crevette</button>
+                <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.819843500', 'Crevettes')">Pas dispo encore</button>
             </div>
             <input type="hidden" name="entry.819843500" id="entry.819843500">
             <div class="error-message">Veuillez choisir une option.</div>
@@ -1037,7 +1072,7 @@
             <div class="btn-group box-quantity-btns" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
                 <div style="display: flex; gap: 10px; margin-bottom: 5px;">
                     <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1450345325', 'Sucrée')">Sucrée</button>
-                    <button type="button" class="select-btn compact-btn" onclick="selectOption(this, 'entry.1450345325', 'Salée')">Salée</button>
+                    
                 </div>
                 <button type="button" class="select-btn compact-btn" style="width: 100%; max-width: 200px;" onclick="selectOption(this, 'entry.1450345325', 'Pas de sauce')">Pas de sauce</button>
             </div>
@@ -1048,14 +1083,14 @@
         <div class="question ingredient-question">
 
             <h2 style="font-size: 5vmin; margin-top: 15px; color: #333; text-align: center;">Comment souhaites-tu récupérer ta commande ?</h2>
-            <p class="supplement-info">Supplément livraison : <strong>+0,40 €</strong></p>
+            <p class="supplement-info">Supplément livraison : <strong>+1 €</strong></p>
             <div class="box-choice-image" style="position: relative; z-index: 15;">
                 <img src="Boite.png" alt="Boîte de sushis" onerror="this.onerror=null; this.src='boite.png';" 
                 class="delivery-box-image">
             </div>
 
             <div class="btn-group delivery-buttons-vertical">
-                <button type="button" class="select-btn delivery-btn-vertical" onclick="selectOption(this, 'entry.554098723', 'Livraison chez moi (+0,40€)')">Livraison chez moi (+0,40€)</button>
+                <button type="button" class="select-btn delivery-btn-vertical" onclick="selectOption(this, 'entry.554098723', 'Livraison chez moi (+0,40€)')">Livraison chez moi (+1€)</button>
                 <button type="button" class="select-btn delivery-btn-vertical" onclick="selectOption(this, 'entry.554098723', 'Je viens la chercher')">Je viens la chercher</button>
             </div>
 
@@ -1138,7 +1173,7 @@ let responses = {
 // Prix
 const basePrice = 6.5;
 const sojaSupplement = 0.4;
-const deliverySupplement = 0.4;
+const deliverySupplement = 1;
 
 // Afficher le formulaire
 function showForm() {
